@@ -36,6 +36,4 @@
 #endif // POINTING_DEVICE_ENABLE
 
 #define NO_MUSIC_MODE
-#define NO_DEBUG
-#define NO_PRINT
 
