@@ -36,4 +36,6 @@
 #endif // POINTING_DEVICE_ENABLE
 
 #define NO_MUSIC_MODE
-
+#define PERMISSIVE_HOLD
+#define TAPPING_TERM 200
+#define CHORDAL_HOLD

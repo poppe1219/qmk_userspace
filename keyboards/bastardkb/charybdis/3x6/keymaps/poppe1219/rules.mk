@@ -1,5 +1,6 @@
 VIA_ENABLE = yes
 UNICODE_ENABLE = yes
+COMBO_ENABLE = yes
 # Enable Link Time Optimization for smaller firmware
 LTO_ENABLE = yes
 # Disable unused stuff and shrink the build.
