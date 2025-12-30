@@ -43,13 +43,13 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define PT_Z LT(3, KC_Z)
 #define PT_SCLN LT(3, KC_QOUT)
 
-const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
-    LAYOUT(
-        'L', 'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 'R',
-        'L', 'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 'R',
-        'L', 'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 'R',
-                       '*', '*', '*',  '*', '*'
-    );
+//const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
+//    LAYOUT(
+//        'L', 'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 'R',
+//        'L', 'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 'R',
+//        'L', 'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 'R',
+//                       '*', '*', '*',  '*', '*'
+//    );
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
