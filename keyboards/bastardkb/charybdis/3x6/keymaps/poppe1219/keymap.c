@@ -41,7 +41,7 @@ static uint16_t auto_pointer_layer_timer = 0;
 #endif     // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 
 #define PT_Z LT(3, KC_Z)
-#define PT_SCLN LT(3, KC_QOUT)
+#define PT_QUOT LT(3, KC_QUOT)
 
 //const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
 //    LAYOUT(
@@ -55,7 +55,7 @@ static uint16_t auto_pointer_layer_timer = 0;
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       XXXXXXX,    KC_Q, RALT_T(KC_W), KC_F,  KC_P,    KC_B,       KC_J,    KC_L,    KC_U, RALT_T(KC_Y), KC_QUOT, KC_DEL,
+       XXXXXXX,    KC_Q, RALT_T(KC_W), KC_F,  KC_P,    KC_B,       KC_J,    KC_L,    KC_U, RALT_T(KC_Y), KC_SCLN, KC_DEL,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
         KC_ESC, LGUI_T(KC_A), LALT_T(KC_R), LCTL_T(KC_S), LSFT_T(KC_T), KC_G,       KC_M, RSFT_T(KC_N), RCTL_T(KC_E), LALT_T(KC_I), RGUI_T(KC_O), KC_BSPC,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
