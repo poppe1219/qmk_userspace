@@ -1,5 +1,12 @@
 # QMK Userspace
 
-This is the QMK Userspace for the Bastard Keyboards keymaps.
+This is my personal QMK Userspace fork, for building the Bastard Keyboards keymaps.
 
-You can read how to compile your own keymap on the official docs here: [https://docs.bastardkb.com/fw/compile-firmware.html](https://docs.bastardkb.com/fw/compile-firmware.html).
+In my case, the Charybdis Mini 3x6.
+
+Todo
+
+- Flip scroll direction.
+- Layers 
+- Combos and tapdance?
+
