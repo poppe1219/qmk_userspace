@@ -63,7 +63,7 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define HRM_SLSH ALGR_T(KC_SLSH)
 
 #define SPC_NUM LT(LT_NUM, KC_SPC)
-#define ESC_NAV LT(LT_NUM, KC_ENT)
+#define ENT_NUM LT(LT_NUM, KC_ENT)
 #define ESC_NAV LT(LT_NAV, KC_ESC)
 #define TAB_NAV LT(LT_NAV, KC_ESC)
 
