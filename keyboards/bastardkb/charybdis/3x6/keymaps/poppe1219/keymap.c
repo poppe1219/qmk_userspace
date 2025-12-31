@@ -18,10 +18,10 @@
 #include "keymap_swedish.h"
 
 //enum charybdis_keymap_layers {
-//    L_CLMK = 0,
-//    L_LOWER,
-//    L_RAISE,
-//    L_RAISE,
+//    L_BASE = 0,
+//    L_SYM,
+//    L_NUM,
+//    L_NAV,
 //    L_PNTR,
 //};
 
@@ -40,9 +40,6 @@ static uint16_t auto_pointer_layer_timer = 0;
 #    endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD
 #endif     // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 
-#define PT_Z LT(3, KC_Z)
-#define PT_QUOT LT(3, KC_QUOT)
-
 //const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
 //    LAYOUT(
 //        'L', 'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 'R',
@@ -51,27 +48,44 @@ static uint16_t auto_pointer_layer_timer = 0;
 //                       '*', '*', '*',  '*', '*'
 //    );
 
+// Home Row Mods Base Layer Left
+#define HRM_A LGUI_T(KC_A)
+#define HRM_R LALT_T(KC_R)
+#define HRM_S LCTL_T(KC_S)
+#define HRM_T LSFT_T(KC_T)
+
+// Home Row Mods Base Layer Right 
+#define HRM_N LSFT_T(KC_N)
+#define HRM_E LCTL_T(KC_E)
+#define HRM_I LALT_T(KC_I)
+#define HRM_O LGUI_T(KC_O)
+
+#define LT_Z LT(3, KC_Z)
+#define LT_QUOT LT(3, KC_QUOT)
+
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       XXXXXXX,    KC_Q, RALT_T(KC_W), KC_F,  KC_P,    KC_B,       KC_J,    KC_L,    KC_U, RALT_T(KC_Y), KC_SCLN, KC_DEL,
+       XXXXXXX,    KC_Q, RALT_T(KC_W), KC_F,  KC_P,    KC_B,       KC_J,    KC_L,    KC_U, RALT_T(KC_Y), KC_SCLN,  KC_DEL,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-        KC_ESC, LGUI_T(KC_A), LALT_T(KC_R), LCTL_T(KC_S), LSFT_T(KC_T), KC_G,       KC_M, RSFT_T(KC_N), RCTL_T(KC_E), LALT_T(KC_I), RGUI_T(KC_O), KC_BSPC,
+        KC_ESC,   HRM_A,   HRM_R,   HRM_S,   HRM_T,    KC_G,       KC_M,   HRM_N,   HRM_E,   HRM_I,   HRM_O, KC_BSPC,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-         TO(1),    PT_Z,    KC_X,    KC_C,    KC_D,    KC_V,       KC_K,    KC_H, KC_COMM,  KC_DOT, PT_QUOT,  KC_ENT,
+         TO(1),    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,       KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH,   TO(2),
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                   KC_SPC, KC_LSFT, KC_LCTL,    KC_RCTL, KC_LSFT
+                                  KC_BSPC,  KC_SPC,  KC_ESC,     KC_TAB,  KC_ENT
+  //                                       TO(NUM),                      TO(NUM)
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
   [1] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       XXXXXXX,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_ALGR,
+       XXXXXXX,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_DEL,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
          TO(0), KC_PAST, KC_QUOT, KC_SCLN, KC_LBRC, KC_LPRN,    KC_RPRN, KC_RBRC, KC_BSLS,  KC_EQL, KC_PSLS, _______,
+//AltGr                     Auml     Ouml    Aring                                           Acute
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-         TO(2), XXXXXXX,  KC_GRV, KC_MINS, KC_LALT, KC_LGUI,    KC_RGUI, KC_RALT, KC_COMM,  KC_DOT, KC_SLSH, _______,
+         TO(2), XXXXXXX,  KC_GRV, KC_MINS, KC_LALT, KC_LGUI,    XXXXXXX, XXXXXXX, KC_COMM,  KC_DOT, KC_SLSH, _______,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______, _______, _______,    _______, _______
   //                            ╰───────────────────────────╯ ╰──────────────────╯
@@ -83,7 +97,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
          TO(0), KC_HOME, KC_PGUP, KC_PGDN,  KC_END, XXXXXXX,    KC_HOME, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_END,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-         TO(3), XXXXXXX, XXXXXXX, XXXXXXX, KC_LALT, KC_LGUI,    KC_RGUI, KC_ALGR, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+         TO(3), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______, _______, _______,    _______, _______
   //                            ╰───────────────────────────╯ ╰──────────────────╯
