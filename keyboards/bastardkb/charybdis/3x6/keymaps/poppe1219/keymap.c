@@ -17,16 +17,16 @@
 #include QMK_KEYBOARD_H
 #include "keymap_swedish.h"
 
-//enum charybdis_keymap_layers {
-//    L_BASE = 0,
-//    L_SYM,
-//    L_NUM,
-//    L_NAV,
-//    L_PNTR,
-//};
+enum charybdis_keymap_layers {
+    L_BASE = 0,
+    L_NUM,
+    L_NAV,
+    L_PNTR,
+    L_FN
+};
 
 /** \brief Automatically enable sniping-mode on the pointer layer. */
-#define CHARYBDIS_AUTO_SNIPING_ON_LAYER 3
+#define CHARYBDIS_AUTO_SNIPING_ON_LAYER L_PNTR
 
 #ifdef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 static uint16_t auto_pointer_layer_timer = 0;
@@ -53,75 +53,78 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define HRM_R LALT_T(KC_R)
 #define HRM_S LCTL_T(KC_S)
 #define HRM_T LSFT_T(KC_T)
+#define HRM_Z ALGR_T(KC_Z)
 
-// Home Row Mods Base Layer Right 
+// Home Row Mods Base Layer Right
 #define HRM_N LSFT_T(KC_N)
 #define HRM_E LCTL_T(KC_E)
 #define HRM_I LALT_T(KC_I)
 #define HRM_O LGUI_T(KC_O)
+#define HRM_SLSH ALGR_T(KC_SLSH)
 
-#define LT_Z LT(3, KC_Z)
-#define LT_QUOT LT(3, KC_QUOT)
+#define SPC_NUM LT(LT_NUM, KC_SPC)
+#define ESC_NAV LT(LT_NUM, KC_ENT)
+#define ESC_NAV LT(LT_NAV, KC_ESC)
+#define TAB_NAV LT(LT_NAV, KC_ESC)
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [0] = LAYOUT(
+  [L_BASE] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       XXXXXXX,    KC_Q, RALT_T(KC_W), KC_F,  KC_P,    KC_B,       KC_J,    KC_L,    KC_U, RALT_T(KC_Y), KC_SCLN,  KC_DEL,
+        KC_ESC,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN,  KC_DEL,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-        KC_ESC,   HRM_A,   HRM_R,   HRM_S,   HRM_T,    KC_G,       KC_M,   HRM_N,   HRM_E,   HRM_I,   HRM_O, KC_BSPC,
+        KC_GRV,   HRM_A,   HRM_R,   HRM_S,   HRM_T,    KC_G,       KC_M,   HRM_N,   HRM_E,   HRM_I,   HRM_O, KC_MINS,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-         TO(1),    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,       KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH,   TO(2),
+     TO(L_NUM),   HRM_Z,    KC_X,    KC_C,    KC_D,    KC_V,       KC_K,    KC_H, KC_COMM,  KC_DOT, HRM_SLSH, TO(L_NAV),
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  KC_BSPC,  KC_SPC,  KC_ESC,     KC_TAB,  KC_ENT
-  //                                       TO(NUM),                      TO(NUM)
+                                  KC_BSPC, SPC_NUM, ESC_NAV,    TAB_NAV, ENT_NUM
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
-  [1] = LAYOUT(
+  [L_NUM] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       XXXXXXX,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_DEL,
+       _______,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0, _______,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-         TO(0), KC_PAST, KC_QUOT, KC_SCLN, KC_LBRC, KC_LPRN,    KC_RPRN, KC_RBRC, KC_BSLS,  KC_EQL, KC_PSLS, _______,
+    TO(L_BASE), KC_PAST, KC_QUOT, KC_SCLN, KC_LBRC, KC_LPRN,    KC_RPRN, KC_RBRC, KC_BSLS,  KC_EQL, KC_PSLS, _______,
 //AltGr                     Auml     Ouml    Aring                                           Acute
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-         TO(2), XXXXXXX,  KC_GRV, KC_MINS, KC_LALT, KC_LGUI,    XXXXXXX, XXXXXXX, KC_COMM,  KC_DOT, KC_SLSH, _______,
+     TO(L_NAV), KC_ALGR,  KC_GRV, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, KC_COMM,  KC_DOT, HRM_SLSH,  TO(L_FN),
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______, _______, _______,    _______, _______
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
-  [2] = LAYOUT(
+  [L_NAV] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        XXXXXXX,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0, XXXXXXX,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-         TO(0), KC_HOME, KC_PGUP, KC_PGDN,  KC_END, XXXXXXX,    KC_HOME, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_END,
+    TO(L_BASE), KC_HOME, KC_PGUP, KC_PGDN,  KC_END, XXXXXXX,    KC_HOME, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_END,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-         TO(3), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+    TO(L_PNTR), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TO(LN_PNTR),
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______, _______, _______,    _______, _______
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
-  [3] = LAYOUT(
+  [L_PNTR] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        QK_BOOT,  EE_CLR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    KC_PSCR, KC_CAPS, XXXXXXX, XXXXXXX,  EE_CLR, QK_BOOT,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-         TO(0), XXXXXXX, KC_BTN3, KC_BTN2, KC_BTN1, XXXXXXX,    XXXXXXX, KC_BTN1, KC_BTN2, KC_BTN3, XXXXXXX, _______,
+    TO(L_BASE), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TO(L_BASE),
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-         TO(0), XXXXXXX, DRGSCRL, SNIPING, KC_LALT, KC_LGUI,    KC_RGUI, KC_ALGR, SNIPING, DRGSCRL, XXXXXXX, _______,
+      TO(L_FN), XXXXXXX, DRGSCRL, SNIPING, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, SNIPING, DRGSCRL, XXXXXXX, TO(L_FN),
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  _______, _______, _______,    _______, _______
+                                  KC_BTN1, KC_BTN2, KC_BTN3,    KC_BTN2, KC_BTN1
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
-  [4] = LAYOUT(
+  [L_FN] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       XXXXXXX,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_ALGR,
+         KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,    KC_F7,     KC_F8,   KC_F9,  KC_F10, KC_F11,   KC_F12,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-         TO(0), KC_PAST, KC_QUOT, KC_SCLN, KC_LBRC, KC_LPRN,    KC_RPRN, KC_RBRC, KC_BSLS,  KC_EQL, KC_PSLS, _______,
+    TO(L_BASE), KC_PAST, KC_QUOT, KC_SCLN, KC_LBRC, KC_LPRN,    KC_RPRN, KC_RBRC, KC_BSLS,  KC_EQL, KC_PSLS, TO(L_BASE),
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-         TO(2), XXXXXXX,  KC_GRV, KC_MINS, KC_LALT, KC_LGUI,    KC_RGUI, KC_RALT, KC_COMM,  KC_DOT, KC_SLSH, _______,
+    TO(L_BASE), XXXXXXX,  KC_GRV, KC_MINS, KC_LALT, KC_LGUI,    KC_RGUI, KC_RALT, KC_COMM,  KC_DOT, KC_SLSH, TO(L_BASE),
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______, _______, _______,    _______, _______
   //                            ╰───────────────────────────╯ ╰──────────────────╯
@@ -134,7 +137,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
     if (abs(mouse_report.x) > CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD || abs(mouse_report.y) > CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD) {
         if (auto_pointer_layer_timer == 0) {
-            layer_on(3);
+            layer_on(L_PNTR);
 #        ifdef RGB_MATRIX_ENABLE
             rgb_matrix_mode_noeeprom(RGB_MATRIX_NONE);
             rgb_matrix_sethsv_noeeprom(HSV_GREEN);
@@ -148,7 +151,7 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
 void matrix_scan_user(void) {
     if (auto_pointer_layer_timer != 0 && TIMER_DIFF_16(timer_read(), auto_pointer_layer_timer) >= CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS) {
         auto_pointer_layer_timer = 0;
-        layer_off(3);
+        layer_off(L_PNTR);
 #        ifdef RGB_MATRIX_ENABLE
         rgb_matrix_mode_noeeprom(RGB_MATRIX_DEFAULT_MODE);
 #        endif // RGB_MATRIX_ENABLE

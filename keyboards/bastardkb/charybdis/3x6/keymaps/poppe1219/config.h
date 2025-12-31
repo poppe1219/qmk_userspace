@@ -39,3 +39,4 @@
 #define PERMISSIVE_HOLD
 #define TAPPING_TERM 200
 #define CHORDAL_HOLD
+#define CHARYBDIS_DRAGSCROLL_REVERSE_X // inverts horizontal scrolling
