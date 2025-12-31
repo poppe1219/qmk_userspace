@@ -1,0 +1,25 @@
+
+https://github.com/qmk/qmk_firmware/blob/master/keyboards/handwired/42/keymaps/default/keymap.c
+Combinations of modifierles and delete, qutoe, etc. Some good ideas.
+
+Layer name suggestions
+def/base, sym, num, nav, ext, fnc, mouse/ptr, media
+
+
+# Layers
+
+    ## Func
+    	F1-F12, print scr, scroll lock, pause, QK_BOOT, etc.
+    
+    ## Sym
+       
+    
+    ## Nav
+	_Include web page navigation!_
+    	tab, space, shift, ctl.
+    	arrows, home, pgup, pgdown, end, additional vim navs?
+
+
+# Combos
+QK_BOOT (Keys far from each other)
+

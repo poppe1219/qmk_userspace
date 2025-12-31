@@ -6,7 +6,12 @@ In my case, the Charybdis Mini 3x6.
 
 Todo
 
-- Flip scroll direction.
+- [X] Flip scroll direction.
+- [ ] Test auto pointer layer.
 - Layers 
-- Combos and tapdance?
-
+  - [ ] Num or func is missing INS button.
+  - [ ] Add euro, pund, etc.
+- Combos
+  - [ ] Add combo for QK_BOOT, on both halves.
+- Tapdance
+  - [ ] Dunno yet... 

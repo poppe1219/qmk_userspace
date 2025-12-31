@@ -65,7 +65,7 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define SPC_NUM LT(L_NUM, KC_SPC)
 #define ENT_NUM LT(L_NUM, KC_ENT)
 #define ESC_NAV LT(L_NAV, KC_ESC)
-#define TAB_NAV LT(L_NAV, KC_ESC)
+#define TAB_NAV LT(L_NAV, KC_TAB)
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
