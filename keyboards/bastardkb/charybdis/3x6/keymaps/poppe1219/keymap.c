@@ -62,10 +62,10 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define HRM_O LGUI_T(KC_O)
 #define HRM_SLSH ALGR_T(KC_SLSH)
 
-#define SPC_NUM LT(LT_NUM, KC_SPC)
-#define ENT_NUM LT(LT_NUM, KC_ENT)
-#define ESC_NAV LT(LT_NAV, KC_ESC)
-#define TAB_NAV LT(LT_NAV, KC_ESC)
+#define SPC_NUM LT(L_NUM, KC_SPC)
+#define ENT_NUM LT(L_NUM, KC_ENT)
+#define ESC_NAV LT(L_NAV, KC_ESC)
+#define TAB_NAV LT(L_NAV, KC_ESC)
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
