@@ -7,7 +7,7 @@ In my case, the Charybdis Mini 3x6 Splinky.
 # Todo
 
 - [X] Flip scroll direction.
-- [ ] Test auto pointer layer.
+- [X] Test auto pointer layer.
 - Layers 
   - [ ] Num or func is missing INS button.
   - [ ] Add euro, pund, etc.
