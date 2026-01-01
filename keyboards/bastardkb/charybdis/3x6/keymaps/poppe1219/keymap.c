@@ -62,6 +62,20 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define HRM_O LGUI_T(KC_O)
 #define HRM_SLSH ALGR_T(KC_SLSH)
 
+// Home Row Mods Num Layer Left
+#define HRM_PAST LGUI_T(KC_PAST)
+#define HRM_QUOT LALT_T(KC_QOUT)
+#define HRM_SCLN LCTL_T(KC_SCLN)
+#define HRM_LBRC LSFT_T(KC_LBRC)
+//#define HRM_Z ALGR_T(KC_Z)
+
+// Home Row Mods Num Layer Right
+#define HRM_RBRC LSFT_T(KC_RBRC)
+#define HRM_BSLS LCTL_T(KC_BSLS)
+#define HRM_EQL LALT_T(KC_EQL)
+#define HRM_PSLS LGUI_T(KC_PSLS)
+//#define HRM_SLSH ALGR_T(KC_SLSH)
+
 #define SPC_NUM LT(L_NUM, KC_SPC)
 #define ENT_NUM LT(L_NUM, KC_ENT)
 #define ESC_NAV LT(L_NAV, KC_ESC)
@@ -71,7 +85,7 @@ static uint16_t auto_pointer_layer_timer = 0;
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [L_BASE] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-        KC_ESC,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN,  KC_DEL,
+        KC_ESC,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN, KC_ALGR,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
         KC_GRV,   HRM_A,   HRM_R,   HRM_S,   HRM_T,    KC_G,       KC_M,   HRM_N,   HRM_E,   HRM_I,   HRM_O, KC_MINS,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
@@ -85,10 +99,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        _______,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0, _______,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-    TO(L_BASE), KC_PAST, KC_QUOT, KC_SCLN, KC_LBRC, KC_LPRN,    KC_RPRN, KC_RBRC, KC_BSLS,  KC_EQL, KC_PSLS, _______,
+    TO(L_BASE), HRM_PAST, HRM_QUOT, HRM_SCLN, HRM_LBRC, KC_LPRN, KC_RPRN, HRM_RBRC, HRM_BSLS,  HRM_EQL, HRM_PSLS, _______,
 //AltGr                     Auml     Ouml    Aring                                           Acute
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-     TO(L_NAV), KC_ALGR,  KC_GRV, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, KC_COMM,  KC_DOT, HRM_SLSH,  TO(L_FN),
+     TO(L_NAV), KC_ALGR,  KC_GRV, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, KC_COMM,  KC_DOT, HRM_SLSH, TO(L_FN),
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______, _______, _______,    _______, _______
   //                            ╰───────────────────────────╯ ╰──────────────────╯
@@ -114,7 +128,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
       TO(L_FN), XXXXXXX, DRGSCRL, SNIPING, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, SNIPING, DRGSCRL, XXXXXXX, TO(L_FN),
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  KC_BTN1, KC_BTN2, KC_BTN3,    KC_BTN2, KC_BTN1
+                                  KC_BTN3, KC_BTN1, KC_BTN2,    KC_BTN2, KC_BTN1
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
