@@ -64,7 +64,7 @@ static uint16_t auto_pointer_layer_timer = 0;
 
 // Home Row Mods Num Layer Left
 #define HRM_PAST LGUI_T(KC_PAST)
-#define HRM_QUOT LALT_T(KC_QOUT)
+#define HRM_QUOT LALT_T(KC_QUOT)
 #define HRM_SCLN LCTL_T(KC_SCLN)
 #define HRM_LBRC LSFT_T(KC_LBRC)
 //#define HRM_Z ALGR_T(KC_Z)
