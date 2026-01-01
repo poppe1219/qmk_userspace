@@ -21,8 +21,8 @@ enum charybdis_keymap_layers {
     L_BASE = 0,
     L_NUM,
     L_NAV,
-    L_PNTR,
-    L_FN
+    L_FN,
+    L_PNTR
 };
 
 /** \brief Automatically enable sniping-mode on the pointer layer. */
@@ -85,11 +85,11 @@ static uint16_t auto_pointer_layer_timer = 0;
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [L_BASE] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-        KC_ESC,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN, KC_ALGR,
+        KC_GRV,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN,  KC_DEL,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        XXXXXXX,   HRM_A,   HRM_R,   HRM_S,   HRM_T,    KC_G,       KC_M,   HRM_N,   HRM_E,   HRM_I,   HRM_O, KC_MINS,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-     TO(L_NUM),   HRM_Z,    KC_X,    KC_C,    KC_D,    KC_V,       KC_K,    KC_H, KC_COMM,  KC_DOT, HRM_SLSH, TO(L_NAV),
+     TO(L_NUM),   HRM_Z,    KC_X,    KC_C,    KC_D,    KC_V,       KC_K,    KC_H, KC_COMM,  KC_DOT, HRM_SLSH, TO(L_PNTR),
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   KC_BSPC, SPC_NUM, ESC_NAV,    TAB_NAV, ENT_NUM
   //                            ╰───────────────────────────╯ ╰──────────────────╯
@@ -101,7 +101,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
     TO(L_BASE), HRM_PAST, HRM_QUOT, HRM_SCLN, HRM_LBRC, KC_LPRN, KC_RPRN, HRM_RBRC, HRM_BSLS,  HRM_EQL, HRM_PSLS, _______,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-     TO(L_NAV), KC_ALGR,  KC_GRV, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, KC_COMM,  KC_DOT, HRM_SLSH, TO(L_FN),
+     TO(L_NAV), KC_ALGR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, KC_COMM,  KC_DOT, HRM_SLSH, TO(L_FN),
+     //                  Missing chars. INS, Euro, Pound.
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______, _______, _______,    _______, _______
   //                            ╰───────────────────────────╯ ╰──────────────────╯
@@ -119,6 +120,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
+  [L_FN] = LAYOUT(
+  // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
+         KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,    KC_F7,     KC_F8,   KC_F9,  KC_F10, KC_F11,   KC_F12,
+  // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
+    TO(L_BASE), KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_LPRN,    KC_RPRN, KC_RBRC, KC_BSLS,  KC_EQL, KC_PSLS, TO(L_BASE),
+  // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
+    TO(L_PNTR), KC_ALGR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, KC_PGDN, KC_PGUP, XXXXXXX, TO(L_PNTR),
+  // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
+                                  _______, _______, _______,    _______, _______
+  //                            ╰───────────────────────────╯ ╰──────────────────╯
+  ),
+
   [L_PNTR] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        QK_BOOT,  EE_CLR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    KC_PSCR, KC_CAPS, XXXXXXX, XXXXXXX,  EE_CLR, QK_BOOT,
@@ -128,18 +141,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       TO(L_FN), KC_ALGR, DRGSCRL, SNIPING, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, SNIPING, DRGSCRL, XXXXXXX, TO(L_FN),
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   KC_BTN3, KC_BTN1, KC_BTN2,    KC_BTN2, KC_BTN1
-  //                            ╰───────────────────────────╯ ╰──────────────────╯
-  ),
-
-  [L_FN] = LAYOUT(
-  // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-         KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,    KC_F7,     KC_F8,   KC_F9,  KC_F10, KC_F11,   KC_F12,
-  // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-    TO(L_BASE), KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_LPRN,    KC_RPRN, KC_RBRC, KC_BSLS,  KC_EQL, KC_PSLS, TO(L_BASE),
-  // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-    TO(L_BASE), KC_ALGR,  KC_GRV, KC_MINS, KC_LALT, KC_LGUI,    KC_RGUI, KC_RALT, KC_COMM,  KC_DOT, KC_SLSH, TO(L_BASE),
-  // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  _______, _______, _______,    _______, _______
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   )
 };
