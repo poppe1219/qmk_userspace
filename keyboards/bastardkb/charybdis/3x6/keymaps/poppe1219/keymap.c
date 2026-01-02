@@ -93,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [L_NUM] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        _______,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0, _______,
-       _______, HR_PAST, HR_QUOT, HR_SCLN, HR_LBRC, KC_LPRN,    KC_RPRN, HR_RBRC, HR_BSLS,  HR_EQL, HR_PSLS, _______,
+       _______, HR_PAST, HR_QUOT, HR_SCLN, HR_LBRC, KC_LPRN,    KC_RPRN, HR_RBRC, HR_BSLS,  HR_EQL, HR_PSLS, TG(L_PTR),
        _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_ALGR, XXXXXXX,    XXXXXXX, KC_ALGR, KC_COMM,  KC_DOT, KC_SLSH, _______,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______, _______, _______,    _______, _______
