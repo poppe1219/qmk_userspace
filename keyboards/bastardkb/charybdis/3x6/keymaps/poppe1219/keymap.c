@@ -22,11 +22,11 @@ enum charybdis_keymap_layers {
     L_NUM,
     L_NAV,
     L_FN,
-    L_PNTR
+    L_PTR
 };
 
 /** \brief Automatically enable sniping-mode on the pointer layer. */
-#define CHARYBDIS_AUTO_SNIPING_ON_LAYER L_PNTR
+#define CHARYBDIS_AUTO_SNIPING_ON_LAYER L_PTR
 
 #ifdef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 static uint16_t auto_pointer_layer_timer = 0;
@@ -49,32 +49,30 @@ static uint16_t auto_pointer_layer_timer = 0;
 //    );
 
 // Home Row Mods Base Layer Left
-#define HRM_A LGUI_T(KC_A)
-#define HRM_R LALT_T(KC_R)
-#define HRM_S LCTL_T(KC_S)
-#define HRM_T LSFT_T(KC_T)
-#define HRM_Z ALGR_T(KC_Z)
+#define HR_A LGUI_T(KC_A)
+#define HR_R LALT_T(KC_R)
+#define HR_S LCTL_T(KC_S)
+#define HR_T LSFT_T(KC_T)
+#define HR_D ALGR_T(KC_D)
 
 // Home Row Mods Base Layer Right
-#define HRM_N LSFT_T(KC_N)
-#define HRM_E LCTL_T(KC_E)
-#define HRM_I LALT_T(KC_I)
-#define HRM_O LGUI_T(KC_O)
-#define HRM_SLSH ALGR_T(KC_SLSH)
+#define HR_N LSFT_T(KC_N)
+#define HR_E LCTL_T(KC_E)
+#define HR_I LALT_T(KC_I)
+#define HR_O LGUI_T(KC_O)
+#define HR_H ALGR_T(KC_H)
 
 // Home Row Mods Num Layer Left
-#define HRM_PAST LGUI_T(KC_PAST)
-#define HRM_QUOT LALT_T(KC_QUOT)
-#define HRM_SCLN LCTL_T(KC_SCLN)
-#define HRM_LBRC LSFT_T(KC_LBRC)
-//#define HRM_Z ALGR_T(KC_Z)
+#define HR_PAST LGUI_T(KC_PAST)
+#define HR_QUOT LALT_T(KC_QUOT)
+#define HR_SCLN LCTL_T(KC_SCLN)
+#define HR_LBRC LSFT_T(KC_LBRC)
 
 // Home Row Mods Num Layer Right
-#define HRM_RBRC LSFT_T(KC_RBRC)
-#define HRM_BSLS LCTL_T(KC_BSLS)
-#define HRM_EQL LALT_T(KC_EQL)
-#define HRM_PSLS LGUI_T(KC_PSLS)
-//#define HRM_SLSH ALGR_T(KC_SLSH)
+#define HR_RBRC LSFT_T(KC_RBRC)
+#define HR_BSLS LCTL_T(KC_BSLS)
+#define HR_EQL LALT_T(KC_EQL)
+#define HR_PSLS LGUI_T(KC_PSLS)
 
 #define SPC_NUM LT(L_NUM, KC_SPC)
 #define ENT_NUM LT(L_NUM, KC_ENT)
@@ -86,8 +84,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [L_BASE] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
         KC_GRV,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN,  KC_DEL,
-       XXXXXXX,   HRM_A,   HRM_R,   HRM_S,   HRM_T,    KC_G,       KC_M,   HRM_N,   HRM_E,   HRM_I,   HRM_O, KC_MINS,
-    TO(L_PNTR),   HRM_Z,    KC_X,    KC_C,    KC_D,    KC_V,       KC_K,    KC_H, KC_COMM,  KC_DOT, HRM_SLSH, TO(L_PNTR),
+       KC_QUOT,    HR_A,    HR_R,    HR_S,    HR_T,    KC_G,       KC_M,    HR_N,    HR_E,    HR_I,    HR_O, KC_MINS,
+     TT(L_PTR),    KC_Z,    KC_X,    KC_C,    HR_D,    KC_V,       KC_K,    HR_H, KC_COMM,  KC_DOT, KC_SLSH, TT(L_FN),
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   KC_BSPC, SPC_NUM, ESC_NAV,    TAB_NAV, ENT_NUM
   //                            ╰───────────────────────────╯ ╰──────────────────╯
@@ -95,9 +93,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [L_NUM] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        _______,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0, _______,
-    TO(L_BASE), HRM_PAST, HRM_QUOT, HRM_SCLN, HRM_LBRC, KC_LPRN, KC_RPRN, HRM_RBRC, HRM_BSLS,  HRM_EQL, HRM_PSLS, _______,
-     TO(L_NAV), KC_ALGR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, KC_COMM,  KC_DOT, HRM_SLSH, TO(L_FN),
-     //                  Missing chars. INS, Euro, Pound.
+       _______, HR_PAST, HR_QUOT, HR_SCLN, HR_LBRC, KC_LPRN,    KC_RPRN, HR_RBRC, HR_BSLS,  HR_EQL, HR_PSLS, _______,
+       _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_ALGR, XXXXXXX,    XXXXXXX, KC_ALGR, KC_COMM,  KC_DOT, KC_SLSH, _______,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______, _______, _______,    _______, _______
   //                            ╰───────────────────────────╯ ╰──────────────────╯
@@ -105,26 +102,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [L_NAV] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        XXXXXXX,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0, XXXXXXX,
-    TO(L_BASE), KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,    KC_HOME, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_END,
-    TO(L_PNTR), KC_ALGR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, KC_PGDN, KC_PGUP, XXXXXXX, TO(L_PNTR),
+       XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,    KC_HOME, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_END,
+       _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_ALGR, XXXXXXX,    XXXXXXX, XXXXXXX, KC_PGDN, KC_PGUP, XXXXXXX, _______,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______, _______, _______,    _______, _______
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
   [L_FN] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-         KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,    KC_F7,     KC_F8,   KC_F9,  KC_F10, KC_F11,   KC_F12,
-    TO(L_BASE), KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_LPRN,    KC_RPRN, KC_RBRC, KC_BSLS,  KC_EQL, KC_PSLS, TO(L_BASE),
-    TO(L_PNTR), KC_ALGR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, KC_PGDN, KC_PGUP, XXXXXXX, TO(L_PNTR),
+         KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,      KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12,
+       XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_MENU,    KC_CAPS, KC_PSCR, KC_SCRL, KC_PAUS,  KC_INS, XXXXXXX,
+       _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_ALGR, XXXXXXX,     KC_NUM, KC_PAST, KC_PMNS, KC_PPLS, KC_PENT, _______,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______, _______, _______,    _______, _______
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
-  [L_PNTR] = LAYOUT(
+  [L_PTR] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       QK_BOOT,  EE_CLR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    KC_PSCR, KC_CAPS, XXXXXXX, XXXXXXX,  EE_CLR, QK_BOOT,
-    TO(L_BASE), KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TO(L_BASE),
-      TO(L_FN), KC_ALGR, DRGSCRL, SNIPING, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, SNIPING, DRGSCRL, XXXXXXX, TO(L_FN),
+       QK_BOOT,  EE_CLR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  EE_CLR, QK_BOOT,
+       XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,    XXXXXXX, KC_RSFT, KC_RCTL, KC_LALT, KC_RGUI, XXXXXXX,
+       _______, XXXXXXX, DRGSCRL, SNIPING, KC_ALGR, XXXXXXX,    XXXXXXX, KC_ALGR, SNIPING, DRGSCRL, XXXXXXX, _______,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   KC_BTN3, KC_BTN1, KC_BTN2,    KC_BTN2, KC_BTN1
   //                            ╰───────────────────────────╯ ╰──────────────────╯
@@ -137,7 +134,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
     if (abs(mouse_report.x) > CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD || abs(mouse_report.y) > CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD) {
         if (auto_pointer_layer_timer == 0) {
-            layer_on(L_PNTR);
+            layer_on(L_PTR);
 #        ifdef RGB_MATRIX_ENABLE
             rgb_matrix_mode_noeeprom(RGB_MATRIX_NONE);
             rgb_matrix_sethsv_noeeprom(HSV_GREEN);
@@ -151,7 +148,7 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
 void matrix_scan_user(void) {
     if (auto_pointer_layer_timer != 0 && TIMER_DIFF_16(timer_read(), auto_pointer_layer_timer) >= CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS) {
         auto_pointer_layer_timer = 0;
-        layer_off(L_PNTR);
+        layer_off(L_PTR);
 #        ifdef RGB_MATRIX_ENABLE
         rgb_matrix_mode_noeeprom(RGB_MATRIX_DEFAULT_MODE);
 #        endif // RGB_MATRIX_ENABLE
