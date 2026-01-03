@@ -6,12 +6,10 @@ In my case, the Charybdis Mini 3x6 Splinky.
 
 # Todo
 
-- [X] Flip scroll direction.
-- [X] Test auto pointer layer.
-- Layers 
-  - [ ] Num or func is missing INS button.
-  - [ ] Add euro, pund, etc.
-- Combos
-  - [ ] Add combo for QK_BOOT, on both halves.
-- Tapdance
-  - [ ] Dunno yet... 
+- [ ] Get auto pointer layer working.
+- Missing features 
+  - [ ] Del button.
+  - Combos
+    - [ ] Add combo for QK_BOOT, on both halves.
+  - Tapdance
+    - [ ] Dunno yet... 
