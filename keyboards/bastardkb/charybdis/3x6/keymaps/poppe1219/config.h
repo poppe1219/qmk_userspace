@@ -40,3 +40,6 @@
 #define TAPPING_TERM 200
 #define CHORDAL_HOLD
 #define CHARYBDIS_DRAGSCROLL_REVERSE_X // inverts horizontal scrolling
+#define COMBO_ONLY_FROM_LAYER 0
+#define LAYER_LOCK_IDLE_TIMEOUT 60000  // Turn off after 60 seconds.
+

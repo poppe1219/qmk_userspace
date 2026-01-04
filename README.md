@@ -10,6 +10,8 @@ In my case, the Charybdis Mini 3x6 Splinky.
 - Missing features 
   - [ ] Del button.
   - Combos
+    - [ ] Combo for TO(0), resetting layers to base.
     - [ ] Add combo for QK_BOOT, on both halves.
+    - [ ] Add combo for EE_CLR, on both halves.
   - Tapdance
     - [ ] Dunno yet... 

@@ -1,9 +1,11 @@
 VIA_ENABLE = yes
 UNICODE_ENABLE = yes
-###COMBO_ENABLE = yes
-# Enable Link Time Optimization for smaller firmware
-LTO_ENABLE = yes
-# Disable unused stuff and shrink the build.
+REPEAT_KEY_ENABLE = yes
+COMBO_ENABLE = yes
+LAYER_LOCK_ENABLE = yes
+
+# Minimize build.
+LTO_ENABLE = yes # Enable Link Time Optimization for smaller firmware
 BACKLIGHT_ENABLE = no
 RGBLIGHT_ENABLE = no
 RGB_MATRIX_ENABLE = no
