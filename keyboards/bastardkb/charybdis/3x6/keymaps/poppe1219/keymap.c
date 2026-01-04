@@ -93,8 +93,8 @@ combo_t key_combos[] = {
     COMBO(boot_cmb2, QK_BOOT),
     COMBO(eeclr_cmb1, EE_CLR),
     COMBO(eeclr_cmb2, EE_CLR),
-    COMBO(to_base_cmb1, MO(0)),
-    COMBO(to_base_cmb2, MO(0))
+    COMBO(to_base_cmb1, TO(L_BASE)),
+    COMBO(to_base_cmb2, TO(L_BASE))
 };
 
 // clang-format off
