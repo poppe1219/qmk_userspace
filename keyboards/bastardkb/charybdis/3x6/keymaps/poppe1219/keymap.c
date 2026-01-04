@@ -80,19 +80,21 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define ESC_NV LT(L_NV, KC_ESC)
 #define TAB_NV2 LT(L_NV2, KC_TAB)
 
-const uint16_t PROGMEM boot_cmb1[] = {KC_Q, KC_D, COMBO_END};
-const uint16_t PROGMEM boot_cmb2[] = {KC_SCLN, KC_H, COMBO_END};
+const uint16_t PROGMEM test_combo1[] = {KC_A, KC_B, COMBO_END};
+const uint16_t PROGMEM boot_cmb1[] = {KC_Q, HR_D, COMBO_END};
+const uint16_t PROGMEM boot_cmb2[] = {KC_SCLN, HR_H, COMBO_END};
 const uint16_t PROGMEM eeclr_cmb1[] = {KC_W, KC_C, COMBO_END};
 const uint16_t PROGMEM eeclr_cmb2[] = {KC_Y, KC_COMM, COMBO_END};
 const uint16_t PROGMEM to_base_cmb1[] = {KC_C, KC_V, COMBO_END};
 const uint16_t PROGMEM to_base_cmb2[] = {KC_K, KC_COMM, COMBO_END};
 combo_t key_combos[] = {
+    COMBO(test_combo1, KC_ESC),
     COMBO(boot_cmb1, QK_BOOT),
     COMBO(boot_cmb2, QK_BOOT),
     COMBO(eeclr_cmb1, EE_CLR),
     COMBO(eeclr_cmb2, EE_CLR),
     COMBO(to_base_cmb1, MO(0)),
-    COMBO(to_base_cmb2, MO(0)),
+    COMBO(to_base_cmb2, MO(0))
 };
 
 // clang-format off
