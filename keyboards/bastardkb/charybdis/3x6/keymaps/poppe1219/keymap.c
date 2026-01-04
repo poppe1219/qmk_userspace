@@ -80,7 +80,7 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define ESC_NV LT(L_NV, KC_ESC)
 #define TAB_NV2 LT(L_NV2, KC_TAB)
 
-const uint16_t PROGMEM test_combo1[] = {KC_A, KC_B, COMBO_END};
+const uint16_t PROGMEM test_combo1[] = {KC_W, KC_F, COMBO_END};
 const uint16_t PROGMEM boot_cmb1[] = {KC_Q, HR_D, COMBO_END};
 const uint16_t PROGMEM boot_cmb2[] = {KC_SCLN, HR_H, COMBO_END};
 const uint16_t PROGMEM eeclr_cmb1[] = {KC_W, KC_C, COMBO_END};
