@@ -86,6 +86,9 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define ESC_NV2 LT(L_NV2, KC_ESC)
 #define TAB_NV2 LT(L_NV2, KC_TAB)
 
+// Other Row Mods
+#define DEL_FN LT(L_FN, KC_DEL)
+
 //const uint16_t PROGMEM test_combo1[] = {KC_W, KC_F, COMBO_END};
 const uint16_t PROGMEM boot_cmb1[] = {KC_QUOT, KC_G, COMBO_END};
 const uint16_t PROGMEM boot_cmb2[] = {KC_M, KC_MINS, COMBO_END};
@@ -107,7 +110,7 @@ combo_t key_combos[] = {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [L_BASE] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-        KC_GRV,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN, MO(L_FN),
+        KC_GRV,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN,  DEL_FN,
        KC_QUOT,    HR_A,    HR_R,    HR_S,    HR_T,    KC_G,       KC_M,    HR_N,    HR_E,    HR_I,    HR_O, KC_MINS,
      MO(L_PTR),    KC_Z,    KC_X,    KC_C,    HR_D,    KC_V,       KC_K,    HR_H, KC_COMM,  KC_DOT, KC_SLSH, MO(L_PTR),
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
@@ -134,7 +137,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [L_NV2] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       XXXXXXX, XXXXXXX,    KC_7,    KC_8,    KC_9, XXXXXXX,    XXXXXXX     KC_T,    KC_W,    KC_E,    KC_B, XXXXXXX,
+       XXXXXXX, XXXXXXX,    KC_7,    KC_8,    KC_9, XXXXXXX,    XXXXXXX,    KC_T,    KC_W,    KC_E,    KC_B, XXXXXXX,
        XXXXXXX, XXXXXXX,    HR_4,    HR_5,    HR_6,    KC_0,    KC_HOME, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_END,
        XXXXXXX, XXXXXXX,    KC_1,    KC_2,    KC_3, XXXXXXX,    XXXXXXX,    KC_F,    KC_D,    KC_U, XXXXXXX, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
