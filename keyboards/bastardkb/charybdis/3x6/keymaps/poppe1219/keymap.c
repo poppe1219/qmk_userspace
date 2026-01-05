@@ -20,7 +20,7 @@
 enum charybdis_keymap_layers {
     L_BASE = 0,
     L_NUM,
-    L_NV, // Navigation
+//    L_NV, // Navigation
     L_NV2, // New navigation test
     L_FN, // Function buttons
     L_PTR
@@ -29,17 +29,7 @@ enum charybdis_keymap_layers {
 /** \brief Automatically enable sniping-mode on the pointer layer. */
 #define CHARYBDIS_AUTO_SNIPING_ON_LAYER L_PTR
 
-#ifdef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 static uint16_t auto_pointer_layer_timer = 0;
-
-#    ifndef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS
-#        define CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS 1000
-#    endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS
-
-#    ifndef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD
-#        define CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD 8
-#    endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD
-#endif     // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 
 //const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
 //    LAYOUT(
@@ -126,15 +116,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                   _______, _______,  KC_ESC,     KC_TAB, _______
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
-  [L_NV] = LAYOUT(
-  // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       KC_MENU, KC_KP_1, KC_KP_2, KC_KP_3, KC_KP_4, KC_KP_5,    KC_KP_6, KC_KP_7, KC_KP_8, KC_KP_9, KC_KP_0,  KC_DEL,
-       QK_LLCK, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT,  QK_REP,    KC_HOME, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_END,
-       XXXXXXX,  KC_CUT, KC_COPY, KC_PSTE, KC_ALGR, KC_KB_MUTE, KC_FIND, KC_SLCT, KC_PGDN, KC_PGUP, KC_AGIN, KC_PENT,
-  // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  _______,  KC_SPC, _______,     KC_TAB,  KC_ENT
-  //                            ╰───────────────────────────╯ ╰──────────────────╯
-  ),
+  //[L_NV] = LAYOUT(
+  //// ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
+  //     KC_MENU, KC_KP_1, KC_KP_2, KC_KP_3, KC_KP_4, KC_KP_5,    KC_KP_6, KC_KP_7, KC_KP_8, KC_KP_9, KC_KP_0,  KC_DEL,
+  //     QK_LLCK, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT,  QK_REP,    KC_HOME, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_END,
+  //     XXXXXXX,  KC_CUT, KC_COPY, KC_PSTE, KC_ALGR, KC_KB_MUTE, KC_FIND, KC_SLCT, KC_PGDN, KC_PGUP, KC_AGIN, KC_PENT,
+  //// ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
+  //                                _______,  KC_SPC, _______,     KC_TAB,  KC_ENT
+  ////                            ╰───────────────────────────╯ ╰──────────────────╯
+  //),
   [L_NV2] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        XXXXXXX, XXXXXXX,    KC_7,    KC_8,    KC_9, XXXXXXX,    XXXXXXX,    KC_T,    KC_W,    KC_E,    KC_B, XXXXXXX,
