@@ -26,15 +26,6 @@
 #    define NO_ACTION_ONESHOT
 #endif // __arm__
 
-/* Charybdis-specific features. */
-
-#ifdef POINTING_DEVICE_ENABLE
-// Automatically enable the pointer layer when moving the trackball.  See also:
-// - `CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS`
-// - `CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD`
-#    define CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
-#endif // POINTING_DEVICE_ENABLE
-
 #define NO_MUSIC_MODE
 #define PERMISSIVE_HOLD
 #define TAPPING_TERM 200
@@ -42,4 +33,5 @@
 #define CHARYBDIS_DRAGSCROLL_REVERSE_X // inverts horizontal scrolling
 #define COMBO_ONLY_FROM_LAYER 0
 #define LAYER_LOCK_IDLE_TIMEOUT 60000  // Turn off after 60 seconds.
+#define POINTING_DEVICE_AUTO_MOUSE_ENABLE
 
