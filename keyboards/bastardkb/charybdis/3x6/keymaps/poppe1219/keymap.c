@@ -80,15 +80,15 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define ESC_NV LT(L_NV, KC_ESC)
 #define TAB_NV2 LT(L_NV2, KC_TAB)
 
-const uint16_t PROGMEM test_combo1[] = {KC_W, KC_F, COMBO_END};
-const uint16_t PROGMEM boot_cmb1[] = {KC_Q, HR_D, COMBO_END};
-const uint16_t PROGMEM boot_cmb2[] = {KC_SCLN, HR_H, COMBO_END};
-const uint16_t PROGMEM eeclr_cmb1[] = {KC_W, KC_C, COMBO_END};
-const uint16_t PROGMEM eeclr_cmb2[] = {KC_Y, KC_COMM, COMBO_END};
-const uint16_t PROGMEM to_base_cmb1[] = {KC_C, KC_V, COMBO_END};
-const uint16_t PROGMEM to_base_cmb2[] = {KC_K, KC_COMM, COMBO_END};
+//const uint16_t PROGMEM test_combo1[] = {KC_W, KC_F, COMBO_END};
+const uint16_t PROGMEM boot_cmb1[] = {KC_QUOT, KC_G, COMBO_END};
+const uint16_t PROGMEM boot_cmb2[] = {KC_M, KC_MINS, COMBO_END};
+const uint16_t PROGMEM eeclr_cmb1[] = {KC_GRV, KC_B, COMBO_END};
+const uint16_t PROGMEM eeclr_cmb2[] = {KC_J, MO(L_FN), COMBO_END};
+const uint16_t PROGMEM to_base_cmb1[] = {KC_Z, HR_D, COMBO_END};
+const uint16_t PROGMEM to_base_cmb2[] = {HR_H, KC_SLSH, COMBO_END};
 combo_t key_combos[] = {
-    COMBO(test_combo1, KC_ESC),
+//    COMBO(test_combo1, KC_ESC),
     COMBO(boot_cmb1, QK_BOOT),
     COMBO(boot_cmb2, QK_BOOT),
     COMBO(eeclr_cmb1, EE_CLR),
@@ -114,7 +114,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        QK_LLCK, HR_PAST, HR_QUOT, HR_SCLN, HR_LBRC, KC_LPRN,    KC_RPRN, HR_RBRC, HR_BSLS,  HR_EQL, HR_PSLS, _______,
        XXXXXXX, XXXXXXX, KC_PMNS, KC_PPLS, KC_ALGR, XXXXXXX,    KC_HASH, KC_ALGR, _______, _______, _______, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  _______, _______, _______,    _______, _______
+                                  _______, _______,  KC_ESC,     KC_TAB, _______
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
   [L_NV] = LAYOUT(
@@ -123,7 +123,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        QK_LLCK, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT,  QK_REP,    KC_HOME, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_END,
        XXXXXXX,  KC_CUT, KC_COPY, KC_PSTE, KC_ALGR, KC_KB_MUTE, KC_FIND, KC_SLCT, KC_PGDN, KC_PGUP, KC_AGIN, KC_PENT,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  _______, _______, _______,    _______, _______
+                                  _______,  KC_SPC, _______,     KC_TAB,  KC_ENT
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
   [L_NV2] = LAYOUT(
@@ -132,7 +132,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        QK_LLCK, KC_KP_0, KC_KP_4, KC_KP_5, KC_KP_6,  QK_REP,    KC_HOME, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_END,
        XXXXXXX, XXXXXXX, KC_KP_1, KC_KP_2, KC_KP_3, KC_KB_MUTE, KC_FIND, KC_SLCT, KC_PGDN, KC_PGUP, KC_AGIN, KC_PENT,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  _______, _______, _______,    _______, _______
+                                  _______,  KC_SPC,  KC_ESC,    _______,  KC_ENT
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
   [L_FN] = LAYOUT(
@@ -141,7 +141,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        QK_LLCK, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT,  KC_F11,     KC_F12, KC_RSFT, KC_RCTL, KC_LALT, KC_RGUI, KC_CAPS,
        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_ALGR, KC_PAUS,    XXXXXXX, KC_ALGR, KC_PSCR,  KC_INS, XXXXXXX, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  _______, _______, _______,    _______, _______
+                                  _______,  KC_SPC,  KC_ESC,     KC_TAB,  KC_ENT
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
   [L_PTR] = LAYOUT(
