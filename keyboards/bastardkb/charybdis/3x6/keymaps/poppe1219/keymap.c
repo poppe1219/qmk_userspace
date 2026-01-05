@@ -75,9 +75,15 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define HR_EQL LALT_T(KC_EQL)
 #define HR_PSLS LGUI_T(KC_PSLS)
 
+// Home Row Mods Base Layer Left
+#define HR_4 LALT_T(KC_4)
+#define HR_5 LCTL_T(KC_5)
+#define HR_6 LSFT_T(KC_6)
+
+// Thumb Row Mods
 #define SPC_NUM LT(L_NUM, KC_SPC)
 #define ENT_NUM LT(L_NUM, KC_ENT)
-#define ESC_NV LT(L_NV, KC_ESC)
+#define ESC_NV2 LT(L_NV2, KC_ESC)
 #define TAB_NV2 LT(L_NV2, KC_TAB)
 
 //const uint16_t PROGMEM test_combo1[] = {KC_W, KC_F, COMBO_END};
@@ -105,14 +111,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_QUOT,    HR_A,    HR_R,    HR_S,    HR_T,    KC_G,       KC_M,    HR_N,    HR_E,    HR_I,    HR_O, KC_MINS,
      MO(L_PTR),    KC_Z,    KC_X,    KC_C,    HR_D,    KC_V,       KC_K,    HR_H, KC_COMM,  KC_DOT, KC_SLSH, MO(L_PTR),
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  KC_BSPC, SPC_NUM,  ESC_NV,    TAB_NV2, ENT_NUM
+                                  KC_BSPC, SPC_NUM, ESC_NV2,    TAB_NV2, ENT_NUM
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
   [L_NUM] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        _______,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_NUM,
        QK_LLCK, HR_PAST, HR_QUOT, HR_SCLN, HR_LBRC, KC_LPRN,    KC_RPRN, HR_RBRC, HR_BSLS,  HR_EQL, HR_PSLS, _______,
-       XXXXXXX, XXXXXXX, KC_PMNS, KC_PPLS, KC_ALGR, XXXXXXX,    KC_HASH, KC_ALGR, _______, _______, _______, XXXXXXX,
+       KC_AGIN, XXXXXXX, KC_PMNS, KC_PPLS, KC_ALGR, XXXXXXX,    KC_HASH, KC_ALGR, _______, _______, _______, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______, _______,  KC_ESC,     KC_TAB, _______
   //                            ╰───────────────────────────╯ ╰──────────────────╯
@@ -128,11 +134,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [L_NV2] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       KC_MENU, XXXXXXX, KC_KP_7, KC_KP_8, KC_KP_9, XXXXXXX,    KC_KP_6, KC_KP_7, KC_KP_8, KC_KP_9, KC_KP_0,  KC_DEL,
-       QK_LLCK, KC_KP_0, KC_KP_4, KC_KP_5, KC_KP_6,  QK_REP,    KC_HOME, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_END,
-       XXXXXXX, XXXXXXX, KC_KP_1, KC_KP_2, KC_KP_3, KC_KB_MUTE, KC_FIND, KC_SLCT, KC_PGDN, KC_PGUP, KC_AGIN, KC_PENT,
+       XXXXXXX, XXXXXXX,    KC_7,    KC_8,    KC_9, XXXXXXX,    XXXXXXX     KC_T,    KC_W,    KC_E,    KC_B, XXXXXXX,
+       XXXXXXX, XXXXXXX,    HR_4,    HR_5,    HR_6,    KC_0,    KC_HOME, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_END,
+       XXXXXXX, XXXXXXX,    KC_1,    KC_2,    KC_3, XXXXXXX,    XXXXXXX,    KC_F,    KC_D,    KC_U, XXXXXXX, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  _______,  KC_SPC,  KC_ESC,    _______,  KC_ENT
+                                  _______,  KC_SPC, _______,    _______,  KC_ENT
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
   [L_FN] = LAYOUT(
