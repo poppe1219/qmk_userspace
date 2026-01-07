@@ -7,11 +7,19 @@ In my case, the Charybdis Mini 3x6 Splinky.
 # Todo
 
 
+- [ ] Test dedicated unicode buttons/combos for swedish chars.
 - [ ] Keep improving the vim nav layer.
 - [X] Block nested layer switching on thumb buttons.
-- [ ] Combos for resetting needs to be harder to press by accident.
+- [X] Combos for resetting needs to be harder to press by accident.
 - [ ] Find a place for the Repeat button.
-- [ ] Add combos for vim and other common tasks. Maybe for the repeat button?
+- [ ] Add combos for common tasks in vim, bash, desktop.
+  - [ ] Caps lock
+  - [ ] Repeat button?
+  - [ ] Vim: save 
+  - [ ] Repeat button?
+  - [ ] 
+  - [ ] 
+  - [ ] 
 - [X] Get auto pointer layer working.
 - Missing features 
   - [X] Del button.

@@ -128,7 +128,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [L_NV2] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        XXXXXXX, XXXXXXX,    KC_7,    KC_8,    KC_9, XXXXXXX,    XXXXXXX,    KC_T,    KC_W,    KC_E,    KC_B, XXXXXXX,
-       XXXXXXX, XXXXXXX,    HR_4,    HR_5,    HR_6,    KC_0,    KC_HOME, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_END,
+       XXXXXXX, KC_LGUI,    HR_4,    HR_5,    HR_6,    KC_0,    KC_HOME, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_END,
        XXXXXXX, XXXXXXX,    KC_1,    KC_2,    KC_3, XXXXXXX,    XXXXXXX,    KC_F,    KC_D,    KC_U, XXXXXXX, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC, _______,    _______,  KC_ENT
