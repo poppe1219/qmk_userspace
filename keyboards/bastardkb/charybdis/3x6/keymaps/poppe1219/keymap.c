@@ -20,8 +20,7 @@
 enum charybdis_keymap_layers {
     L_BASE = 0,
     L_NUM,
-//    L_NV, // Navigation
-    L_NV2, // New navigation test
+    L_NV2, // New navigation
     L_FN, // Function buttons
     L_PTR
 };
@@ -29,7 +28,6 @@ enum charybdis_keymap_layers {
 /** \brief Automatically enable sniping-mode on the pointer layer. */
 #define CHARYBDIS_AUTO_SNIPING_ON_LAYER L_PTR
 
-static uint16_t auto_pointer_layer_timer = 0;
 
 //const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
 //    LAYOUT(
@@ -79,7 +77,11 @@ static uint16_t auto_pointer_layer_timer = 0;
 // Other Row Mods
 #define DEL_FN LT(L_FN, KC_DEL)
 
-//const uint16_t PROGMEM test_combo1[] = {KC_W, KC_F, COMBO_END};
+// Universal Cut, Copy and Paste
+#define C_CUT S(KC_DEL)
+#define C_COPY C(KC_INS)
+#define C_PASTE S(KC_INS)
+
 const uint16_t PROGMEM boot_cmb1[] = {KC_QUOT, KC_G, COMBO_END};
 const uint16_t PROGMEM boot_cmb2[] = {KC_M, KC_MINS, COMBO_END};
 const uint16_t PROGMEM eeclr_cmb1[] = {KC_GRV, KC_B, COMBO_END};
@@ -87,7 +89,6 @@ const uint16_t PROGMEM eeclr_cmb2[] = {KC_J, MO(L_FN), COMBO_END};
 const uint16_t PROGMEM to_base_cmb1[] = {KC_Z, HR_D, COMBO_END};
 const uint16_t PROGMEM to_base_cmb2[] = {HR_H, KC_SLSH, COMBO_END};
 combo_t key_combos[] = {
-//    COMBO(test_combo1, KC_ESC),
     COMBO(boot_cmb1, QK_BOOT),
     COMBO(boot_cmb2, QK_BOOT),
     COMBO(eeclr_cmb1, EE_CLR),
@@ -102,7 +103,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
         KC_GRV,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN,  DEL_FN,
        KC_QUOT,    HR_A,    HR_R,    HR_S,    HR_T,    KC_G,       KC_M,    HR_N,    HR_E,    HR_I,    HR_O, KC_MINS,
-     MO(L_PTR),    KC_Z,    KC_X,    KC_C,    HR_D,    KC_V,       KC_K,    HR_H, KC_COMM,  KC_DOT, KC_SLSH, MO(L_PTR),
+     MO(L_PTR),    KC_Z,    KC_X,    KC_C,    HR_D,    KC_V,       KC_K,    HR_H, KC_COMM,  KC_DOT, KC_SLSH,  QK_REP,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   KC_BSPC, SPC_NUM, ESC_NV2,    TAB_NV2, ENT_NUM
   //                            ╰───────────────────────────╯ ╰──────────────────╯
@@ -111,25 +112,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        _______,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_NUM,
        QK_LLCK, HR_PAST, HR_QUOT, HR_SCLN, HR_LBRC, KC_LPRN,    KC_RPRN, HR_RBRC, HR_BSLS,  HR_EQL, HR_PSLS, _______,
-       KC_AGIN, XXXXXXX, KC_PMNS, KC_PPLS, KC_ALGR, XXXXXXX,    KC_HASH, KC_ALGR, _______, _______, _______, XXXXXXX,
+       XXXXXXX, XXXXXXX, KC_PMNS, KC_PPLS, KC_ALGR, XXXXXXX,    KC_HASH, KC_ALGR, _______, _______, _______, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______, _______,  KC_ESC,     KC_TAB, _______
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
-  //[L_NV] = LAYOUT(
-  //// ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-  //     KC_MENU, KC_KP_1, KC_KP_2, KC_KP_3, KC_KP_4, KC_KP_5,    KC_KP_6, KC_KP_7, KC_KP_8, KC_KP_9, KC_KP_0,  KC_DEL,
-  //     QK_LLCK, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT,  QK_REP,    KC_HOME, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_END,
-  //     XXXXXXX,  KC_CUT, KC_COPY, KC_PSTE, KC_ALGR, KC_KB_MUTE, KC_FIND, KC_SLCT, KC_PGDN, KC_PGUP, KC_AGIN, KC_PENT,
-  //// ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-  //                                _______,  KC_SPC, _______,     KC_TAB,  KC_ENT
-  ////                            ╰───────────────────────────╯ ╰──────────────────╯
-  //),
   [L_NV2] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       XXXXXXX, XXXXXXX,    KC_7,    KC_8,    KC_9, XXXXXXX,    XXXXXXX,    KC_T,    KC_W,    KC_E,    KC_B, XXXXXXX,
-       XXXXXXX, KC_LGUI,    HR_4,    HR_5,    HR_6,    KC_0,    KC_HOME, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_END,
-       XXXXXXX, XXXXXXX,    KC_1,    KC_2,    KC_3, XXXXXXX,    XXXXXXX,    KC_F,    KC_D,    KC_U, XXXXXXX, XXXXXXX,
+       KC_PGDN, XXXXXXX,    KC_7,    KC_8,    KC_9, XXXXXXX,    XXXXXXX,   C_CUT,  C_COPY, C_PASTE, XXXXXXX, XXXXXXX,
+       KC_PGUP, KC_LGUI,    HR_4,    HR_5,    HR_6,    KC_0,    KC_HOME, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_END,
+       KC_MENU, XXXXXXX,    KC_1,    KC_2,    KC_3, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC, _______,    _______,  KC_ENT
   //                            ╰───────────────────────────╯ ╰──────────────────╯
@@ -138,7 +130,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        KC_SCRL,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,      KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10, _______,
        QK_LLCK, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT,  KC_F11,     KC_F12, KC_RSFT, KC_RCTL, KC_LALT, KC_RGUI, KC_CAPS,
-       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_ALGR, KC_PAUS,    XXXXXXX, KC_ALGR, KC_PSCR,  KC_INS, XXXXXXX, XXXXXXX,
+       XXXXXXX,  KC_CUT, KC_COPY, KC_PSTE, KC_ALGR, KC_PAUS,    XXXXXXX, KC_ALGR, KC_PSCR,  KC_INS, XXXXXXX, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC,  KC_ESC,     KC_TAB,  KC_ENT
   //                            ╰───────────────────────────╯ ╰──────────────────╯
