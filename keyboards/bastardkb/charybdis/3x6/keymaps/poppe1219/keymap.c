@@ -20,7 +20,8 @@
 enum charybdis_keymap_layers {
     L_BASE = 0,
     L_NUM,
-    L_NV2, // New navigation
+    L_SYM,
+    L_NV, // Navigation
     L_FN, // Function buttons
     L_PTR
 };
@@ -71,8 +72,8 @@ enum charybdis_keymap_layers {
 // Thumb Row Mods
 #define SPC_NUM LT(L_NUM, KC_SPC)
 #define ENT_NUM LT(L_NUM, KC_ENT)
-#define ESC_NV2 LT(L_NV2, KC_ESC)
-#define TAB_NV2 LT(L_NV2, KC_TAB)
+#define ESC_NV2 LT(L_NV, KC_ESC)
+#define TAB_NV2 LT(L_NV, KC_TAB)
 
 // Other Row Mods
 #define DEL_FN LT(L_FN, KC_DEL)
@@ -119,7 +120,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                   _______, _______,  KC_ESC,     KC_TAB, _______
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
-  [L_NV2] = LAYOUT(
+  [L_SYM] = LAYOUT(
+  // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
+       KC_PGDN, XXXXXXX,    KC_7,    KC_8,    KC_9, XXXXXXX,    HR_LBRC, HR_RBRC,  C_COPY, C_PASTE, XXXXXXX,  KC_DEL,
+       KC_PGUP, KC_LGUI,    HR_4,    HR_5,    HR_6,    KC_0,    KC_LPRN, KC_RPRN, KC_SCLN,   KC_UP, KC_RGHT,  KC_END,
+       KC_MENU, XXXXXXX,    KC_1,    KC_2,    KC_3, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
+                                  _______,  KC_SPC, _______,    _______,  KC_ENT
+  //                            ╰───────────────────────────╯ ╰──────────────────╯
+  ),
+  [L_NV] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        KC_PGDN, XXXXXXX,    KC_7,    KC_8,    KC_9, XXXXXXX,    XXXXXXX,   C_CUT,  C_COPY, C_PASTE, XXXXXXX,  KC_DEL,
        KC_PGUP, KC_LGUI,    HR_4,    HR_5,    HR_6,    KC_0,    KC_HOME, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_END,
