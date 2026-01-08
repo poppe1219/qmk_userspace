@@ -114,14 +114,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        _______,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_NUM,
        QK_LLCK, HR_PAST, HR_QUOT, HR_SCLN, HR_LBRC, KC_LPRN,    KC_RPRN, HR_RBRC, HR_BSLS,  HR_EQL, HR_PSLS, _______,
-       XXXXXXX, XXXXXXX, KC_PMNS, KC_PPLS, KC_ALGR, XXXXXXX,    KC_HASH, KC_ALGR, _______, _______, _______, XXXXXXX,
+       XXXXXXX, XXXXXXX, KC_PMNS, KC_PPLS, KC_ALGR, XXXXXXX,    KC_HASH, KC_ALGR, _______, _______, _______, _______,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______, _______,  KC_ESC,     KC_TAB, _______
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
   [L_NV2] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       KC_PGDN, XXXXXXX,    KC_7,    KC_8,    KC_9, XXXXXXX,    XXXXXXX,   C_CUT,  C_COPY, C_PASTE, XXXXXXX, XXXXXXX,
+       KC_PGDN, XXXXXXX,    KC_7,    KC_8,    KC_9, XXXXXXX,    XXXXXXX,   C_CUT,  C_COPY, C_PASTE, XXXXXXX,  KC_DEL,
        KC_PGUP, KC_LGUI,    HR_4,    HR_5,    HR_6,    KC_0,    KC_HOME, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_END,
        KC_MENU, XXXXXXX,    KC_1,    KC_2,    KC_3, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
