@@ -13,7 +13,7 @@ In my case, the Charybdis Mini 3x6 Splinky.
 - [X] Combos for resetting needs to be harder to press by accident.
 - [ ] Find a place for the Repeat button.
 - [ ] Add combos for common tasks in vim, bash, desktop.
-  - [ ] Caps lock
+  - [X] Caps lock
   - [ ] Repeat button?
   - [ ] Vim: save 
   - [ ] Repeat button?

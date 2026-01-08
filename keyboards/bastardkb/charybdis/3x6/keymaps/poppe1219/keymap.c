@@ -88,6 +88,7 @@ const uint16_t PROGMEM eeclr_cmb1[] = {KC_GRV, KC_B, COMBO_END};
 const uint16_t PROGMEM eeclr_cmb2[] = {KC_J, MO(L_FN), COMBO_END};
 const uint16_t PROGMEM to_base_cmb1[] = {KC_Z, HR_D, COMBO_END};
 const uint16_t PROGMEM to_base_cmb2[] = {HR_H, KC_SLSH, COMBO_END};
+const uint16_t PROGMEM caps_cmb[] = {KC_Z, KC_SLSH, COMBO_END};
 combo_t key_combos[] = {
     COMBO(boot_cmb1, QK_BOOT),
     COMBO(boot_cmb2, QK_BOOT),
@@ -95,6 +96,7 @@ combo_t key_combos[] = {
     COMBO(eeclr_cmb2, EE_CLR),
     COMBO(to_base_cmb1, TO(L_BASE)),
     COMBO(to_base_cmb2, TO(L_BASE))
+    COMBO(caps_cmb, KC_CAPS))
 };
 
 // clang-format off
