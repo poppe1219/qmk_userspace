@@ -19,7 +19,7 @@
 
 enum charybdis_keymap_layers {
     L_BASE = 0,
-    L_NUM,
+    //L_NUM,
     L_SYM,
     L_NV, // Navigation
     L_FN, // Function buttons
@@ -70,8 +70,8 @@ enum charybdis_keymap_layers {
 #define HR_6 LSFT_T(KC_6)
 
 // Thumb Row Mods
-#define SPC_NUM LT(L_NUM, KC_SPC)
-#define ENT_NUM LT(L_NUM, KC_ENT)
+#define SPC_NUM LT(L_SYM, KC_SPC)
+#define ENT_NUM LT(L_SYM, KC_ENT)
 #define ESC_NV2 LT(L_NV, KC_ESC)
 #define TAB_NV2 LT(L_NV, KC_TAB)
 
@@ -96,43 +96,43 @@ combo_t key_combos[] = {
     COMBO(eeclr_cmb1, EE_CLR),
     COMBO(eeclr_cmb2, EE_CLR),
     COMBO(to_base_cmb1, TO(L_BASE)),
-    COMBO(to_base_cmb2, TO(L_BASE))
-    COMBO(caps_cmb, KC_CAPS))
+    COMBO(to_base_cmb2, TO(L_BASE)),
+    COMBO(caps_cmb, KC_CAPS)),
 };
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [L_BASE] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-        KC_GRV,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN,  DEL_FN,
+      MO(L_FN),    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN,  DEL_FN,
        KC_QUOT,    HR_A,    HR_R,    HR_S,    HR_T,    KC_G,       KC_M,    HR_N,    HR_E,    HR_I,    HR_O, KC_MINS,
      MO(L_PTR),    KC_Z,    KC_X,    KC_C,    HR_D,    KC_V,       KC_K,    HR_H, KC_COMM,  KC_DOT, KC_SLSH,  QK_REP,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   KC_BSPC, SPC_NUM, ESC_NV2,    TAB_NV2, ENT_NUM
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
-  [L_NUM] = LAYOUT(
-  // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       _______,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_NUM,
-       QK_LLCK, HR_PAST, HR_QUOT, HR_SCLN, HR_LBRC, KC_LPRN,    KC_RPRN, HR_RBRC, HR_BSLS,  HR_EQL, HR_PSLS, _______,
-       XXXXXXX, XXXXXXX, KC_PMNS, KC_PPLS, KC_ALGR, XXXXXXX,    KC_HASH, KC_ALGR, _______, _______, _______, _______,
-  // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  _______, _______,  KC_ESC,     KC_TAB, _______
-  //                            ╰───────────────────────────╯ ╰──────────────────╯
-  ),
+  //[L_NUM] = LAYOUT(
+  //// ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
+  //     _______,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_NUM,
+  //     QK_LLCK, HR_PAST, HR_QUOT, HR_SCLN, HR_LBRC, KC_LPRN,    KC_RPRN, HR_RBRC, HR_BSLS,  HR_EQL, HR_PSLS, _______,
+  //     XXXXXXX, XXXXXXX, KC_PMNS, KC_PPLS, KC_ALGR, XXXXXXX,    KC_HASH, KC_ALGR, _______, _______, _______, _______,
+  //// ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
+  //                                _______, _______,  KC_ESC,     KC_TAB, _______
+  ////                            ╰───────────────────────────╯ ╰──────────────────╯
+  //),
   [L_SYM] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       KC_PGDN, XXXXXXX,    KC_7,    KC_8,    KC_9, XXXXXXX,    HR_LBRC, HR_RBRC,  C_COPY, C_PASTE, XXXXXXX,  KC_DEL,
-       KC_PGUP, KC_LGUI,    HR_4,    HR_5,    HR_6,    KC_0,    KC_LPRN, KC_RPRN, KC_SCLN,   KC_UP, KC_RGHT,  KC_END,
-       KC_MENU, XXXXXXX,    KC_1,    KC_2,    KC_3, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        KC_GRV,    KC_0,    KC_8,    KC_8,    KC_7, XXXXXXX,    XXXXXXX, KC_PAST, KC_LPRN, KC_RPRN, _______,  _______,
+       QK_LLCK,    HR_0,    HR_3,    HR_2,    HR_1, XXXXXXX,    XXXXXXX, HR_QUOT, HR_LBRC, HR_RBRC,  HR_EQL, XXXXXXX,
+       KC_MENU,    KC_0,    KC_6,    KC_5,    KC_4, XXXXXXX,    XXXXXXX, KC_MINS, _______, _______, KC_BSLS, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC, _______,    _______,  KC_ENT
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
   [L_NV] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       KC_PGDN, XXXXXXX,    KC_7,    KC_8,    KC_9, XXXXXXX,    XXXXXXX,   C_CUT,  C_COPY, C_PASTE, XXXXXXX,  KC_DEL,
-       KC_PGUP, KC_LGUI,    HR_4,    HR_5,    HR_6,    KC_0,    KC_HOME, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_END,
+       KC_PGUP, XXXXXXX,    KC_7,    KC_8,    KC_9, XXXXXXX,    XXXXXXX,   C_CUT,  C_COPY, C_PASTE, XXXXXXX,  KC_DEL,
+       KC_PGDN, KC_LGUI,    HR_4,    HR_5,    HR_6,    KC_0,    KC_HOME, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_END,
        KC_MENU, XXXXXXX,    KC_1,    KC_2,    KC_3, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC, _______,    _______,  KC_ENT
