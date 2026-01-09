@@ -97,7 +97,7 @@ combo_t key_combos[] = {
     COMBO(eeclr_cmb2, EE_CLR),
     COMBO(to_base_cmb1, TO(L_BASE)),
     COMBO(to_base_cmb2, TO(L_BASE)),
-    COMBO(caps_cmb, KC_CAPS)),
+    COMBO(caps_cmb, KC_CAPS),
 };
 
 // clang-format off
