@@ -110,7 +110,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [L_SYM] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-        KC_GRV,    KC_0,    KC_8,    KC_8,    KC_7, XXXXXXX,    XXXXXXX, KC_PAST, KC_LPRN, KC_RPRN, _______,  KC_DEL,
+        KC_GRV,    KC_0,    KC_9,    KC_8,    KC_7, XXXXXXX,    XXXXXXX, KC_PAST, KC_LPRN, KC_RPRN, _______,  KC_DEL,
        QK_LLCK,    HR_0,    HR_3,    HR_2,    HR_1, XXXXXXX,    XXXXXXX, HR_QUOT, HR_LBRC, HR_RBRC,  HR_EQL, XXXXXXX,
        KC_MENU,    KC_0,    KC_6,    KC_5,    HR_4, XXXXXXX,    XXXXXXX, HR_MINS, _______, _______, KC_BSLS, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
