@@ -180,8 +180,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [L_FN] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4, XXXXXXX,    XXXXXXX, KC_PSCR, KC_SCRL, KC_PAUS, XXXXXXX, XXXXXXX,
-       QK_BOOT,   KC_F5,   KC_F6,   KC_F7,   KC_F8, XXXXXXX,    XXXXXXX, KC_RSFT, KC_RCTL, KC_LALT, KC_RGUI, QK_BOOT,
+       _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4, QK_BOOT,    QK_BOOT, KC_PSCR, KC_SCRL, KC_PAUS, XXXXXXX, XXXXXXX,
+       XXXXXXX,   KC_F5,   KC_F6,   KC_F7,   KC_F8, XXXXXXX,    XXXXXXX, KC_RSFT, KC_RCTL, KC_LALT, KC_RGUI, XXXXXXX,
        XXXXXXX,   KC_F9,  KC_F10,  KC_F11,  KC_F12, XXXXXXX,    XXXXXXX, KC_ALGR,  KC_INS, XXXXXXX, XXXXXXX, _______,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC,  KC_ESC,     KC_TAB,  KC_ENT
