@@ -88,7 +88,6 @@ enum combo_events {
   TOBASE_CMB1,
   TOBASE_CMB2,
   CAPS_CMB,
-  LANG_CMB
 };
 
 const uint16_t PROGMEM boot_cmb1[] = {KC_QUOT, KC_G, COMBO_END};
@@ -107,7 +106,6 @@ combo_t key_combos[] = {
   [EECLR_CMB2] = COMBO_ACTION(eeclr_cmb2),
   [TOBASE_CMB1] = COMBO_ACTION(to_base_cmb1),
   [TOBASE_CMB2] = COMBO_ACTION(to_base_cmb2),
-  [CAPS_CMB] = COMBO_ACTION(caps_cmb),
   [CAPS_CMB] = COMBO_ACTION(caps_cmb),
 };
 
@@ -134,14 +132,6 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
     case CAPS_CMB:
       if (pressed) {
         tap_code16(KC_CAPS);
-      }
-      break;
-    case LANG_CMB:
-      if (pressed) {
-        //layer_invert(_QWR);
-        register_code(KC_LSFT);
-        tap_code16(KC_CAPS);
-        unregister_code(KC_LSFT);
       }
       break;
   }
@@ -189,7 +179,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
        QK_LLCK, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,    XXXXXXX, KC_RSFT, KC_RCTL, KC_LALT, KC_RGUI, XXXXXXX,
-       _______, DRGSCRL, SNIPING, XXXXXXX, KC_ALGR, XXXXXXX,    XXXXXXX, KC_ALGR, XXXXXXX, SNIPING, DRGSCRL, _______,
+       _______, SNIPING, DRGSCRL, XXXXXXX, KC_ALGR, XXXXXXX,    XXXXXXX, KC_ALGR, XXXXXXX, XXXXXXX, XXXXXXX, _______,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   KC_BTN3, KC_BTN1, KC_BTN2,    KC_BTN2, KC_BTN1
   //                            ╰───────────────────────────╯ ╰──────────────────╯
