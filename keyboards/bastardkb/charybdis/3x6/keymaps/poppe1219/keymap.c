@@ -80,6 +80,17 @@ enum charybdis_keymap_layers {
 #define C_COPY C(KC_INS)
 #define C_PASTE S(KC_INS)
 
+enum combo_events {
+  BOOT_CMB1,
+  BOOT_CMB2,
+  EECLR_CMB1,
+  EECLR_CMB2,
+  TOBASE_CMB1,
+  TOBASE_CMB2,
+  CAPS_CMB,
+  LANG_CMB
+};
+
 const uint16_t PROGMEM boot_cmb1[] = {KC_QUOT, KC_G, COMBO_END};
 const uint16_t PROGMEM boot_cmb2[] = {KC_M, KC_MINS, COMBO_END};
 const uint16_t PROGMEM eeclr_cmb1[] = {KC_GRV, KC_B, COMBO_END};
@@ -87,15 +98,56 @@ const uint16_t PROGMEM eeclr_cmb2[] = {KC_J, MO(L_FN), COMBO_END};
 const uint16_t PROGMEM to_base_cmb1[] = {KC_Z, HR_D, COMBO_END};
 const uint16_t PROGMEM to_base_cmb2[] = {HR_H, KC_SLSH, COMBO_END};
 const uint16_t PROGMEM caps_cmb[] = {KC_Z, KC_SLSH, COMBO_END};
+const uint16_t PROGMEM lang_cmb[] = {KC_D, KC_H, COMBO_END};
+
 combo_t key_combos[] = {
-    COMBO(boot_cmb1, QK_BOOT),
-    COMBO(boot_cmb2, QK_BOOT),
-    COMBO(eeclr_cmb1, EE_CLR),
-    COMBO(eeclr_cmb2, EE_CLR),
-    COMBO(to_base_cmb1, TO(L_BASE)),
-    COMBO(to_base_cmb2, TO(L_BASE)),
-    COMBO(caps_cmb, KC_CAPS),
+  [BOOT_CMB1] = COMBO_ACTION(boot_cmb1),
+  [BOOT_CMB2] = COMBO_ACTION(boot_cmb2),
+  [EECLR_CMB1] = COMBO_ACTION(eeclr_cmb1),
+  [EECLR_CMB2] = COMBO_ACTION(eeclr_cmb2),
+  [TOBASE_CMB1] = COMBO_ACTION(to_base_cmb1),
+  [TOBASE_CMB2] = COMBO_ACTION(to_base_cmb2),
+  [CAPS_CMB] = COMBO_ACTION(caps_cmb),
+  [CAPS_CMB] = COMBO_ACTION(caps_cmb),
 };
+
+void process_combo_event(uint16_t combo_index, bool pressed) {
+  switch(combo_index) {
+    case BOOT_CMB1:
+    case BOOT_CMB2:
+      if (pressed) {
+        tap_code16(QK_BOOT);
+      }
+      break;
+    case EECLR_CMB1:
+    case EECLR_CMB2:
+      if (pressed) {
+        tap_code16(EE_CLR);
+      }
+      break;
+    case TOBASE_CMB1:
+    case TOBASE_CMB2:
+      if (pressed) {
+        tap_code16(TO(L_BASE));
+      }
+      break;
+    case CAPS_CMB:
+      if (pressed) {
+        tap_code16(KC_CAPS);
+      }
+      break;
+    case LANG_CMB:
+      f (pressed) {
+        //layer_invert(_QWR);
+        register_code(KC_LSFT);
+        register_code(KC_LALT);
+      } else {
+        unregister_code(KC_LALT);
+        unregister_code(KC_LSFT);
+      }
+      break;
+  }
+}
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -128,22 +180,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [L_FN] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       XXXXXXX,   KC_F1,   KC_F2,   KC_F3,   KC_F4, XXXXXXX,    XXXXXXX, KC_PSCR, KC_SCRL, KC_PAUS, XXXXXXX, XXXXXXX,
+       _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4, XXXXXXX,    XXXXXXX, KC_PSCR, KC_SCRL, KC_PAUS, XXXXXXX, XXXXXXX,
        XXXXXXX,   KC_F5,   KC_F6,   KC_F7,   KC_F8, XXXXXXX,    XXXXXXX, KC_RSFT, KC_RCTL, KC_LALT, KC_RGUI, XXXXXXX,
        XXXXXXX,   KC_F9,  KC_F10,  KC_F11,  KC_F12, XXXXXXX,    XXXXXXX, KC_ALGR,  KC_INS, XXXXXXX, XXXXXXX, _______,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC,  KC_ESC,     KC_TAB,  KC_ENT
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
-//  [L_FN] = LAYOUT(
-//  // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-//       KC_SCRL,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,      KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10, _______,
-//       QK_LLCK, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT,  KC_F11,     KC_F12, KC_RSFT, KC_RCTL, KC_LALT, KC_RGUI, XXXXXXX,
-//       XXXXXXX,  KC_CUT, KC_COPY, KC_PSTE, KC_ALGR, KC_PAUS,    XXXXXXX, KC_ALGR, KC_PSCR,  KC_INS, XXXXXXX, XXXXXXX,
-//  // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-//                                  _______,  KC_SPC,  KC_ESC,     KC_TAB,  KC_ENT
-//  //                            ╰───────────────────────────╯ ╰──────────────────╯
-//  ),
   [L_PTR] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
