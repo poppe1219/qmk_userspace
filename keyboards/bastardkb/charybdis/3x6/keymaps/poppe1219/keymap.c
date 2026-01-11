@@ -92,9 +92,9 @@ enum combo_events {
 };
 
 const uint16_t PROGMEM boot_cmb1[] = {KC_QUOT, KC_G, COMBO_END};
-const uint16_t PROGMEM boot_cmb2[] = {KC_M, KC_MINS, COMBO_END};
-const uint16_t PROGMEM eeclr_cmb1[] = {KC_GRV, KC_B, COMBO_END};
-const uint16_t PROGMEM eeclr_cmb2[] = {KC_J, MO(L_FN), COMBO_END};
+const uint16_t PROGMEM boot_cmb2[] = {KC_M, QK_REP, COMBO_END};
+const uint16_t PROGMEM eeclr_cmb1[] = {MO(L_FN), KC_B, COMBO_END};
+const uint16_t PROGMEM eeclr_cmb2[] = {KC_J, KC_DEL, COMBO_END};
 const uint16_t PROGMEM to_base_cmb1[] = {KC_Z, HR_D, COMBO_END};
 const uint16_t PROGMEM to_base_cmb2[] = {HR_H, KC_SLSH, COMBO_END};
 const uint16_t PROGMEM caps_cmb[] = {KC_Z, KC_SLSH, COMBO_END};
@@ -140,8 +140,7 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
       if (pressed) {
         //layer_invert(_QWR);
         register_code(KC_LSFT);
-        register_code(KC_LALT);
-        unregister_code(KC_LALT);
+        tap_code16(KC_CAPS);
         unregister_code(KC_LSFT);
       }
       break;
@@ -181,7 +180,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4, QK_BOOT,    QK_BOOT, KC_PSCR, KC_SCRL, KC_PAUS, XXXXXXX, XXXXXXX,
        XXXXXXX,   KC_F5,   KC_F6,   KC_F7,   KC_F8, XXXXXXX,    XXXXXXX, KC_RSFT, KC_RCTL, KC_LALT, KC_RGUI, XXXXXXX,
-       XXXXXXX,   KC_F9,  KC_F10,  KC_F11,  KC_F12, XXXXXXX,    XXXXXXX, KC_ALGR,  KC_INS, XXXXXXX, XXXXXXX, _______,
+       XXXXXXX,   KC_F9,  KC_F10,  KC_F11,  KC_F12,  EE_CLR,     EE_CLR, KC_ALGR,  KC_INS, XXXXXXX, XXXXXXX, _______,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC,  KC_ESC,     KC_TAB,  KC_ENT
   //                            ╰───────────────────────────╯ ╰──────────────────╯
