@@ -137,7 +137,7 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
       }
       break;
     case LANG_CMB:
-      f (pressed) {
+      if (pressed) {
         //layer_invert(_QWR);
         register_code(KC_LSFT);
         register_code(KC_LALT);
