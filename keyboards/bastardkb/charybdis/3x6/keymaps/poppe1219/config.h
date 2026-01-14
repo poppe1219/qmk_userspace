@@ -32,5 +32,5 @@
 #define CHORDAL_HOLD
 #define CHARYBDIS_DRAGSCROLL_REVERSE_X // inverts horizontal scrolling
 #define LAYER_LOCK_IDLE_TIMEOUT 60000  // Turn off after 60 seconds.
-#define POINTING_DEVICE_AUTO_MOUSE_ENABLE
+//#define POINTING_DEVICE_AUTO_MOUSE_ENABLE
 
