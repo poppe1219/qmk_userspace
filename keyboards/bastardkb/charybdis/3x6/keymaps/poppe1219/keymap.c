@@ -73,12 +73,63 @@ enum charybdis_keymap_layers {
 #define TAB_NV2 LT(L_NV, KC_TAB)
 
 // Other Row Mods
-//#define DEL_FN LT(L_FN, KC_DEL)
+#define X_PTR LT(L_PTR, KC_X)
+#define DOT_PTR LT(L_PTR, KC_DOT)
 
 // Universal Cut, Copy and Paste
 #define C_CUT S(KC_DEL)
 #define C_COPY C(KC_INS)
 #define C_PASTE S(KC_INS)
+
+// clang-format off
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+  [L_BASE] = LAYOUT(
+  // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
+        KC_ESC,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN,  KC_DEL,
+        QK_REP,    HR_A,    HR_R,    HR_S,    HR_T,    KC_G,       KC_M,    HR_N,    HR_E,    HR_I,    HR_O,  QK_REP,
+      MO(L_FN),    KC_Z,    X_PTR,   KC_C,    HR_D,    KC_V,       KC_K,    HR_H, KC_COMM, DOT_PTR, KC_SLSH, MO(L_FN),
+  // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
+                                  KC_BSPC, SPC_SYM, ESC_NV2,    TAB_NV2, ENT_SYM
+  //                            ╰───────────────────────────╯ ╰──────────────────╯
+  ),
+  [L_SYM] = LAYOUT(
+  // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
+       XXXXXXX,    KC_0,    KC_9,    KC_8,    KC_7, XXXXXXX,    XXXXXXX, KC_PAST, KC_LPRN, KC_RPRN, _______,  KC_DEL,
+       XXXXXXX,    HR_0,    HR_3,    HR_2,    HR_1, XXXXXXX,     KC_GRV, HR_QUOT, HR_LBRC, HR_RBRC,  HR_EQL, XXXXXXX,
+       XXXXXXX,    KC_0,    KC_6,    KC_5,    HR_4, XXXXXXX,    XXXXXXX, HR_MINS, _______, _______, KC_BSLS, XXXXXXX,
+  // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
+                                  _______,  KC_SPC, _______,    _______,  KC_ENT
+  //                            ╰───────────────────────────╯ ╰──────────────────╯
+  ),
+  [L_NV] = LAYOUT(
+  // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
+       KC_PGUP,    KC_0,    KC_9,    KC_8,    KC_7, XXXXXXX,    XXXXXXX,   C_CUT,  C_COPY, C_PASTE, XXXXXXX,  KC_DEL,
+       KC_PGDN,    HR_0,    HR_3,    HR_2,    HR_1, XXXXXXX,    KC_HOME, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_END,
+       KC_MENU,    KC_0,    KC_6,    KC_5,    HR_4, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
+                                  _______,  KC_SPC, _______,    _______,  KC_ENT
+  //                            ╰───────────────────────────╯ ╰──────────────────╯
+  ),
+  [L_FN] = LAYOUT(
+  // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
+       XXXXXXX,   KC_F1,   KC_F2,   KC_F3,   KC_F4, QK_BOOT,    QK_BOOT, KC_PSCR, KC_SCRL, KC_PAUS, XXXXXXX, XXXXXXX,
+       XXXXXXX,   KC_F5,   KC_F6,   KC_F7,   KC_F8, XXXXXXX,    XXXXXXX, KC_RSFT, KC_RCTL, KC_LALT, KC_RGUI, XXXXXXX,
+       _______,   KC_F9,  KC_F10,  KC_F11,  KC_F12,  EE_CLR,     EE_CLR, KC_ALGR,  KC_INS, XXXXXXX, XXXXXXX, _______,
+  // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
+                                  _______,  KC_SPC,  KC_ESC,     KC_TAB,  KC_ENT
+  //                            ╰───────────────────────────╯ ╰──────────────────╯
+  ),
+  [L_PTR] = LAYOUT(
+  // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
+       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT,    QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+       QK_LLCK, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,    XXXXXXX, KC_RSFT, KC_RCTL, KC_LALT, KC_RGUI, XXXXXXX,
+       XXXXXXX, DRGSCRL, _______, SNIPING, XXXXXXX,  EE_CLR,     EE_CLR, XXXXXXX, SNIPING, _______, DRGSCRL, XXXXXXX,
+  // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
+                                  XXXXXXX, KC_BTN1, KC_BTN2,    KC_BTN2, KC_BTN1
+  //                            ╰───────────────────────────╯ ╰──────────────────╯
+  )
+};
+// clang-format on
 
 enum combo_events {
   BOOT_CMB1,
@@ -136,58 +187,3 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
       break;
   }
 }
-
-// clang-format off
-const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [L_BASE] = LAYOUT(
-  // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-      MO(L_FN),    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN,  KC_DEL,
-       KC_QUOT,    HR_A,    HR_R,    HR_S,    HR_T,    KC_G,       KC_M,    HR_N,    HR_E,    HR_I,    HR_O,  QK_REP,
-     MO(L_PTR),    KC_Z,    KC_X,    KC_C,    HR_D,    KC_V,       KC_K,    HR_H, KC_COMM,  KC_DOT, KC_SLSH, MO(L_FN),
-  // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  KC_BSPC, SPC_SYM, ESC_NV2,    TAB_NV2, ENT_SYM
-  //                            ╰───────────────────────────╯ ╰──────────────────╯
-  ),
-  [L_SYM] = LAYOUT(
-  // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       XXXXXXX,    KC_0,    KC_9,    KC_8,    KC_7, XXXXXXX,    XXXXXXX, KC_PAST, KC_LPRN, KC_RPRN, _______,  KC_DEL,
-       XXXXXXX,    HR_0,    HR_3,    HR_2,    HR_1, XXXXXXX,     KC_GRV, HR_QUOT, HR_LBRC, HR_RBRC,  HR_EQL, XXXXXXX,
-       XXXXXXX,    KC_0,    KC_6,    KC_5,    HR_4, XXXXXXX,    XXXXXXX, HR_MINS, _______, _______, KC_BSLS, XXXXXXX,
-  // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  _______,  KC_SPC, _______,    _______,  KC_ENT
-  //                            ╰───────────────────────────╯ ╰──────────────────╯
-  ),
-  [L_NV] = LAYOUT(
-  // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       KC_PGUP,    KC_0,    KC_9,    KC_8,    KC_7, XXXXXXX,    XXXXXXX,   C_CUT,  C_COPY, C_PASTE, XXXXXXX,  KC_DEL,
-       KC_PGDN,    HR_0,    HR_3,    HR_2,    HR_1, XXXXXXX,    KC_HOME, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_END,
-       KC_MENU,    KC_0,    KC_6,    KC_5,    HR_4, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  _______,  KC_SPC, _______,    _______,  KC_ENT
-  //                            ╰───────────────────────────╯ ╰──────────────────╯
-  ),
-  [L_FN] = LAYOUT(
-  // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4, QK_BOOT,    QK_BOOT, KC_PSCR, KC_SCRL, KC_PAUS, XXXXXXX, XXXXXXX,
-       XXXXXXX,   KC_F5,   KC_F6,   KC_F7,   KC_F8, XXXXXXX,    XXXXXXX, KC_RSFT, KC_RCTL, KC_LALT, KC_RGUI, XXXXXXX,
-       XXXXXXX,   KC_F9,  KC_F10,  KC_F11,  KC_F12,  EE_CLR,     EE_CLR, KC_ALGR,  KC_INS, XXXXXXX, XXXXXXX, _______,
-  // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  _______,  KC_SPC,  KC_ESC,     KC_TAB,  KC_ENT
-  //                            ╰───────────────────────────╯ ╰──────────────────╯
-  ),
-  [L_PTR] = LAYOUT(
-  // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-       QK_LLCK, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,    XXXXXXX, KC_RSFT, KC_RCTL, KC_LALT, KC_RGUI, XXXXXXX,
-       _______, SNIPING, DRGSCRL, XXXXXXX, KC_ALGR, XXXXXXX,    XXXXXXX, KC_ALGR, XXXXXXX, XXXXXXX, XXXXXXX, _______,
-  // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  KC_BTN3, KC_BTN1, KC_BTN2,    KC_BTN2, KC_BTN1
-  //                            ╰───────────────────────────╯ ╰──────────────────╯
-  )
-};
-// clang-format on
-
-//void pointing_device_init_user(void) {
-//    set_auto_mouse_layer(L_PTR);
-//    set_auto_mouse_enable(true);
-//}

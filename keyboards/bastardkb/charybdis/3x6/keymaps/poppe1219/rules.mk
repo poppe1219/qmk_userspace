@@ -1,21 +1,21 @@
 VIA_ENABLE = yes
+COMBO_ENABLE = yes
 UNICODE_ENABLE = yes
 REPEAT_KEY_ENABLE = yes
-COMBO_ENABLE = yes
 LAYER_LOCK_ENABLE = yes
 
 # Minimize build.
 LTO_ENABLE = yes # Enable Link Time Optimization for smaller firmware
-BACKLIGHT_ENABLE = no
-RGBLIGHT_ENABLE = no
-RGB_MATRIX_ENABLE = no
-AUDIO_ENABLE = no
 MIDI_ENABLE = no
-EXTRAKEY_ENABLE = no # Audio and system control keys.
+AUDIO_ENABLE = no
+MAGIC_ENABLE = no
 CONSOLE_ENABLE = no
 COMMAND_ENABLE = no
+RGBLIGHT_ENABLE = no
+EXTRAKEY_ENABLE = no # Audio and system control keys.
 EXTRAKEY_ENABLE = no
-SPACE_CADET_ENABLE = no
 GRAVE_ESC_ENABLE = no
-MAGIC_ENABLE = no
+BACKLIGHT_ENABLE = no
+RGB_MATRIX_ENABLE = no
+SPACE_CADET_ENABLE = no
 AVR_USE_MINIMAL_PRINTF = yes
