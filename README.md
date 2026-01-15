@@ -7,19 +7,18 @@ In my case, the Charybdis Mini 3x6 Splinky.
 # Todo
 
 
+- [ ] Move mouse layer button and mouse modifiers. Trigger on ring finger?
 - [ ] Test dedicated unicode buttons/combos for swedish chars.
 - [ ] Keep improving the vim nav layer.
-- [X] Block nested layer switching on thumb buttons.
-- [X] Combos for resetting needs to be harder to press by accident.
-- [ ] Find a place for the Repeat button.
 - [ ] Add combos for common tasks in vim, bash, desktop.
   - [X] Caps lock
-  - [ ] Repeat button?
   - [ ] Vim: save 
-  - [ ] Repeat button?
+  - [ ] Vim: force quit
+  - [ ] Send ¯\_(ツ)_/¯
   - [ ] 
-  - [ ] 
-  - [ ] 
+- [X] Block nested layer switching on thumb buttons.
+- [X] Combos for resetting needs to be harder to press by accident.
+- [X] Find a place for the Repeat button.
 - [X] Get auto pointer layer working.
 - Missing features 
   - [X] Del button.
