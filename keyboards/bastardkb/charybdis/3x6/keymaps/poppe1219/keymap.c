@@ -141,9 +141,9 @@ enum combo_events {
   CAPS_CMB,
 };
 
-const uint16_t PROGMEM boot_cmb1[] = {KC_QUOT, KC_G, COMBO_END};
+const uint16_t PROGMEM boot_cmb1[] = {QK_REP, KC_G, COMBO_END};
 const uint16_t PROGMEM boot_cmb2[] = {KC_M, QK_REP, COMBO_END};
-const uint16_t PROGMEM eeclr_cmb1[] = {MO(L_FN), KC_B, COMBO_END};
+const uint16_t PROGMEM eeclr_cmb1[] = {KC_ESC, KC_B, COMBO_END};
 const uint16_t PROGMEM eeclr_cmb2[] = {KC_J, KC_DEL, COMBO_END};
 const uint16_t PROGMEM to_base_cmb1[] = {KC_Z, HR_D, COMBO_END};
 const uint16_t PROGMEM to_base_cmb2[] = {HR_H, KC_SLSH, COMBO_END};
