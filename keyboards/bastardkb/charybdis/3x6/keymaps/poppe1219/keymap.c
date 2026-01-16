@@ -196,7 +196,7 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
       break;
     case UCIS_CMB:
       if (pressed) {
-        ucis_start()
+        ucis_start();
       }
       break;
   }
