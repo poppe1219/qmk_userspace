@@ -145,7 +145,7 @@ enum combo_events {
   TOBASE_CMB1,
   TOBASE_CMB2,
   CAPS_CMB,
-  UCIS_CMB,
+  SHRUG_CMB,
 };
 
 const uint16_t PROGMEM boot_cmb1[] = {QK_REP, KC_G, COMBO_END};
@@ -156,7 +156,7 @@ const uint16_t PROGMEM to_base_cmb1[] = {KC_Z, HR_D, COMBO_END};
 const uint16_t PROGMEM to_base_cmb2[] = {HR_H, KC_SLSH, COMBO_END};
 const uint16_t PROGMEM caps_cmb[] = {KC_Z, KC_SLSH, COMBO_END};
 const uint16_t PROGMEM lang_cmb[] = {KC_D, KC_H, COMBO_END};
-const uint16_t PROGMEM ucis_cmb[] = {KC_P, KC_L, COMBO_END};
+const uint16_t PROGMEM shrug_cmb[] = {KC_P, KC_L, COMBO_END};
 
 combo_t key_combos[] = {
   [BOOT_CMB1] = COMBO_ACTION(boot_cmb1),
@@ -166,7 +166,7 @@ combo_t key_combos[] = {
   [TOBASE_CMB1] = COMBO_ACTION(to_base_cmb1),
   [TOBASE_CMB2] = COMBO_ACTION(to_base_cmb2),
   [CAPS_CMB] = COMBO_ACTION(caps_cmb),
-  [UCIS_CMB] = COMBO_ACTION(ucis_cmb),
+  [SHRUG_CMB] = COMBO_ACTION(shrug_cmb),
 };
 
 void process_combo_event(uint16_t combo_index, bool pressed) {
@@ -194,9 +194,9 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
         tap_code16(KC_CAPS);
       }
       break;
-    case UCIS_CMB:
+    case SHRUG_CMB:
       if (pressed) {
-        ucis_start();
+        UC(0x30C4);
       }
       break;
   }
