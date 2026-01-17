@@ -81,11 +81,6 @@ enum charybdis_keymap_layers {
 #define C_COPY C(KC_INS)
 #define C_PASTE S(KC_INS)
 
-const ucis_symbol_t ucis_symbol_table[] = UCIS_TABLE(
-    UCIS_SYM("poop", 0x1F4A9),                // 💩
-    UCIS_SYM("rofl", 0x1F923),                // 🤣
-    UCIS_SYM("look", 0x0CA0, 0x005F, 0x0CA0)  // ಠ_ಠ
-);
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -196,8 +191,26 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
       break;
     case SHRUG_CMB:
       if (pressed) {
-        UC(0x30C4);
+        send_unicode_string("┬");
+        wait_ms(30);
+        send_unicode_string("─");
+        wait_ms(30);
+        send_unicode_string("┬");
+        wait_ms(30);
+        send_unicode_string("ノ");
+        wait_ms(30);
+        send_unicode_string("(");
+        wait_ms(30);
+        send_unicode_string("ಠ");
+        wait_ms(30);
+        send_unicode_string("_");
+        wait_ms(30);
+        send_unicode_string("ಠ");
+        wait_ms(30);
+        send_unicode_string("ノ");
+        wait_ms(30);
+        send_unicode_string(")");
+        wait_ms(30);
       }
-      break;
   }
 }
