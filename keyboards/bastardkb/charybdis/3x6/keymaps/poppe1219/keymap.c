@@ -197,23 +197,7 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
       break;
     case SHRUG_CMB1:
       if (pressed) {
-        send_unicode_string("¯");
-        wait_ms(30);
-        send_unicode_string("\\");
-        wait_ms(30);
-        send_unicode_string("_");
-        wait_ms(30);
-        send_unicode_string("(");
-        wait_ms(30);
-        send_unicode_string("ツ");
-        wait_ms(30);
-        send_unicode_string(")");
-        wait_ms(30);
-        send_unicode_string("_");
-        wait_ms(30);
-        send_unicode_string("/");
-        wait_ms(30);
-        send_unicode_string("¯");
+        send_unicode_hex_string("00AF 005C 005F 0028 30C4 0029 005F 002F 00AF");
       }
     case SHRUG_CMB2:
       if (pressed) {
