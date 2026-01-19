@@ -46,17 +46,17 @@ enum charybdis_keymap_layers {
 #define HR_D ALGR_T(KC_D)
 
 // Home Row Mods Base Layer Right
-#define HR_N LSFT_T(KC_N)
-#define HR_E LCTL_T(KC_E)
+#define HR_N RSFT_T(KC_N)
+#define HR_E RCTL_T(KC_E)
 #define HR_I LALT_T(KC_I)
-#define HR_O LGUI_T(KC_O)
+#define HR_O RGUI_T(KC_O)
 #define HR_H ALGR_T(KC_H)
 
 // Home Row Mods Sym Layer Right
-#define HR_QUOT LSFT_T(KC_QUOT)
-#define HR_LBRC LCTL_T(KC_LBRC)
+#define HR_QUOT RSFT_T(KC_QUOT)
+#define HR_LBRC RCTL_T(KC_LBRC)
 #define HR_RBRC LALT_T(KC_RBRC)
-#define HR_EQL LGUI_T(KC_EQL)
+#define HR_EQL RGUI_T(KC_EQL)
 #define HR_MINS ALGR_T(KC_MINS)
 
 // Home Row Mods Sym Layer Left
@@ -76,7 +76,7 @@ enum charybdis_keymap_layers {
 #define X_PTR LT(L_PTR, KC_X)
 #define DOT_PTR LT(L_PTR, KC_DOT)
 
-// Universal Cut, Copy and Paste
+// Common Cut, Copy and Paste
 #define C_CUT S(KC_DEL)
 #define C_COPY C(KC_INS)
 #define C_PASTE S(KC_INS)
@@ -106,7 +106,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        KC_PGUP,    KC_0,    KC_9,    KC_8,    KC_7, XXXXXXX,    XXXXXXX,   C_CUT,  C_COPY, C_PASTE, XXXXXXX,  KC_DEL,
        KC_PGDN,    HR_0,    HR_3,    HR_2,    HR_1, XXXXXXX,    KC_HOME, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_END,
-       KC_MENU,    KC_0,    KC_6,    KC_5,    HR_4, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        KC_APP,    KC_0,    KC_6,    KC_5,    HR_4, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC, _______,    _______,  KC_ENT
   //                            ╰───────────────────────────╯ ╰──────────────────╯
