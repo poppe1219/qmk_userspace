@@ -71,6 +71,7 @@ enum charybdis_keymap_layers {
 
 // Other Row Mods
 #define X_PTR LT(L_PTR, KC_X)
+#define DOT_PTR LT(L_PTR, KC_DOT)
 
 // Common Cut, Copy and Paste
 #define C_CUT S(KC_DEL)
@@ -82,25 +83,25 @@ enum charybdis_keymap_layers {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [L_BASE] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-        KC_DEL,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,    KC_Y, UP(0x00D6, 0x00F6), UP(0x00E5, 0x00C5),
-        QK_REP,    HR_A,    HR_R,    HR_S,    HR_T,    KC_G,       KC_M,    HR_N,    HR_E,    HR_I,    HR_O, UP(0x00E4, 0x00C4),
-      MO(L_FN),    KC_Z,    X_PTR,   KC_C,    HR_D,    KC_V,       KC_K,    HR_H, UP(0x002C, 0x003B), UP(0x002E, 0x003A), KC_SLSH, MO(L_FN),
+        KC_ESC,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN,  KC_DEL,
+        QK_REP,    HR_A,    HR_R,    HR_S,    HR_T,    KC_G,       KC_M,    HR_N,    HR_E,    HR_I,    HR_O,  QK_REP,
+      MO(L_FN),    KC_Z,    X_PTR,   KC_C,    HR_D,    KC_V,       KC_K,    HR_H, KC_COMM, DOT_PTR, KC_SLSH, MO(L_FN),
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   KC_BSPC, SPC_SYM, ESC_NV2,    TAB_NV2, ENT_SYM
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
   [L_SYM] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       XXXXXXX,    KC_0,    KC_9,    KC_8,    KC_7, XXXXXXX,    XXXXXXX, KC_PAST, KC_LPRN, KC_RPRN, KC_SCLN, XXXXXXX,
+       XXXXXXX,    KC_0,    KC_9,    KC_8,    KC_7, XXXXXXX,    XXXXXXX, KC_PAST, KC_LPRN, KC_RPRN, _______,  KC_DEL,
        XXXXXXX,    HR_0,    HR_3,    HR_2,    HR_1, XXXXXXX,     KC_GRV, HR_QUOT, HR_LBRC, HR_RBRC,  HR_EQL, XXXXXXX,
-       XXXXXXX,    KC_0,    KC_6,    KC_5,    HR_4, XXXXXXX,    XXXXXXX, HR_MINS,   KC_LT,   KC_GT, KC_BSLS, XXXXXXX,
+       XXXXXXX,    KC_0,    KC_6,    KC_5,    HR_4, XXXXXXX,    XXXXXXX, HR_MINS, _______, _______, KC_BSLS, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC, _______,    _______,  KC_ENT
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
   [L_NV] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       KC_PGUP,    KC_0,    KC_9,    KC_8,    KC_7, XXXXXXX,    XXXXXXX,   C_CUT,  C_COPY, C_PASTE, XXXXXXX, XXXXXXX,
+       KC_PGUP,    KC_0,    KC_9,    KC_8,    KC_7, XXXXXXX,    XXXXXXX,   C_CUT,  C_COPY, C_PASTE, XXXXXXX,  KC_DEL,
        KC_PGDN,    HR_0,    HR_3,    HR_2,    HR_1, XXXXXXX,    KC_HOME, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_END,
         KC_APP,    KC_0,    KC_6,    KC_5,    HR_4, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
@@ -169,18 +170,30 @@ combo_t key_combos[] = {
 void process_combo_event(uint16_t combo_index, bool pressed) {
   switch(combo_index) {
     case BOOT_CMB1:
+      if (pressed) {
+        tap_code16(QK_BOOT);
+      }
+      break;
     case BOOT_CMB2:
       if (pressed) {
         tap_code16(QK_BOOT);
       }
       break;
     case EECLR_CMB1:
+      if (pressed) {
+        tap_code16(EE_CLR);
+      }
+      break;
     case EECLR_CMB2:
       if (pressed) {
         tap_code16(EE_CLR);
       }
       break;
     case TOBASE_CMB1:
+      if (pressed) {
+        tap_code16(TO(L_BASE));
+      }
+      break;
     case TOBASE_CMB2:
       if (pressed) {
         tap_code16(TO(L_BASE));
@@ -193,11 +206,11 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
       break;
     case SHRUG_CMB1:
       if (pressed) {
-	SEND_STRING(SS_LALT("D83D+DC83"));
+        send_string("¯\\_(ツ)_/¯");
       }
     case SHRUG_CMB2:
       if (pressed) {
-	SEND_STRING(SS_LALT("D83D+DC83"));
+        send_string("¯ \\ _ ( ツ ) _ / ¯");
       }
     case SHRUG_CMB3:
       if (pressed) {
