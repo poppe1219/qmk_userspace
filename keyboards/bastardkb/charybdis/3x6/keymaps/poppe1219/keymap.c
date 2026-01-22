@@ -80,7 +80,7 @@ enum charybdis_keymap_layers {
 
 // Some AltGr specials, Swedish, etc.
 #define C_AUML ALGR(KC_SCLN)
-#define C_ARIN ALGR(KC_QUOT)
+#define C_ARING ALGR(KC_QUOT)
 #define C_OUML ALGR(KC_EQL)
 #define C_COMM ALGR(KC_COMM)
  
