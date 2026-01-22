@@ -77,12 +77,6 @@ enum charybdis_keymap_layers {
 #define C_COPY C(KC_INS)
 #define C_PASTE S(KC_INS)
 
-// Some AltGr specials, Swedish, etc.
-#define C_AUML ALGR(KC_SCLN)
-#define C_ARING ALGR(KC_QUOT)
-#define C_OUML ALGR(KC_EQL)
-#define C_COMM ALGR(KC_COMM)
- 
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -203,7 +197,7 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
       }
     case SHRUG_CMB2:
       if (pressed) {
-	SEND_STRING(SS_ALT("D83D+DC83"));
+	SEND_STRING(SS_LALT("D83D+DC83"));
       }
     case SHRUG_CMB3:
       if (pressed) {
