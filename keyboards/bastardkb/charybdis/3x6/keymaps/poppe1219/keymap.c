@@ -71,37 +71,43 @@ enum charybdis_keymap_layers {
 
 // Other Row Mods
 #define X_PTR LT(L_PTR, KC_X)
-#define DOT_PTR LT(L_PTR, KC_DOT)
+#define DOT_PTR LT(L_PTR, ALGR(KC_DOT))
 
 // Common Cut, Copy and Paste
 #define C_CUT S(KC_DEL)
 #define C_COPY C(KC_INS)
 #define C_PASTE S(KC_INS)
 
+// Some AltGr specials, Swedish, etc.
+#define C_AUML ALGR(KC_SCLN)
+#define C_ARIN ALGR(KC_QUOT)
+#define C_OUML ALGR(KC_EQL)
+#define C_COMM ALGR(KC_COMM)
+ 
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [L_BASE] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-        KC_ESC,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN,  KC_DEL,
-        QK_REP,    HR_A,    HR_R,    HR_S,    HR_T,    KC_G,       KC_M,    HR_N,    HR_E,    HR_I,    HR_O,  QK_REP,
-      MO(L_FN),    KC_Z,    X_PTR,   KC_C,    HR_D,    KC_V,       KC_K,    HR_H, KC_COMM, DOT_PTR, KC_SLSH, MO(L_FN),
+        KC_DEL,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,    KC_Y,  C_OUML, C_ARING,
+        QK_REP,    HR_A,    HR_R,    HR_S,    HR_T,    KC_G,       KC_M,    HR_N,    HR_E,    HR_I,    HR_O,  C_AUML,
+      MO(L_FN),    KC_Z,    X_PTR,   KC_C,    HR_D,    KC_V,       KC_K,    HR_H,  C_COMM, DOT_PTR, KC_SLSH, MO(L_FN),
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   KC_BSPC, SPC_SYM, ESC_NV2,    TAB_NV2, ENT_SYM
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
   [L_SYM] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       XXXXXXX,    KC_0,    KC_9,    KC_8,    KC_7, XXXXXXX,    XXXXXXX, KC_PAST, KC_LPRN, KC_RPRN, _______,  KC_DEL,
+       XXXXXXX,    KC_0,    KC_9,    KC_8,    KC_7, XXXXXXX,    XXXXXXX, KC_PAST, KC_LPRN, KC_RPRN, KC_SCLN, XXXXXXX,
        XXXXXXX,    HR_0,    HR_3,    HR_2,    HR_1, XXXXXXX,     KC_GRV, HR_QUOT, HR_LBRC, HR_RBRC,  HR_EQL, XXXXXXX,
-       XXXXXXX,    KC_0,    KC_6,    KC_5,    HR_4, XXXXXXX,    XXXXXXX, HR_MINS, _______, _______, KC_BSLS, XXXXXXX,
+       XXXXXXX,    KC_0,    KC_6,    KC_5,    HR_4, XXXXXXX,    XXXXXXX, HR_MINS,   KC_LT,   KC_GT, KC_BSLS, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC, _______,    _______,  KC_ENT
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
   [L_NV] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       KC_PGUP,    KC_0,    KC_9,    KC_8,    KC_7, XXXXXXX,    XXXXXXX,   C_CUT,  C_COPY, C_PASTE, XXXXXXX,  KC_DEL,
+       KC_PGUP,    KC_0,    KC_9,    KC_8,    KC_7, XXXXXXX,    XXXXXXX,   C_CUT,  C_COPY, C_PASTE, XXXXXXX, XXXXXXX,
        KC_PGDN,    HR_0,    HR_3,    HR_2,    HR_1, XXXXXXX,    KC_HOME, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_END,
         KC_APP,    KC_0,    KC_6,    KC_5,    HR_4, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
