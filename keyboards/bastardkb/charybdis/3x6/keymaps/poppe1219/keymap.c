@@ -71,7 +71,6 @@ enum charybdis_keymap_layers {
 
 // Other Row Mods
 #define X_PTR LT(L_PTR, KC_X)
-#define DOT_PTR LT(L_PTR, ALGR(KC_DOT))
 
 // Common Cut, Copy and Paste
 #define C_CUT S(KC_DEL)
@@ -89,9 +88,9 @@ enum charybdis_keymap_layers {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [L_BASE] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-        KC_DEL,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,    KC_Y,  C_OUML, C_ARING,
-        QK_REP,    HR_A,    HR_R,    HR_S,    HR_T,    KC_G,       KC_M,    HR_N,    HR_E,    HR_I,    HR_O,  C_AUML,
-      MO(L_FN),    KC_Z,    X_PTR,   KC_C,    HR_D,    KC_V,       KC_K,    HR_H,  C_COMM, DOT_PTR, KC_SLSH, MO(L_FN),
+        KC_DEL,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,    KC_Y, UP(0x00D6, 0x00F6), UP(0x00E5, 0x00C5),
+        QK_REP,    HR_A,    HR_R,    HR_S,    HR_T,    KC_G,       KC_M,    HR_N,    HR_E,    HR_I,    HR_O, UP(0x00E4, 0x00C4),
+      MO(L_FN),    KC_Z,    X_PTR,   KC_C,    HR_D,    KC_V,       KC_K,    HR_H, UP(0x002C, 0x003B), UP(0x002E, 0x003A), KC_SLSH, MO(L_FN),
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   KC_BSPC, SPC_SYM, ESC_NV2,    TAB_NV2, ENT_SYM
   //                            ╰───────────────────────────╯ ╰──────────────────╯
@@ -200,11 +199,11 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
       break;
     case SHRUG_CMB1:
       if (pressed) {
-        send_string("¯\\_(ツ)_/¯");
+	SEND_STRING(SS_LALT("D83D+DC83"));
       }
     case SHRUG_CMB2:
       if (pressed) {
-        send_string("¯ \\ _ ( ツ ) _ / ¯");
+	SEND_STRING(SS_ALT("D83D+DC83"));
       }
     case SHRUG_CMB3:
       if (pressed) {
