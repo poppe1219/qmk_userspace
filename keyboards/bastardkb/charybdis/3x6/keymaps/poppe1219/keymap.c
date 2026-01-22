@@ -15,18 +15,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include QMK_KEYBOARD_H
-#include "keymap_swedish.h"
 
 enum charybdis_keymap_layers {
     L_BASE = 0,
-    //L_NUM,
     L_SYM,
     L_NV, // Navigation
     L_FN, // Function buttons
     L_PTR
 };
 
-/** \brief Automatically enable sniping-mode on the pointer layer. */
 #define CHARYBDIS_AUTO_SNIPING_ON_LAYER L_PTR
 
 
@@ -208,4 +205,9 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
         send_unicode_string("¯\\_(ツ)_/¯");
       }
   }
+}
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+    charybdis_set_pointer_sniping_enabled(layer_state_cmp(state, CHARYBDIS_AUTO_SNIPING_ON_LAYER));
+    return state;
 }
