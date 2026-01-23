@@ -51,6 +51,10 @@ enum charybdis_keymap_layers {
 #define HR_O RGUI_T(KC_O)
 #define HR_H ALGR_T(KC_H)
 
+// Redefine SE alias for curly braces.
+#define SE_LCBR ALGR(KC_7)
+#define SE_RCBR ALGR(KC_0)
+
 // Home Row Mods Sym Layer Right
 #define HR_QUOT RSFT_T(KC_QUOT)
 #define HR_LCBR RCTL_T(SE_LCBR)
@@ -104,7 +108,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [L_SYM] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        SE_SECT,   SE_AT, SE_HASH, SE_AMPR, SE_QUOT,  SE_PND,    SE_ACUT, KC_PAST, SE_LPRN, SE_RPRN, SE_SCLN, SE_PLUS,
-       SE_CIRC, SE_TILD, SE_SLSH, SE_BSLS, SE_DQUO,  SE_DLR,     KC_GRV, HR_QUOT, HR_LCBR, HR_RCBR, SE_COLN, SE_PERC,
+       KC_CIRC, KC_TILD, SE_SLSH, SE_BSLS, SE_DQUO,  SE_DLR,     KC_GRV, HR_QUOT, HR_LCBR, HR_RCBR, SE_COLN, SE_PERC,
        SE_ASTR, SE_PIPE, SE_LABK, SE_RABK,  SE_EQL, SE_EURO,    XXXXXXX, HR_MINS, SE_LBRC, SE_RBRC, SE_QUES,  SE_GRV,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC, _______,    _______,  KC_ENT
