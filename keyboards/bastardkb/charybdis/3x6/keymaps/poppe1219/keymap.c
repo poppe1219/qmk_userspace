@@ -52,13 +52,13 @@ enum charybdis_keymap_layers {
 #define HR_H ALGR_T(KC_H)
 
 // Redefine SE alias for curly braces.
-#define SE_LCBR ALGR(KC_7)
-#define SE_RCBR ALGR(KC_0)
+#define C_LCBR ALGR(KC_7)
+#define C_RCBR ALGR(KC_0)
 
 // Home Row Mods Sym Layer Right
 #define HR_QUOT RSFT_T(KC_QUOT)
-#define HR_LCBR RCTL_T(SE_LCBR)
-#define HR_RCBR LALT_T(SE_RCBR)
+#define HR_LCBR RCTL_T(C_LCBR)
+#define HR_RCBR LALT_T(C_RCBR)
 #define HR_EQL RGUI_T(KC_EQL)
 #define HR_MINS ALGR_T(KC_MINS)
 
