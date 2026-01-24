@@ -49,29 +49,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case M_TILDE:
         if (record->event.pressed) {
-            SEND_STRING(" ");
+            SEND_STRING("~");
         }
         break;
     case M_CFLEX:
         if (record->event.pressed) {
-            //SEND_STRING(SS_TAP(X_DIAE)" ");
-            SEND_STRING("~ , ^ , ` ,");
+            SEND_STRING("^");
         }
         break;
     case M_GRAVE:
         if (record->event.pressed) {
-            SEND_STRING(" ");
+            SEND_STRING("`");
         }
         break;
     case M_TEST1:
         if (record->event.pressed) {
-            //SEND_STRING("§,½,&,_,(,),/,\\");
-            //
-            //             !,Ä,#,€  ,%,/,_,§,€ y,+,;,:,*,ä,(,&,½,
-            //SEND_STRING("!,\",#,¤,%,&,=,?,`,´,-,<,>,|,',*,^,~,");
-            //
-            //SEND_STRING("$,@,+,[,],{,},?,.,µ,€,£,;,:,¨,´,ä,å,ö,Ä,Å,Ö,");
-            SEND_STRING("~ , ^ , ` ,");
+            SEND_STRING("$,@,+,[,],{,},?,.,µ,€,£,;,:,¨,´,ä,å,ö,Ä,Å,Ö,");
         }
         break;
   }
@@ -153,7 +146,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [L_TEST] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       _______, M_TEST1, UC(0x30C4), XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+       _______, M_TEST1, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
