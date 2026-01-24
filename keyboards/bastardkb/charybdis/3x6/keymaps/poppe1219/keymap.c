@@ -103,7 +103,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #define SPC_SYM LT(L_SYM, KC_SPC)
 #define ENT_SYM LT(L_SYM, KC_ENT)
 #define ESC_NV2 LT(L_NV, KC_ESC)
-#define TAB_NV2 LT(L_NV, K_TAB)
+#define TAB_NV2 LT(L_NV, KC_TAB)
 
 // Other Row Mods
 #define X_PTR LT(L_PTR, KC_X)
@@ -137,7 +137,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [L_SYM] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       SE_SECT, SE_HASH, SE_AMPR, SE_PERC, SE_QUOT, XXXXXXX,    SE_ACUT, SE_PAST, SE_LPRN, SE_RPRN, SE_SCLN, XXXXXXX,
+       SE_SECT, SE_HASH, SE_AMPR, SE_PERC, SE_QUOT, XXXXXXX,    SE_ACUT, SE_ASTR, SE_LPRN, SE_RPRN, SE_SCLN, XXXXXXX,
        M_CFLEX, M_TILDE, SE_SLSH, SE_BSLS, SE_DQUO,  SE_DLR,    M_GRAVE, SE_PLUS, SE_LCBR, SE_RCBR, SE_COLN, XXXXXXX,
          SE_AT, SE_PIPE, SE_LABK, SE_RABK,  SE_EQL, SE_EURO,    XXXXXXX, SE_MINS, SE_LBRC, SE_RBRC, SE_QUES,  SE_GRV,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
