@@ -60,8 +60,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         break;
     case M_GRAVE:
         if (record->event.pressed) {
-            //SEND_STRING(" ");
-            UC(0x30C4);
+            SEND_STRING(" ");
         }
         break;
     case M_TEST1:
