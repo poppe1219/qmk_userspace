@@ -22,6 +22,7 @@ enum charybdis_keymap_layers {
     L_BASE = 0,
     L_NV, // Navigation
     L_SYM,
+    L_TEST,
     L_FN, // Function buttons
     L_PTR
 };
@@ -36,6 +37,33 @@ enum charybdis_keymap_layers {
 //        'L', 'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 'R',
 //                       '*', '*', '*',  '*', '*'
 //    );
+
+enum custom_keycodes {
+    M_TEST1 = SAFE_RANGE,
+    M_TEST2,
+    M_TEST3,
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case M_TEST1:
+        if (record->event.pressed) {
+            SEND_STRING("Test 1");
+        }
+        break;
+    case M_TEST2:
+        if (record->event.pressed) {
+	    SEND_STRING(SS_ALGR("7"));
+        }
+        break;
+    case M_TEST3:
+        if (record->event.pressed) {
+	    SEND_STRING(SS_ALGR(";"));
+        }
+        break;
+  }
+  return true;
+};
 
 // Home Row Mods Base Layer Left
 #define HR_A LGUI_T(KC_A)
@@ -89,7 +117,7 @@ enum charybdis_keymap_layers {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [L_BASE] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-        KC_DEL,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,    KC_Y, SE_ODIA, SE_ARNG,
+    MO(L_TEST),    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,    KC_Y, SE_ODIA, SE_ARNG,
        SE_DQUO,    HR_A,    HR_R,    HR_S,    HR_T,    KC_G,       KC_M,    HR_N,    HR_E,    HR_I,    HR_O, SE_ADIA,
       MO(L_FN),    KC_Z,    X_PTR,   KC_C,    HR_D,    KC_V,       KC_K,    HR_H, SE_COMM, DOT_PTR, SE_MINS, MO(L_FN),
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
@@ -98,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [L_NV] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       XXXXXXX,    KC_0,    KC_9,    KC_8,    KC_7, XXXXXXX,    XXXXXXX,   C_CUT,  C_COPY, C_PASTE, XXXXXXX, XXXXXXX,
+       XXXXXXX,    KC_0,    KC_9,    KC_8,    KC_7, XXXXXXX,    XXXXXXX,   C_CUT,  C_COPY, C_PASTE,  KC_DEL, XXXXXXX,
        XXXXXXX,    HR_0,    HR_3,    HR_2,    HR_1, KC_PGUP,    KC_HOME, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_END,
         KC_APP,    KC_0,    KC_6,    KC_5,    HR_4, KC_PGDN,    XXXXXXX, XXXXXXX, _______, _______, _______, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
@@ -111,7 +139,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_CIRC, KC_TILD, SE_SLSH, SE_BSLS, SE_DQUO,  SE_DLR,     KC_GRV, HR_QUOT, HR_LCBR, HR_RCBR, SE_COLN, SE_PERC,
        SE_ASTR, SE_PIPE, SE_LABK, SE_RABK,  SE_EQL, SE_EURO,    XXXXXXX, HR_MINS, SE_LBRC, SE_RBRC, SE_QUES,  SE_GRV,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  _______,  KC_SPC, _______,    _______,  KC_ENT
+                                  _______, _______,  KC_ESC,     KC_TAB, _______
+  //                            ╰───────────────────────────╯ ╰──────────────────╯
+  ),
+  [L_TEST] = LAYOUT(
+  // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
+       _______, M_TEST1, M_TEST2, M_TEST3, KC_NUHS, DB_TOGG,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+       KC_INT1, KC_INT2, KC_INT3, KC_INT4, KC_INT5, KC_INT6,    XXXXXXX, XXXXXXX, ALGR(KC_7), ALGR(KC_0), XXXXXXX, XXXXXXX,
+       KC_LNG1, KC_LNG2, KC_LNG3, KC_LNG4, KC_LNG5, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_KB_VOLUME_UP, KC_KB_VOLUME_DOWN,
+  // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
+                                  _______,  KC_SPC,  KC_ESC,     KC_TAB,  KC_ENT
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
   [L_FN] = LAYOUT(
