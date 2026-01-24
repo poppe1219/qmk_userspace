@@ -39,26 +39,32 @@ enum charybdis_keymap_layers {
 //    );
 
 enum custom_keycodes {
-    M_TEST1 = SAFE_RANGE,
-    M_TEST2,
-    M_TEST3,
+    M_TILDE = SAFE_RANGE,
+    M_CFLEX,
+    M_GRAVE,
+    M_TEST1,
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
+    case M_TILDE:
+        if (record->event.pressed) {
+	    SEND_STRING("~ ");
+        }
+        break;
+    case M_CFLEX:
+        if (record->event.pressed) {
+	    SEND_STRING("^ ");
+        }
+        break;
+    case M_GRAVE:
+        if (record->event.pressed) {
+	    SEND_STRING("` ");
+        }
+        break;
     case M_TEST1:
         if (record->event.pressed) {
-            SEND_STRING("Test 1");
-        }
-        break;
-    case M_TEST2:
-        if (record->event.pressed) {
-	    SEND_STRING(SS_ALGR("7"));
-        }
-        break;
-    case M_TEST3:
-        if (record->event.pressed) {
-	    SEND_STRING(SS_ALGR(";"));
+            SEND_STRING("\\_( )_/");
         }
         break;
   }
@@ -79,16 +85,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #define HR_O RGUI_T(KC_O)
 #define HR_H ALGR_T(KC_H)
 
-// Redefine SE alias for curly braces.
-#define C_LCBR ALGR(KC_7)
-#define C_RCBR ALGR(KC_0)
-
 // Home Row Mods Sym Layer Right
-#define HR_QUOT RSFT_T(KC_QUOT)
-#define HR_LCBR RCTL_T(C_LCBR)
-#define HR_RCBR LALT_T(C_RCBR)
-#define HR_EQL RGUI_T(KC_EQL)
-#define HR_MINS ALGR_T(KC_MINS)
+//#define HR_QUOT RSFT_T(KC_QUOT)
+//#define HR_LCBR RCTL_T(C_LCBR)
+//#define HR_RCBR LALT_T(C_RCBR)
+//#define HR_EQL RGUI_T(KC_EQL)
+//#define HR_MINS ALGR_T(KC_MINS)
 
 // Home Row Mods Sym Layer Left
 #define HR_0 LGUI_T(KC_0)
@@ -97,11 +99,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #define HR_1 LSFT_T(KC_1)
 #define HR_4 ALGR_T(KC_4)
 
-// Thumb Row Mods
+// Layer toggles
 #define SPC_SYM LT(L_SYM, KC_SPC)
 #define ENT_SYM LT(L_SYM, KC_ENT)
 #define ESC_NV2 LT(L_NV, KC_ESC)
-#define TAB_NV2 LT(L_NV, KC_TAB)
+#define TAB_NV2 LT(L_NV, K_TAB)
 
 // Other Row Mods
 #define X_PTR LT(L_PTR, KC_X)
@@ -127,26 +129,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [L_NV] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        XXXXXXX,    KC_0,    KC_9,    KC_8,    KC_7, XXXXXXX,    XXXXXXX,   C_CUT,  C_COPY, C_PASTE,  KC_DEL, XXXXXXX,
-       XXXXXXX,    HR_0,    HR_3,    HR_2,    HR_1, KC_PGUP,    KC_HOME, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_END,
-        KC_APP,    KC_0,    KC_6,    KC_5,    HR_4, KC_PGDN,    XXXXXXX, XXXXXXX, _______, _______, _______, XXXXXXX,
+       XXXXXXX,    KC_0,    KC_3,    KC_2,    KC_1, KC_PGUP,    KC_HOME, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_END,
+        KC_APP,    KC_0,    KC_6,    KC_5,    KC_4, KC_PGDN,    XXXXXXX, XXXXXXX, _______, _______, _______, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC, _______,    _______,  KC_ENT
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
   [L_SYM] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       SE_SECT,   SE_AT, SE_HASH, SE_AMPR, SE_QUOT,  SE_PND,    SE_ACUT, KC_PAST, SE_LPRN, SE_RPRN, SE_SCLN, SE_PLUS,
-       KC_CIRC, KC_TILD, SE_SLSH, SE_BSLS, SE_DQUO,  SE_DLR,     KC_GRV, HR_QUOT, HR_LCBR, HR_RCBR, SE_COLN, SE_PERC,
-       SE_ASTR, SE_PIPE, SE_LABK, SE_RABK,  SE_EQL, SE_EURO,    XXXXXXX, HR_MINS, SE_LBRC, SE_RBRC, SE_QUES,  SE_GRV,
+       SE_SECT, SE_HASH, SE_AMPR, SE_PERC, SE_QUOT, XXXXXXX,    SE_ACUT, SE_PAST, SE_LPRN, SE_RPRN, SE_SCLN, XXXXXXX,
+       M_CFLEX, M_TILDE, SE_SLSH, SE_BSLS, SE_DQUO,  SE_DLR,    M_GRAVE, SE_PLUS, SE_LCBR, SE_RCBR, SE_COLN, XXXXXXX,
+         SE_AT, SE_PIPE, SE_LABK, SE_RABK,  SE_EQL, SE_EURO,    XXXXXXX, SE_MINS, SE_LBRC, SE_RBRC, SE_QUES,  SE_GRV,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______, _______,  KC_ESC,     KC_TAB, _______
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
   [L_TEST] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       _______, M_TEST1, M_TEST2, M_TEST3, KC_NUHS, DB_TOGG,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-       KC_INT1, KC_INT2, KC_INT3, KC_INT4, KC_INT5, KC_INT6,    XXXXXXX, XXXXXXX, ALGR(KC_7), ALGR(KC_0), XXXXXXX, XXXXXXX,
-       KC_LNG1, KC_LNG2, KC_LNG3, KC_LNG4, KC_LNG5, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_KB_VOLUME_UP, KC_KB_VOLUME_DOWN,
+       _______, M_TEST1, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC,  KC_ESC,     KC_TAB,  KC_ENT
   //                            ╰───────────────────────────╯ ╰──────────────────╯
