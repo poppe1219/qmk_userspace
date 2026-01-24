@@ -49,22 +49,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case M_TILDE:
         if (record->event.pressed) {
-	    SEND_STRING("~ ");
+	    SEND_STRING("½ ");
         }
         break;
     case M_CFLEX:
         if (record->event.pressed) {
-	    SEND_STRING("^ ");
+	    SEND_STRING("& ");
         }
         break;
     case M_GRAVE:
         if (record->event.pressed) {
-	    SEND_STRING("` ");
+	    SEND_STRING("§ ");
         }
         break;
     case M_TEST1:
         if (record->event.pressed) {
-            SEND_STRING("\\_( )_/");
+            SEND_STRING("§ ,½ , & ...");
         }
         break;
   }
