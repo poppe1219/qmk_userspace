@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include QMK_KEYBOARD_H
-#include "keymap_swedish.h"
+#include "sendstring_swedish.h"
 
 
 enum charybdis_keymap_layers {
@@ -49,17 +49,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case M_TILDE:
         if (record->event.pressed) {
-            SEND_STRING("");
+            SEND_STRING(SS_TAP(SE_DIAE)" ");
         }
         break;
     case M_CFLEX:
         if (record->event.pressed) {
-            SEND_STRING("");
+            SEND_STRING(SS_TAP(SE_DIAE)" ");
         }
         break;
     case M_GRAVE:
         if (record->event.pressed) {
-            SEND_STRING("");
+            SEND_STRING(SS_TAP(SE_ACUT)" ");
         }
         break;
     case M_TEST1:
@@ -69,7 +69,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             //             !,Ä,#,€  ,%,/,_,§,€ y,+,;,:,*,ä,(,&,½,
             //SEND_STRING("!,\",#,¤,%,&,=,?,`,´,-,<,>,|,',*,^,~,");
             //
-            SEND_STRING("$,@,+,[,],{,},?,.,µ,€,£,;,:,¨,´,ä,å,ö,Ä,Å,Ö,");
+            //SEND_STRING("$,@,+,[,],{,},?,.,µ,€,£,;,:,¨,´,ä,å,ö,Ä,Å,Ö,");
+            SEND_STRING("~ , ^ , ` ,");
         }
         break;
   }
