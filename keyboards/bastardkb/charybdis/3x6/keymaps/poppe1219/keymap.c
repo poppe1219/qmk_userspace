@@ -49,17 +49,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case M_TILDE:
         if (record->event.pressed) {
-            SEND_STRING(SS_TAP(SE_DIAE)" ");
+            SEND_STRING(SS_TAP(X_DIAE)" ");
         }
         break;
     case M_CFLEX:
         if (record->event.pressed) {
-            SEND_STRING(SS_TAP(SE_DIAE)" ");
+            //SEND_STRING(SS_TAP(X_DIAE)" ");
+            SEND_STRING("~ , ^ , ` ,");
         }
         break;
     case M_GRAVE:
         if (record->event.pressed) {
-            SEND_STRING(SS_TAP(SE_ACUT)" ");
+            SEND_STRING(SS_TAP(X_ACUT)" ");
         }
         break;
     case M_TEST1:
