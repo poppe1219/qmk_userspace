@@ -49,7 +49,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case M_TILDE:
         if (record->event.pressed) {
-            SEND_STRING(SS_TAP(X_DIAE)" ");
+            SEND_STRING(" ");
         }
         break;
     case M_CFLEX:
@@ -60,7 +60,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         break;
     case M_GRAVE:
         if (record->event.pressed) {
-            SEND_STRING(SS_TAP(X_ACUT)" ");
+            //SEND_STRING(" ");
+            UC(0x30C4);
         }
         break;
     case M_TEST1:
