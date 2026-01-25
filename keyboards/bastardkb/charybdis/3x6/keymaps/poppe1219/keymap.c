@@ -94,8 +94,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // Layer toggles
 #define SPC_SYM LT(L_SYM, KC_SPC)
 #define ENT_SYM LT(L_SYM, KC_ENT)
-#define ESC_NV LT(L_NV, KC_ESC)
-#define TAB_VIM LT(L_VIM, KC_TAB)
+#define ESC_VIM LT(L_VIM, KC_ESC)
+#define TAB_NV LT(L_NV, KC_TAB)
+#define ESC_SPE LT(L_SPE, KC_ESC)
 #define X_PTR LT(L_PTR, KC_X)
 #define DOT_PTR LT(L_PTR, SE_DOT)
 
@@ -109,11 +110,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [L_BASE] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-     MO(L_SPE),    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,    KC_Y, SE_ODIA, SE_ARNG,
+       ESC_SPE,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,    KC_Y, SE_ODIA, SE_ARNG,
        SE_DQUO,    HR_A,    HR_R,    HR_S,    HR_T,    KC_G,       KC_M,    HR_N,    HR_E,    HR_I,    HR_O, SE_ADIA,
       MO(L_FN),    KC_Z,    X_PTR,   KC_C,    HR_D,    KC_V,       KC_K,    HR_H, SE_COMM, DOT_PTR, SE_MINS, MO(L_FN),
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  KC_BSPC, SPC_SYM,  ESC_NV,    TAB_VIM, ENT_SYM
+                                  KC_BSPC, SPC_SYM, ESC_VIM,     TAB_NV, ENT_SYM
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
   [L_NV] = LAYOUT(
@@ -129,7 +130,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        XXXXXXX,    KC_0,    KC_9,    KC_8,    KC_7, XXXXXXX,    KC_PGUP,    KC_G, C(KC_D), C(KC_U), S(KC_G), XXXXXXX,
        XXXXXXX,    KC_0,    KC_3,    KC_2,    KC_1, XXXXXXX,    M_CFLEX,    KC_H,    KC_J,    KC_K,    KC_L,  SE_DLR,
-        KC_APP,    KC_0,    KC_6,    KC_5,    KC_4, XXXXXXX,    KC_PGDN,    KC_B, XXXXXXX, XXXXXXX,    KC_E, XXXXXXX,
+        KC_APP,    KC_0,    KC_6,    KC_5,    KC_4, XXXXXXX,    KC_PGDN,    KC_B, XXXXXXX,    KC_E,    KC_W, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC,  KC_ESC,    _______,  KC_ENT
   //                            ╰───────────────────────────╯ ╰──────────────────╯
@@ -163,7 +164,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [L_PTR] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT,    QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+       XXXXXXX, XXXXXXX, C_PASTE,  C_COPY,   C_CUT, QK_BOOT,    QK_BOOT,   C_CUT,  C_COPY, C_PASTE, XXXXXXX, XXXXXXX,
        QK_LLCK, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,    XXXXXXX, KC_RSFT, KC_RCTL, KC_LALT, KC_RGUI, XXXXXXX,
        XXXXXXX, DRGSCRL, _______, SNIPING, XXXXXXX,  EE_CLR,     EE_CLR, XXXXXXX, SNIPING, _______, DRGSCRL, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
@@ -225,3 +226,4 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     charybdis_set_pointer_sniping_enabled(layer_state_cmp(state, CHARYBDIS_AUTO_SNIPING_ON_LAYER));
     return state;
 }
+ 
