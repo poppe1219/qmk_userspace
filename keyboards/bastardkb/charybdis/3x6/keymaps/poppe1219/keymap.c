@@ -21,6 +21,7 @@
 enum charybdis_keymap_layers {
     L_BASE = 0,
     L_NV, // Navigation
+    L_VIM, // Vim navigation
     L_SYM,
     L_TEST,
     L_FN, // Function buttons
@@ -47,17 +48,17 @@ enum custom_keycodes {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case M_TILDE: // Counteract dead key in Swedish layout. Home folder in terminals.
+	  case M_TILDE: // Counteract dead key in Swedish layout: Home folder in terminals.
         if (record->event.pressed) {
             SEND_STRING("~");
         }
         break;
-    case M_CFLEX:  // Counteract dead key in Swedish layout. Start, regex and vim
+    case M_CFLEX:  // Counteract dead key in Swedish layout: Start, regex and vim
         if (record->event.pressed) {
             SEND_STRING("^");
         }
         break;
-    case M_GRAVE: // Counteract dead key in Swedish layout. Backtick
+    case M_GRAVE: // Counteract dead key in Swedish layout: Backtick
         if (record->event.pressed) {
             SEND_STRING("`");
         }
@@ -86,12 +87,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #define HR_O RGUI_T(KC_O)
 #define HR_H ALGR_T(KC_H)
 
-// Home Row Mods Sym Layer Right
-//#define HR_QUOT RSFT_T(KC_QUOT)
-//#define HR_LCBR RCTL_T(C_LCBR)
-//#define HR_RCBR LALT_T(C_RCBR)
-//#define HR_EQL RGUI_T(KC_EQL)
-//#define HR_MINS ALGR_T(KC_MINS)
+// Home Row Mods NV, Navigation
+#define HR_LEFT RSFT_T(KC_LEFT)
+#define HR_DOWN RCTL_T(KC_DOWN)
+#define HR_UP LALT_T(KC_UP)
+#define HR_RGHT RGUI_T(KC_RGHT)
 
 // Home Row Mods Sym Layer Left
 #define HR_0 LGUI_T(KC_0)
@@ -103,8 +103,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // Layer toggles
 #define SPC_SYM LT(L_SYM, KC_SPC)
 #define ENT_SYM LT(L_SYM, KC_ENT)
-#define ESC_NV2 LT(L_NV, KC_ESC)
-#define TAB_NV2 LT(L_NV, KC_TAB)
+#define ESC_NV LT(L_NV, KC_ESC)
+#define TAB_VIM LT(L_VIM, KC_TAB)
 
 // Other Row Mods
 #define X_PTR LT(L_PTR, KC_X)
@@ -124,16 +124,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        SE_DQUO,    HR_A,    HR_R,    HR_S,    HR_T,    KC_G,       KC_M,    HR_N,    HR_E,    HR_I,    HR_O, SE_ADIA,
       MO(L_FN),    KC_Z,    X_PTR,   KC_C,    HR_D,    KC_V,       KC_K,    HR_H, SE_COMM, DOT_PTR, SE_MINS, MO(L_FN),
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  KC_BSPC, SPC_SYM, ESC_NV2,    TAB_NV2, ENT_SYM
+                                  KC_BSPC, SPC_SYM,  ESC_NV,    TAB_VIM, ENT_SYM
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
   [L_NV] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        XXXXXXX,    KC_0,    KC_9,    KC_8,    KC_7, XXXXXXX,    XXXXXXX,   C_CUT,  C_COPY, C_PASTE,  KC_DEL, XXXXXXX,
-       XXXXXXX,    KC_0,    KC_3,    KC_2,    KC_1, KC_PGUP,    KC_HOME, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_END,
+       XXXXXXX,    KC_0,    KC_3,    KC_2,    KC_1, KC_PGUP,    KC_HOME, HR_LEFT, HR_DOWN,   HR_UP, HR_RGHT,  KC_END,
+        KC_APP,    KC_0,    KC_6,    KC_5,    KC_4, KC_PGDN,    XXXXXXX, KC_ALGR, _______, _______, _______, XXXXXXX,
+  // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
+                                  _______,  KC_SPC, _______,     KC_TAB,  KC_ENT
+  //                            ╰───────────────────────────╯ ╰──────────────────╯
+  ),
+  [L_VIM] = LAYOUT(
+  // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
+       XXXXXXX,    KC_0,    KC_9,    KC_8,    KC_7, XXXXXXX,    XXXXXXX,    KC_B, C(KC_D), C(KC_U),    KC_E, XXXXXXX,
+       XXXXXXX,    KC_0,    KC_3,    KC_2,    KC_1, KC_PGUP,    M_CFLEX,    KC_H,    KC_J,    KC_K,    KC_L,  SE_DLR,
         KC_APP,    KC_0,    KC_6,    KC_5,    KC_4, KC_PGDN,    XXXXXXX, XXXXXXX, _______, _______, _______, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  _______,  KC_SPC, _______,    _______,  KC_ENT
+                                  _______,  KC_SPC,  KC_ESC,    _______,  KC_ENT
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
   [L_SYM] = LAYOUT(
