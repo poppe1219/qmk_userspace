@@ -22,22 +22,13 @@ enum charybdis_keymap_layers {
     L_BASE = 0,
     L_NV, // Navigation
     L_VIM, // Vim navigation
-    L_SYM,
-    L_TEST,
+    L_SYM, // Symbols
+    L_SPE, // Special
     L_FN, // Function buttons
     L_PTR
 };
 
 #define CHARYBDIS_AUTO_SNIPING_ON_LAYER L_PTR
-
-
-//const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
-//    LAYOUT(
-//        'L', 'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 'R',
-//        'L', 'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 'R',
-//        'L', 'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 'R',
-//                       '*', '*', '*',  '*', '*'
-//    );
 
 enum custom_keycodes {
     M_TILDE = SAFE_RANGE,
@@ -48,7 +39,7 @@ enum custom_keycodes {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-	  case M_TILDE: // Counteract dead key in Swedish layout: Home folder in terminals.
+    case M_TILDE: // Counteract dead key in Swedish layout: Home folder in terminals.
         if (record->event.pressed) {
             SEND_STRING("~");
         }
@@ -105,8 +96,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #define ENT_SYM LT(L_SYM, KC_ENT)
 #define ESC_NV LT(L_NV, KC_ESC)
 #define TAB_VIM LT(L_VIM, KC_TAB)
-
-// Other Row Mods
 #define X_PTR LT(L_PTR, KC_X)
 #define DOT_PTR LT(L_PTR, SE_DOT)
 
@@ -120,7 +109,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [L_BASE] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-    MO(L_TEST),    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,    KC_Y, SE_ODIA, SE_ARNG,
+     MO(L_SPE),    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,    KC_Y, SE_ODIA, SE_ARNG,
        SE_DQUO,    HR_A,    HR_R,    HR_S,    HR_T,    KC_G,       KC_M,    HR_N,    HR_E,    HR_I,    HR_O, SE_ADIA,
       MO(L_FN),    KC_Z,    X_PTR,   KC_C,    HR_D,    KC_V,       KC_K,    HR_H, SE_COMM, DOT_PTR, SE_MINS, MO(L_FN),
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
@@ -129,36 +118,36 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [L_NV] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       XXXXXXX,    KC_0,    KC_9,    KC_8,    KC_7, XXXXXXX,    XXXXXXX,   C_CUT,  C_COPY, C_PASTE,  KC_DEL, XXXXXXX,
-       XXXXXXX,    KC_0,    KC_3,    KC_2,    KC_1, KC_PGUP,    KC_HOME, HR_LEFT, HR_DOWN,   HR_UP, HR_RGHT,  KC_END,
-        KC_APP,    KC_0,    KC_6,    KC_5,    KC_4, KC_PGDN,    XXXXXXX, KC_ALGR, _______, _______, _______, XXXXXXX,
+       XXXXXXX,    KC_0,    KC_9,    KC_8,    KC_7, SE_ASTR,    KC_PGUP,   C_CUT,  C_COPY, C_PASTE,  KC_DEL, XXXXXXX,
+       XXXXXXX,    KC_0,    KC_3,    KC_2,    KC_1, SE_MINS,    KC_HOME, HR_LEFT, HR_DOWN,   HR_UP, HR_RGHT,  KC_END,
+        KC_APP,    KC_0,    KC_6,    KC_5,    KC_4, SE_PLUS,    KC_PGDN, KC_ALGR, _______, _______, _______, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC, _______,     KC_TAB,  KC_ENT
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
   [L_VIM] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       XXXXXXX,    KC_0,    KC_9,    KC_8,    KC_7, XXXXXXX,    XXXXXXX,    KC_B, C(KC_D), C(KC_U),    KC_E, XXXXXXX,
-       XXXXXXX,    KC_0,    KC_3,    KC_2,    KC_1, KC_PGUP,    M_CFLEX,    KC_H,    KC_J,    KC_K,    KC_L,  SE_DLR,
-        KC_APP,    KC_0,    KC_6,    KC_5,    KC_4, KC_PGDN,    XXXXXXX, XXXXXXX, _______, _______, _______, XXXXXXX,
+       XXXXXXX,    KC_0,    KC_9,    KC_8,    KC_7, XXXXXXX,    KC_PGUP,    KC_G, C(KC_D), C(KC_U), S(KC_G), XXXXXXX,
+       XXXXXXX,    KC_0,    KC_3,    KC_2,    KC_1, XXXXXXX,    M_CFLEX,    KC_H,    KC_J,    KC_K,    KC_L,  SE_DLR,
+        KC_APP,    KC_0,    KC_6,    KC_5,    KC_4, XXXXXXX,    KC_PGDN,    KC_B, XXXXXXX, XXXXXXX,    KC_E, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC,  KC_ESC,    _______,  KC_ENT
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
   [L_SYM] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       SE_SECT, SE_HASH, SE_AMPR, SE_PERC, SE_QUOT, XXXXXXX,    SE_ACUT, SE_ASTR, SE_LPRN, SE_RPRN, SE_SCLN, XXXXXXX,
-       M_CFLEX, M_TILDE, SE_SLSH, SE_BSLS, SE_DQUO,  SE_DLR,    M_GRAVE, SE_PLUS, SE_LCBR, SE_RCBR, SE_COLN, XXXXXXX,
-         SE_AT, SE_PIPE, SE_LABK, SE_RABK,  SE_EQL, SE_EURO,    XXXXXXX, SE_MINS, SE_LBRC, SE_RBRC, SE_QUES,  SE_GRV,
+       XXXXXXX, SE_HASH, SE_AMPR, SE_PERC, SE_QUOT, XXXXXXX,    XXXXXXX, SE_ASTR, SE_LPRN, SE_RPRN, SE_SCLN, XXXXXXX,
+       M_CFLEX, M_TILDE, SE_SLSH, SE_BSLS, SE_DQUO,  SE_DLR,    M_GRAVE, SE_MINS, SE_LCBR, SE_RCBR, SE_COLN, XXXXXXX,
+         SE_AT, SE_PIPE, SE_LABK, SE_RABK,  SE_EQL, XXXXXXX,    XXXXXXX, SE_PLUS, SE_LBRC, SE_RBRC, SE_QUES, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  _______, _______,  KC_ESC,     KC_TAB, _______
+                                  _______,  KC_SPC,  KC_ESC,     KC_TAB, _______
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
-  [L_TEST] = LAYOUT(
+  [L_SPE] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       _______, M_TEST1, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+       _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, SE_ACUT, SE_DIAE, SE_TILD,  SE_GRV, SE_CIRC,
+       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, SE_SECT, SE_EURO,  SE_PND, SE_CURR, XXXXXXX,
+       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, SE_HALF, SE_MICR, XXXXXXX, XXXXXXX, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC,  KC_ESC,     KC_TAB,  KC_ENT
   //                            ╰───────────────────────────╯ ╰──────────────────╯
@@ -197,12 +186,6 @@ enum combo_events {
   SHRUG_CMB3,
 };
 
-const uint16_t PROGMEM boot_cmb1[] = {QK_REP, KC_G, COMBO_END};
-const uint16_t PROGMEM boot_cmb2[] = {KC_M, QK_REP, COMBO_END};
-const uint16_t PROGMEM eeclr_cmb1[] = {KC_ESC, KC_B, COMBO_END};
-const uint16_t PROGMEM eeclr_cmb2[] = {KC_J, KC_DEL, COMBO_END};
-const uint16_t PROGMEM to_base_cmb1[] = {KC_Z, HR_D, COMBO_END};
-const uint16_t PROGMEM to_base_cmb2[] = {HR_H, KC_SLSH, COMBO_END};
 const uint16_t PROGMEM caps_cmb[] = {KC_Z, KC_SLSH, COMBO_END};
 const uint16_t PROGMEM lang_cmb[] = {KC_D, KC_H, COMBO_END};
 const uint16_t PROGMEM shrug_cmb1[] = {KC_P, KC_L, COMBO_END};
@@ -210,12 +193,6 @@ const uint16_t PROGMEM shrug_cmb2[] = {KC_F, KC_U, COMBO_END};
 const uint16_t PROGMEM shrug_cmb3[] = {KC_W, KC_Y, COMBO_END};
 
 combo_t key_combos[] = {
-  [BOOT_CMB1] = COMBO_ACTION(boot_cmb1),
-  [BOOT_CMB2] = COMBO_ACTION(boot_cmb2),
-  [EECLR_CMB1] = COMBO_ACTION(eeclr_cmb1),
-  [EECLR_CMB2] = COMBO_ACTION(eeclr_cmb2),
-  [TOBASE_CMB1] = COMBO_ACTION(to_base_cmb1),
-  [TOBASE_CMB2] = COMBO_ACTION(to_base_cmb2),
   [CAPS_CMB] = COMBO_ACTION(caps_cmb),
   [SHRUG_CMB1] = COMBO_ACTION(shrug_cmb1),
   [SHRUG_CMB2] = COMBO_ACTION(shrug_cmb2),
@@ -224,36 +201,6 @@ combo_t key_combos[] = {
 
 void process_combo_event(uint16_t combo_index, bool pressed) {
   switch(combo_index) {
-    case BOOT_CMB1:
-      if (pressed) {
-        tap_code16(QK_BOOT);
-      }
-      break;
-    case BOOT_CMB2:
-      if (pressed) {
-        tap_code16(QK_BOOT);
-      }
-      break;
-    case EECLR_CMB1:
-      if (pressed) {
-        tap_code16(EE_CLR);
-      }
-      break;
-    case EECLR_CMB2:
-      if (pressed) {
-        tap_code16(EE_CLR);
-      }
-      break;
-    case TOBASE_CMB1:
-      if (pressed) {
-        tap_code16(TO(L_BASE));
-      }
-      break;
-    case TOBASE_CMB2:
-      if (pressed) {
-        tap_code16(TO(L_BASE));
-      }
-      break;
     case CAPS_CMB:
       if (pressed) {
         tap_code16(KC_CAPS);

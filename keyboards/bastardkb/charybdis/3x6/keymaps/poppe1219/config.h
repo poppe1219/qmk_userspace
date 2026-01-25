@@ -16,10 +16,6 @@
  */
 #pragma once
 
-//#ifdef VIA_ENABLE
-#define DYNAMIC_KEYMAP_LAYER_COUNT 10
-//#endif // VIA_ENABLE
-
 #ifndef __arm__
 /* Disable unused features. */
 #    define NO_ACTION_ONESHOT
