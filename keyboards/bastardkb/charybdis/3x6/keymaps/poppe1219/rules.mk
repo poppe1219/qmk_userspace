@@ -1,4 +1,4 @@
-VIA_ENABLE = yes
+//VIA_ENABLE = yes
 COMBO_ENABLE = yes
 UNICODE_COMMON = yes
 UNICODE_ENABLE = yes
