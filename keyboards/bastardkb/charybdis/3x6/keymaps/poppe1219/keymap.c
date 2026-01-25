@@ -15,11 +15,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include QMK_KEYBOARD_H
+#include "sendstring_swedish.h"
+
 
 enum charybdis_keymap_layers {
     L_BASE = 0,
-    L_SYM,
     L_NV, // Navigation
+    L_SYM,
+    L_TEST,
     L_FN, // Function buttons
     L_PTR
 };
@@ -34,6 +37,40 @@ enum charybdis_keymap_layers {
 //        'L', 'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 'R',
 //                       '*', '*', '*',  '*', '*'
 //    );
+
+enum custom_keycodes {
+    M_TILDE = SAFE_RANGE,
+    M_CFLEX,
+    M_GRAVE,
+    M_TEST1,
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case M_TILDE: // Counteract dead key in Swedish layout. Home folder in terminals.
+        if (record->event.pressed) {
+            SEND_STRING("~");
+        }
+        break;
+    case M_CFLEX:  // Counteract dead key in Swedish layout. Start, regex and vim
+        if (record->event.pressed) {
+            SEND_STRING("^");
+        }
+        break;
+    case M_GRAVE: // Counteract dead key in Swedish layout. Backtick
+        if (record->event.pressed) {
+            SEND_STRING("`");
+        }
+        break;
+    case M_TEST1:
+        if (record->event.pressed) {
+            //SEND_STRING("$,@,+,[,],{,},?,.,µ,€,£,;,:,¨,´,ä,å,ö,Ä,Å,Ö,");
+            send_unicode_string("¯\\_(ツ)_/¯");
+        }
+        break;
+  }
+  return true;
+};
 
 // Home Row Mods Base Layer Left
 #define HR_A LGUI_T(KC_A)
@@ -50,11 +87,11 @@ enum charybdis_keymap_layers {
 #define HR_H ALGR_T(KC_H)
 
 // Home Row Mods Sym Layer Right
-#define HR_QUOT RSFT_T(KC_QUOT)
-#define HR_LBRC RCTL_T(KC_LBRC)
-#define HR_RBRC LALT_T(KC_RBRC)
-#define HR_EQL RGUI_T(KC_EQL)
-#define HR_MINS ALGR_T(KC_MINS)
+//#define HR_QUOT RSFT_T(KC_QUOT)
+//#define HR_LCBR RCTL_T(C_LCBR)
+//#define HR_RCBR LALT_T(C_RCBR)
+//#define HR_EQL RGUI_T(KC_EQL)
+//#define HR_MINS ALGR_T(KC_MINS)
 
 // Home Row Mods Sym Layer Left
 #define HR_0 LGUI_T(KC_0)
@@ -63,7 +100,7 @@ enum charybdis_keymap_layers {
 #define HR_1 LSFT_T(KC_1)
 #define HR_4 ALGR_T(KC_4)
 
-// Thumb Row Mods
+// Layer toggles
 #define SPC_SYM LT(L_SYM, KC_SPC)
 #define ENT_SYM LT(L_SYM, KC_ENT)
 #define ESC_NV2 LT(L_NV, KC_ESC)
@@ -71,7 +108,7 @@ enum charybdis_keymap_layers {
 
 // Other Row Mods
 #define X_PTR LT(L_PTR, KC_X)
-#define DOT_PTR LT(L_PTR, KC_DOT)
+#define DOT_PTR LT(L_PTR, SE_DOT)
 
 // Common Cut, Copy and Paste
 #define C_CUT S(KC_DEL)
@@ -83,29 +120,38 @@ enum charybdis_keymap_layers {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [L_BASE] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-        KC_ESC,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN,  KC_DEL,
-        QK_REP,    HR_A,    HR_R,    HR_S,    HR_T,    KC_G,       KC_M,    HR_N,    HR_E,    HR_I,    HR_O,  QK_REP,
-      MO(L_FN),    KC_Z,    X_PTR,   KC_C,    HR_D,    KC_V,       KC_K,    HR_H, KC_COMM, DOT_PTR, KC_SLSH, MO(L_FN),
+    MO(L_TEST),    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,    KC_Y, SE_ODIA, SE_ARNG,
+       SE_DQUO,    HR_A,    HR_R,    HR_S,    HR_T,    KC_G,       KC_M,    HR_N,    HR_E,    HR_I,    HR_O, SE_ADIA,
+      MO(L_FN),    KC_Z,    X_PTR,   KC_C,    HR_D,    KC_V,       KC_K,    HR_H, SE_COMM, DOT_PTR, SE_MINS, MO(L_FN),
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   KC_BSPC, SPC_SYM, ESC_NV2,    TAB_NV2, ENT_SYM
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
-  [L_SYM] = LAYOUT(
+  [L_NV] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       XXXXXXX,    KC_0,    KC_9,    KC_8,    KC_7, XXXXXXX,    XXXXXXX, KC_PAST, KC_LPRN, KC_RPRN, _______,  KC_DEL,
-       XXXXXXX,    HR_0,    HR_3,    HR_2,    HR_1, XXXXXXX,     KC_GRV, HR_QUOT, HR_LBRC, HR_RBRC,  HR_EQL, XXXXXXX,
-       XXXXXXX,    KC_0,    KC_6,    KC_5,    HR_4, XXXXXXX,    XXXXXXX, HR_MINS, _______, _______, KC_BSLS, XXXXXXX,
+       XXXXXXX,    KC_0,    KC_9,    KC_8,    KC_7, XXXXXXX,    XXXXXXX,   C_CUT,  C_COPY, C_PASTE,  KC_DEL, XXXXXXX,
+       XXXXXXX,    KC_0,    KC_3,    KC_2,    KC_1, KC_PGUP,    KC_HOME, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_END,
+        KC_APP,    KC_0,    KC_6,    KC_5,    KC_4, KC_PGDN,    XXXXXXX, XXXXXXX, _______, _______, _______, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC, _______,    _______,  KC_ENT
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
-  [L_NV] = LAYOUT(
+  [L_SYM] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       KC_PGUP,    KC_0,    KC_9,    KC_8,    KC_7, XXXXXXX,    XXXXXXX,   C_CUT,  C_COPY, C_PASTE, XXXXXXX,  KC_DEL,
-       KC_PGDN,    HR_0,    HR_3,    HR_2,    HR_1, XXXXXXX,    KC_HOME, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_END,
-        KC_APP,    KC_0,    KC_6,    KC_5,    HR_4, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+       SE_SECT, SE_HASH, SE_AMPR, SE_PERC, SE_QUOT, XXXXXXX,    SE_ACUT, SE_ASTR, SE_LPRN, SE_RPRN, SE_SCLN, XXXXXXX,
+       M_CFLEX, M_TILDE, SE_SLSH, SE_BSLS, SE_DQUO,  SE_DLR,    M_GRAVE, SE_PLUS, SE_LCBR, SE_RCBR, SE_COLN, XXXXXXX,
+         SE_AT, SE_PIPE, SE_LABK, SE_RABK,  SE_EQL, SE_EURO,    XXXXXXX, SE_MINS, SE_LBRC, SE_RBRC, SE_QUES,  SE_GRV,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  _______,  KC_SPC, _______,    _______,  KC_ENT
+                                  _______, _______,  KC_ESC,     KC_TAB, _______
+  //                            ╰───────────────────────────╯ ╰──────────────────╯
+  ),
+  [L_TEST] = LAYOUT(
+  // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
+       _______, M_TEST1, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
+                                  _______,  KC_SPC,  KC_ESC,     KC_TAB,  KC_ENT
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
   [L_FN] = LAYOUT(
@@ -206,7 +252,7 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
       break;
     case SHRUG_CMB1:
       if (pressed) {
-        send_string("¯\\_(ツ)_/¯");
+        tap_code16(UC(0x30C4));
       }
     case SHRUG_CMB2:
       if (pressed) {
