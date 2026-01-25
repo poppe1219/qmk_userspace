@@ -17,7 +17,7 @@
 #pragma once
 
 //#ifdef VIA_ENABLE
-//#    define DYNAMIC_KEYMAP_LAYER_COUNT 6
+#define DYNAMIC_KEYMAP_LAYER_COUNT 10
 //#endif // VIA_ENABLE
 
 #ifndef __arm__
