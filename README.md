@@ -6,7 +6,7 @@ In my case, the Charybdis Mini 3x6 Splinky.
 
 # Todo?
 
-- [ ] Keep improving the nav layer for vim, split in normal + vim nav layers? 
+- [X] Keep improving the nav layer for vim, split in normal + vim nav layers? 
 - [ ] Add combos for common tasks in vim, bash, desktop.
   - [X] Caps lock
   - [ ] Vim: save 

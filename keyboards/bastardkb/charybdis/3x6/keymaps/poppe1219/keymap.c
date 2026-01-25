@@ -139,8 +139,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [L_SYM] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       XXXXXXX, SE_HASH, SE_AMPR, SE_PERC, SE_QUOT, XXXXXXX,    XXXXXXX, SE_ASTR, SE_LPRN, SE_RPRN, SE_SCLN, XXXXXXX,
-       M_CFLEX, M_TILDE, SE_SLSH, SE_BSLS, SE_DQUO,  SE_DLR,    M_GRAVE, SE_MINS, SE_LCBR, SE_RCBR, SE_COLN, XXXXXXX,
+       XXXXXXX, SE_HASH, SE_AMPR, SE_PERC, SE_QUOT, XXXXXXX,    SE_EXLM, SE_ASTR, SE_LPRN, SE_RPRN, SE_SCLN, XXXXXXX,
+       M_CFLEX, M_TILDE, SE_SLSH, SE_BSLS, SE_DQUO,  SE_DLR,    M_GRAVE, SE_MINS, SE_LCBR, SE_RCBR, SE_COLN, SE_UNDS,
          SE_AT, SE_PIPE, SE_LABK, SE_RABK,  SE_EQL, XXXXXXX,    XXXXXXX, SE_PLUS, SE_LBRC, SE_RBRC, SE_QUES, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC,  KC_ESC,     KC_TAB, _______
@@ -177,29 +177,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // clang-format on
 
 enum combo_events {
-  BOOT_CMB1,
-  BOOT_CMB2,
-  EECLR_CMB1,
-  EECLR_CMB2,
-  TOBASE_CMB1,
-  TOBASE_CMB2,
   CAPS_CMB,
-  SHRUG_CMB1,
-  SHRUG_CMB2,
-  SHRUG_CMB3,
+  UNIC_CMB1,
+  UNIC_CMB2,
+  UNIC_CMB3,
 };
 
 const uint16_t PROGMEM caps_cmb[] = {KC_Z, KC_SLSH, COMBO_END};
-const uint16_t PROGMEM lang_cmb[] = {KC_D, KC_H, COMBO_END};
-const uint16_t PROGMEM shrug_cmb1[] = {KC_P, KC_L, COMBO_END};
-const uint16_t PROGMEM shrug_cmb2[] = {KC_F, KC_U, COMBO_END};
-const uint16_t PROGMEM shrug_cmb3[] = {KC_W, KC_Y, COMBO_END};
+const uint16_t PROGMEM unic_cmb1[] = {KC_P, KC_L, COMBO_END};
+const uint16_t PROGMEM unic_cmb2[] = {KC_F, KC_U, COMBO_END};
+const uint16_t PROGMEM unic_cmb3[] = {KC_W, KC_Y, COMBO_END};
 
 combo_t key_combos[] = {
   [CAPS_CMB] = COMBO_ACTION(caps_cmb),
-  [SHRUG_CMB1] = COMBO_ACTION(shrug_cmb1),
-  [SHRUG_CMB2] = COMBO_ACTION(shrug_cmb2),
-  [SHRUG_CMB3] = COMBO_ACTION(shrug_cmb3),
+  [UNIC_CMB1] = COMBO_ACTION(unic_cmb1),
+  [UNIC_CMB2] = COMBO_ACTION(unic_cmb2),
+  [UNIC_CMB3] = COMBO_ACTION(unic_cmb3),
 };
 
 void process_combo_event(uint16_t combo_index, bool pressed) {
@@ -209,15 +202,15 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
         tap_code16(KC_CAPS);
       }
       break;
-    case SHRUG_CMB1:
+    case UNIC_CMB1:
       if (pressed) {
         tap_code16(UC(0x30C4));
       }
-    case SHRUG_CMB2:
+    case UNIC_CMB2:
       if (pressed) {
         send_string("¯ \\ _ ( ツ ) _ / ¯");
       }
-    case SHRUG_CMB3:
+    case UNIC_CMB3:
       if (pressed) {
         send_unicode_string("¯\\_(ツ)_/¯");
       }
