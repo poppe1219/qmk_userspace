@@ -99,6 +99,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #define ESC_SPE LT(L_SPE, KC_ESC)
 #define X_PTR LT(L_PTR, KC_X)
 #define DOT_PTR LT(L_PTR, SE_DOT)
+#define DEL_FN LT(L_FN, KC_DEL)
+#define DEL_FN LT(L_FN, KC_DEL)
 
 // Common Cut, Copy and Paste
 #define C_CUT S(KC_DEL)
@@ -112,7 +114,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        ESC_SPE,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,    KC_Y, SE_ODIA, SE_ARNG,
        SE_DQUO,    HR_A,    HR_R,    HR_S,    HR_T,    KC_G,       KC_M,    HR_N,    HR_E,    HR_I,    HR_O, SE_ADIA,
-      MO(L_FN),    KC_Z,    X_PTR,   KC_C,    HR_D,    KC_V,       KC_K,    HR_H, SE_COMM, DOT_PTR, SE_MINS, MO(L_FN),
+        DEL_FN,    KC_Z,    X_PTR,   KC_C,    HR_D,    KC_V,       KC_K,    HR_H, SE_COMM, DOT_PTR, SE_MINS,  DEL_FN,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   KC_BSPC, SPC_SYM, ESC_VIM,     TAB_NV, ENT_SYM
   //                            ╰───────────────────────────╯ ╰──────────────────╯
@@ -121,16 +123,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        XXXXXXX,    KC_0,    KC_9,    KC_8,    KC_7, SE_ASTR,    XXXXXXX, XXXXXXX, KC_PGDN, KC_PGUP, XXXXXXX, XXXXXXX,
        XXXXXXX,    KC_0,    KC_3,    KC_2,    KC_1, SE_MINS,    KC_HOME, HR_LEFT, HR_DOWN,   HR_UP, HR_RGHT,  KC_END,
-        KC_APP,    KC_0,    KC_6,    KC_5,    KC_4, SE_PLUS,    XXXXXXX, KC_ALGR, _______, _______, _______, XXXXXXX,
+       XXXXXXX,    KC_0,    KC_6,    KC_5,    KC_4, SE_PLUS,    XXXXXXX, KC_ALGR, _______, _______, _______, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC, _______,     KC_TAB,  KC_ENT
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
   [L_VIM] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       XXXXXXX,    KC_0,    KC_9,    KC_8,    KC_7, XXXXXXX,    KC_PGUP,    KC_G, C(KC_D), C(KC_U), S(KC_G), XXXXXXX,
+       XXXXXXX,    KC_0,    KC_9,    KC_8,    KC_7, XXXXXXX,    XXXXXXX,    KC_G, C(KC_D), C(KC_U), S(KC_G), XXXXXXX,
        XXXXXXX,    KC_0,    KC_3,    KC_2,    KC_1, XXXXXXX,    M_CFLEX,    KC_H,    KC_J,    KC_K,    KC_L,  SE_DLR,
-       XXXXXXX,    KC_0,    KC_6,    KC_5,    KC_4, XXXXXXX,    KC_PGDN,    KC_B, XXXXXXX,    KC_E,    KC_W, XXXXXXX,
+       XXXXXXX,    KC_0,    KC_6,    KC_5,    KC_4, XXXXXXX,    XXXXXXX,    KC_B, XXXXXXX,    KC_E,    KC_W, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC,  KC_ESC,    _______,  KC_ENT
   //                            ╰───────────────────────────╯ ╰──────────────────╯
@@ -155,8 +157,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [L_FN] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       XXXXXXX,   KC_F1,   KC_F2,   KC_F3,   KC_F4, QK_BOOT,    QK_BOOT,   C_CUT,  C_COPY, C_PASTE, XXXXXXX, KC_SCRL,
-       XXXXXXX,   KC_F5,   KC_F6,   KC_F7,   KC_F8, XXXXXXX,    XXXXXXX, KC_RSFT, KC_RCTL, KC_LALT, KC_RGUI, KC_PAUS,
+        KC_NUM,   KC_F1,   KC_F2,   KC_F3,   KC_F4, QK_BOOT,    QK_BOOT,   C_CUT,  C_COPY, C_PASTE, XXXXXXX, KC_SCRL,
+        KC_APP,   KC_F5,   KC_F6,   KC_F7,   KC_F8, XXXXXXX,    XXXXXXX, KC_RSFT, KC_RCTL, KC_LALT, KC_RGUI, KC_PAUS,
        _______,   KC_F9,  KC_F10,  KC_F11,  KC_F12,  EE_CLR,     EE_CLR, KC_ALGR, KC_PSCR,  KC_INS, XXXXXXX, _______,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC,  KC_ESC,     KC_TAB,  KC_ENT
