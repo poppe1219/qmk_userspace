@@ -47,24 +47,25 @@ enum custom_keycodes {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case M_TILDE:
+    case M_TILDE: // Counteract dead key in Swedish layout. Home folder in terminals.
         if (record->event.pressed) {
             SEND_STRING("~");
         }
         break;
-    case M_CFLEX:
+    case M_CFLEX:  // Counteract dead key in Swedish layout. Start, regex and vim
         if (record->event.pressed) {
             SEND_STRING("^");
         }
         break;
-    case M_GRAVE:
+    case M_GRAVE: // Counteract dead key in Swedish layout. Backtick
         if (record->event.pressed) {
             SEND_STRING("`");
         }
         break;
     case M_TEST1:
         if (record->event.pressed) {
-            SEND_STRING("$,@,+,[,],{,},?,.,µ,€,£,;,:,¨,´,ä,å,ö,Ä,Å,Ö,");
+            //SEND_STRING("$,@,+,[,],{,},?,.,µ,€,£,;,:,¨,´,ä,å,ö,Ä,Å,Ö,");
+            send_unicode_string("¯\\_(ツ)_/¯");
         }
         break;
   }
