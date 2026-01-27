@@ -134,11 +134,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC,  KC_ESC,    _______,  KC_ENT
   //                            ╰───────────────────────────╯ ╰──────────────────╯
+  //), [L_SYM] = LAYOUT(
+  //// ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
+  //     XXXXXXX, SE_HASH, SE_AMPR, SE_PERC, SE_QUOT, XXXXXXX,    SE_EXLM, SE_ASTR, SE_LPRN, SE_RPRN, SE_SCLN, XXXXXXX,
+  //     M_CFLEX, M_TILDE, SE_SLSH, SE_BSLS, SE_DQUO,  SE_DLR,    M_GRAVE, SE_MINS, SE_LCBR, SE_RCBR, SE_COLN, SE_UNDS,
+  //       SE_AT, SE_PIPE, SE_LABK, SE_RABK,  SE_EQL, XXXXXXX,    XXXXXXX, SE_PLUS, SE_LBRC, SE_RBRC, SE_QUES, XXXXXXX,
+  //// ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
+  //                                _______,  KC_SPC,  KC_ESC,     KC_TAB, _______
+  ////                            ╰───────────────────────────╯ ╰──────────────────╯
   ), [L_SYM] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       XXXXXXX, SE_HASH, SE_AMPR, SE_PERC, SE_QUOT, XXXXXXX,    SE_EXLM, SE_ASTR, SE_LPRN, SE_RPRN, SE_SCLN, XXXXXXX,
-       M_CFLEX, M_TILDE, SE_SLSH, SE_BSLS, SE_DQUO,  SE_DLR,    M_GRAVE, SE_MINS, SE_LCBR, SE_RCBR, SE_COLN, SE_UNDS,
-         SE_AT, SE_PIPE, SE_LABK, SE_RABK,  SE_EQL, XXXXXXX,    XXXXXXX, SE_PLUS, SE_LBRC, SE_RBRC, SE_QUES, XXXXXXX,
+       XXXXXXX, SE_HASH, SE_AMPR, SE_PERC, SE_QUOT, XXXXXXX,    M_GRAVE, SE_ASTR, SE_LPRN, SE_RPRN, SE_SCLN, XXXXXXX,
+       SE_DQUO, M_TILDE, SE_SLSH, SE_BSLS,  SE_EQL, SE_PIPE,    M_CFLEX, SE_MINS, SE_LCBR, SE_RCBR, SE_COLN, SE_QUES,
+       XXXXXXX,   SE_AT, SE_LABK, SE_RABK, SE_EXLM,  SE_DLR,    XXXXXXX, SE_PLUS, SE_LBRC, SE_RBRC, SE_UNDS, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC,  KC_ESC,     KC_TAB, _______
   //                            ╰───────────────────────────╯ ╰──────────────────╯
