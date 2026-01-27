@@ -34,6 +34,7 @@ enum custom_keycodes {
     M_TILDE = SAFE_RANGE,
     M_CFLEX,
     M_GRAVE,
+    M_E_ACU,
     M_TEST1,
 };
 
@@ -52,6 +53,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case M_GRAVE: // Counteract dead key in Swedish layout: Backtick
         if (record->event.pressed) {
             SEND_STRING("`");
+        }
+        break;
+    case M_E_ACU: // Letter e with acute, if OS has Swedish keyboard layout set.
+        if (record->event.pressed) {
+            SEND_STRING(SS_TAP(X_EQL)SS_TAP(X_E));
         }
         break;
     case M_TEST1:
@@ -113,7 +119,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [L_BASE] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        ESC_SPE,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,    KC_Y, SE_ODIA, SE_ARNG,
-       SE_DQUO,    HR_A,    HR_R,    HR_S,    HR_T,    KC_G,       KC_M,    HR_N,    HR_E,    HR_I,    HR_O, SE_ADIA,
+       M_E_ACU,    HR_A,    HR_R,    HR_S,    HR_T,    KC_G,       KC_M,    HR_N,    HR_E,    HR_I,    HR_O, SE_ADIA,
         DEL_FN,    KC_Z,    X_PTR,   KC_C,    HR_D,    KC_V,       KC_K,    HR_H, SE_COMM, DOT_PTR, SE_MINS,  DEL_FN,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   KC_BSPC, SPC_SYM, ESC_VIM,     TAB_NV, ENT_SYM
@@ -144,9 +150,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ////                            ╰───────────────────────────╯ ╰──────────────────╯
   ), [L_SYM] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       XXXXXXX, SE_HASH, SE_AMPR, SE_PERC, SE_QUOT, XXXXXXX,    M_GRAVE, SE_ASTR, SE_LPRN, SE_RPRN, SE_SCLN, XXXXXXX,
-       SE_DQUO, M_TILDE, SE_SLSH, SE_BSLS,  SE_EQL, SE_PIPE,    M_CFLEX, SE_MINS, SE_LCBR, SE_RCBR, SE_COLN, SE_QUES,
-       XXXXXXX,   SE_AT, SE_LABK, SE_RABK, SE_EXLM,  SE_DLR,    XXXXXXX, SE_PLUS, SE_LBRC, SE_RBRC, SE_UNDS, XXXXXXX,
+       XXXXXXX, SE_HASH, SE_AMPR, SE_PERC, SE_QUOT, XXXXXXX,    M_GRAVE, SE_ASTR, SE_LPRN, SE_RPRN, XXXXXXX, XXXXXXX,
+       XXXXXXX, M_TILDE, SE_SLSH, SE_BSLS, SE_DQUO, SE_PIPE,    M_CFLEX, SE_MINS, SE_LCBR, SE_RCBR,  SE_EQL,  SE_DLR,
+       XXXXXXX,   SE_AT, SE_LABK, SE_RABK, SE_EXLM, XXXXXXX,    XXXXXXX, SE_PLUS, SE_LBRC, SE_RBRC, SE_QUES, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC,  KC_ESC,     KC_TAB, _______
   //                            ╰───────────────────────────╯ ╰──────────────────╯
