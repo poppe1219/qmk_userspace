@@ -57,7 +57,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         break;
     case M_E_ACU: // Letter e with acute, if OS has Swedish keyboard layout set.
         if (record->event.pressed) {
-            SEND_STRING(SS_TAP(X_EQL)SS_TAP(X_E));
+            if (get_mods() & MOD_MASK_SHIFT) {
+              // Counteract shift with another shift.
+              register_code16(S(KC_EQL));  // Acute in Swe layout
+              unregister_code16(S(KC_EQL));
+            } else {
+              register_code16(KC_EQL);  // Acute in Swe layout
+              unregister_code16(KC_EQL);
+            }
+            register_code16(KC_E);
+            unregister_code16(KC_E);
         }
         break;
     case M_TEST1:
@@ -178,7 +187,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        QK_LLCK, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,    XXXXXXX, KC_RSFT, KC_RCTL, KC_LALT, KC_RGUI, XXXXXXX,
        XXXXXXX, DRGSCRL, _______, SNIPING, XXXXXXX,  EE_CLR,     EE_CLR, XXXXXXX, SNIPING, _______, DRGSCRL, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  XXXXXXX, KC_BTN1, KC_BTN2,    KC_BTN2, KC_BTN1
+                                  KC_BTN1, KC_BTN2, XXXXXXX,    KC_BTN2, KC_BTN1
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   )
 };
