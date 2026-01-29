@@ -35,7 +35,7 @@ enum custom_keycodes {
     M_CFLEX,
     M_GRAVE,
     M_E_ACU,
-    M_TEST1,
+    M_SAVQT,
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -57,22 +57,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         break;
     case M_E_ACU: // Letter e with acute, if OS has Swedish keyboard layout set.
         if (record->event.pressed) {
-            if (get_mods() & MOD_MASK_SHIFT) {
-              // Counteract shift with another shift.
-              register_code16(S(KC_EQL));  // Acute in Swe layout
-              unregister_code16(S(KC_EQL));
+            bool shifted = get_mods() & MOD_MASK_SHIFT;
+            unregister_mods(MOD_MASK_SHIFT);
+            register_code16(KC_EQL);  // Acute in Swe layout
+            unregister_code16(KC_EQL);
+            if (shifted) {
+                register_code16(S(KC_E));  // Shifted E
+                unregister_code16(S(KC_E));
             } else {
-              register_code16(KC_EQL);  // Acute in Swe layout
-              unregister_code16(KC_EQL);
+                register_code16(KC_E);  // Unshifted E
+                unregister_code16(KC_E);
             }
-            register_code16(KC_E);
-            unregister_code16(KC_E);
         }
         break;
-    case M_TEST1:
+    case M_SAVQT:
         if (record->event.pressed) {
-            //SEND_STRING("$,@,+,[,],{,},?,.,µ,€,£,;,:,¨,´,ä,å,ö,Ä,Å,Ö,");
-            send_unicode_string("¯\\_(ツ)_/¯");
+            SEND_STRING(SS_TAP(X_ESC)SS_LSFT("ZZ"));  // Vim, save and quit.
         }
         break;
   }
@@ -143,20 +143,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ), [L_VIM] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       XXXXXXX,    KC_0,    KC_9,    KC_8,    KC_7, XXXXXXX,    XXXXXXX,    KC_G, C(KC_D), C(KC_U), S(KC_G), XXXXXXX,
+       XXXXXXX,    KC_0,    KC_9,    KC_8,    KC_7, M_SAVQT,    XXXXXXX,    KC_G, C(KC_D), C(KC_U), S(KC_G), XXXXXXX,
        XXXXXXX,    KC_0,    KC_3,    KC_2,    KC_1, XXXXXXX,    M_CFLEX, HR_LEFT, HR_DOWN,   HR_UP, HR_RGHT,  SE_DLR,
        XXXXXXX,    KC_0,    KC_6,    KC_5,    KC_4, XXXXXXX,    XXXXXXX,    KC_B, XXXXXXX,    KC_E,    KC_W, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC,  KC_ESC,    _______,  KC_ENT
   //                            ╰───────────────────────────╯ ╰──────────────────╯
-  //), [L_SYM] = LAYOUT(
-  //// ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-  //     XXXXXXX, SE_HASH, SE_AMPR, SE_PERC, SE_QUOT, XXXXXXX,    SE_EXLM, SE_ASTR, SE_LPRN, SE_RPRN, SE_SCLN, XXXXXXX,
-  //     M_CFLEX, M_TILDE, SE_SLSH, SE_BSLS, SE_DQUO,  SE_DLR,    M_GRAVE, SE_MINS, SE_LCBR, SE_RCBR, SE_COLN, SE_UNDS,
-  //       SE_AT, SE_PIPE, SE_LABK, SE_RABK,  SE_EQL, XXXXXXX,    XXXXXXX, SE_PLUS, SE_LBRC, SE_RBRC, SE_QUES, XXXXXXX,
-  //// ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-  //                                _______,  KC_SPC,  KC_ESC,     KC_TAB, _______
-  ////                            ╰───────────────────────────╯ ╰──────────────────╯
   ), [L_SYM] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        XXXXXXX, SE_HASH, SE_AMPR, SE_PERC, SE_QUOT, XXXXXXX,    M_GRAVE, SE_ASTR, SE_LPRN, SE_RPRN, XXXXXXX, XXXXXXX,
