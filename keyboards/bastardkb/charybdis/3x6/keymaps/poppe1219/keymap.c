@@ -31,9 +31,9 @@ enum charybdis_keymap_layers {
 #define CHARYBDIS_AUTO_SNIPING_ON_LAYER L_PTR
 
 enum custom_keycodes {
-    M_TILDE = SAFE_RANGE, // ~
-    M_CFLEX, // ^
-    M_GRAVE, // `
+    M_TILDE = SAFE_RANGE,
+    M_CFLEX,
+    M_GRAVE,
     M_E_ACU, // É/é
     M_FRCQT, // Vim: Force quit
     M_SAVE, //  Vim: Save
@@ -81,7 +81,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         break;
     case M_SAVE:
         if (record->event.pressed) {
-            SEND_STRING(SS_TAP(X_ESC)(":w\n");  // Vim, save
+            SEND_STRING(SS_TAP(X_ESC)":w\n");  // Vim, save
         }
         break;
     case M_SAVQT:
