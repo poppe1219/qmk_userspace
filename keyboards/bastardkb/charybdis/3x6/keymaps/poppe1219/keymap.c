@@ -39,7 +39,11 @@ enum custom_keycodes {
     M_SAVE, //  Vim: Save
     M_SAVQT, // Vim: Save and quit
     M_SPHZT, // Vim: Split horizontally
-    M_SPVRT, // Vim: Spiit vertically
+    M_SPVRT, // Vim: Split vertically
+    M_WLEFT, // Vim: Move to pane, left
+    M_WDOWN, // Vim: Move to pane, down
+    M_WUP, //   Vim: Move to pane, up
+    M_WRGHT, // Vim: Move to pane, right
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -97,6 +101,26 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case M_SPVRT:
         if (record->event.pressed) {
             SEND_STRING(SS_TAP(X_ESC)SS_LCTL("w")"v");  // Vim, split vertically
+        }
+        break;
+    case M_WLEFT:
+        if (record->event.pressed) {
+            SEND_STRING(SS_TAP(X_ESC)SS_LCTL("w")"h");  // Vim, move to pane, left
+        }
+        break;
+    case M_WDOWN:
+        if (record->event.pressed) {
+            SEND_STRING(SS_TAP(X_ESC)SS_LCTL("w")"j");  // Vim, move to pane, down
+        }
+        break;
+    case M_WUP:
+        if (record->event.pressed) {
+            SEND_STRING(SS_TAP(X_ESC)SS_LCTL("w")"k");  // Vim, move to pane, up
+        }
+        break;
+    case M_WRGHT:
+        if (record->event.pressed) {
+            SEND_STRING(SS_TAP(X_ESC)SS_LCTL("w")"l");  // Vim, move to pane, right
         }
         break;
   }
@@ -169,7 +193,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        XXXXXXX,    KC_0,    KC_9,    KC_8,    KC_7, M_FRCQT,    M_SPVRT,    KC_G, C(KC_D), C(KC_U), S(KC_G), XXXXXXX,
        XXXXXXX,    KC_0,    KC_3,    KC_2,    KC_1,  M_SAVE,    M_CFLEX, HR_LEFT, HR_DOWN,   HR_UP, HR_RGHT,  SE_DLR,
-       XXXXXXX,    KC_0,    KC_6,    KC_5,    KC_4, M_SAVQT,    M_SPVRT,    KC_B, XXXXXXX,    KC_E,    KC_W, XXXXXXX,
+       XXXXXXX,    KC_0,    KC_6,    KC_5,    KC_4, M_SAVQT,    M_SPHZT, M_WLEFT, M_WDOWN,   M_WUP, M_WRGHT, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC,  KC_ESC,    _______,  KC_ENT
   //                            ╰───────────────────────────╯ ╰──────────────────╯
