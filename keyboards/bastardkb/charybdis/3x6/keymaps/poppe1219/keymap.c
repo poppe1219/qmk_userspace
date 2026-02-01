@@ -31,11 +31,15 @@ enum charybdis_keymap_layers {
 #define CHARYBDIS_AUTO_SNIPING_ON_LAYER L_PTR
 
 enum custom_keycodes {
-    M_TILDE = SAFE_RANGE,
-    M_CFLEX,
-    M_GRAVE,
-    M_E_ACU,
-    M_SAVQT,
+    M_TILDE = SAFE_RANGE, // ~
+    M_CFLEX, // ^
+    M_GRAVE, // `
+    M_E_ACU, // É/é
+    M_FRCQT, // Vim: Force quit
+    M_SAVE, //  Vim: Save
+    M_SAVQT, // Vim: Save and quit
+    M_SPHZT, // Vim: Split horizontally
+    M_SPVRT, // Vim: Spiit vertically
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -70,9 +74,29 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
         }
         break;
+    case M_FRCQT:
+        if (record->event.pressed) {
+            SEND_STRING(SS_TAP(X_ESC)"ZQ");  // Vim, quit without saving
+        }
+        break;
+    case M_SAVE:
+        if (record->event.pressed) {
+            SEND_STRING(SS_TAP(X_ESC)(":w\n");  // Vim, save
+        }
+        break;
     case M_SAVQT:
         if (record->event.pressed) {
-            SEND_STRING(SS_TAP(X_ESC)SS_LSFT("ZZ"));  // Vim, save and quit.
+            SEND_STRING(SS_TAP(X_ESC)"ZZ");  // Vim, save and quit
+        }
+        break;
+    case M_SPHZT:
+        if (record->event.pressed) {
+            SEND_STRING(SS_TAP(X_ESC)SS_LCTL("w")"s");  // Vim, split horizontally
+        }
+        break;
+    case M_SPVRT:
+        if (record->event.pressed) {
+            SEND_STRING(SS_TAP(X_ESC)SS_LCTL("w")"v");  // Vim, split vertically
         }
         break;
   }
@@ -143,9 +167,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ), [L_VIM] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       XXXXXXX,    KC_0,    KC_9,    KC_8,    KC_7, M_SAVQT,    XXXXXXX,    KC_G, C(KC_D), C(KC_U), S(KC_G), XXXXXXX,
-       XXXXXXX,    KC_0,    KC_3,    KC_2,    KC_1, XXXXXXX,    M_CFLEX, HR_LEFT, HR_DOWN,   HR_UP, HR_RGHT,  SE_DLR,
-       XXXXXXX,    KC_0,    KC_6,    KC_5,    KC_4, XXXXXXX,    XXXXXXX,    KC_B, XXXXXXX,    KC_E,    KC_W, XXXXXXX,
+       XXXXXXX,    KC_0,    KC_9,    KC_8,    KC_7, M_FRCQT,    M_SPVRT,    KC_G, C(KC_D), C(KC_U), S(KC_G), XXXXXXX,
+       XXXXXXX,    KC_0,    KC_3,    KC_2,    KC_1,  M_SAVE,    M_CFLEX, HR_LEFT, HR_DOWN,   HR_UP, HR_RGHT,  SE_DLR,
+       XXXXXXX,    KC_0,    KC_6,    KC_5,    KC_4, M_SAVQT,    M_SPVRT,    KC_B, XXXXXXX,    KC_E,    KC_W, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC,  KC_ESC,    _______,  KC_ENT
   //                            ╰───────────────────────────╯ ╰──────────────────╯
