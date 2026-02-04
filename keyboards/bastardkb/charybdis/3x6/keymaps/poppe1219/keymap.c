@@ -127,32 +127,31 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 };
 
-// Home Row Mods Base Layer Left
+// Left Home Row Mods Base Layer 
 #define HR_A LGUI_T(KC_A)
 #define HR_R LALT_T(KC_R)
 #define HR_S LCTL_T(KC_S)
 #define HR_T LSFT_T(KC_T)
 #define HR_D ALGR_T(KC_D)
 
-// Home Row Mods Base Layer Right
+// Right Home Row Mods Base Layer
 #define HR_N RSFT_T(KC_N)
 #define HR_E RCTL_T(KC_E)
 #define HR_I LALT_T(KC_I)
 #define HR_O RGUI_T(KC_O)
 #define HR_H ALGR_T(KC_H)
 
-// Home Row Mods NV, Navigation
-#define HR_LEFT RSFT_T(KC_LEFT)
-#define HR_DOWN RCTL_T(KC_DOWN)
-#define HR_UP LALT_T(KC_UP)
-#define HR_RGHT RGUI_T(KC_RGHT)
-
-// Home Row Mods Sym Layer Left
+// Left Home Row Mods NV, VIM
 #define HR_0 LGUI_T(KC_0)
 #define HR_3 LALT_T(KC_3)
 #define HR_2 LCTL_T(KC_2)
 #define HR_1 LSFT_T(KC_1)
-#define HR_4 ALGR_T(KC_4)
+
+// Right Home Row Mods NV, VIM
+#define HR_LEFT RSFT_T(KC_LEFT)
+#define HR_DOWN RCTL_T(KC_DOWN)
+#define HR_UP LALT_T(KC_UP)
+#define HR_RGHT RGUI_T(KC_RGHT)
 
 // Layer toggles
 #define SPC_SYM LT(L_SYM, KC_SPC)
@@ -184,7 +183,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ), [L_NV] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        XXXXXXX,    KC_0,    KC_9,    KC_8,    KC_7, SE_ASTR,    XXXXXXX, XXXXXXX, KC_PGDN, KC_PGUP, XXXXXXX, XXXXXXX,
-       XXXXXXX,    KC_0,    KC_3,    KC_2,    KC_1, SE_MINS,    KC_HOME, HR_LEFT, HR_DOWN,   HR_UP, HR_RGHT,  KC_END,
+       XXXXXXX,    HR_0,    HR_3,    HR_2,    HR_1, SE_MINS,    KC_HOME, HR_LEFT, HR_DOWN,   HR_UP, HR_RGHT,  KC_END,
        XXXXXXX,    KC_0,    KC_6,    KC_5,    KC_4, SE_PLUS,    XXXXXXX, KC_ALGR, _______, _______, _______, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC, _______,     KC_TAB,  KC_ENT
@@ -192,7 +191,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ), [L_VIM] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        XXXXXXX,    KC_0,    KC_9,    KC_8,    KC_7, M_FRCQT,    M_SPLTV,    KC_G, C(KC_D), C(KC_U), S(KC_G), XXXXXXX,
-       XXXXXXX,    KC_0,    KC_3,    KC_2,    KC_1,  M_SAVE,    M_CFLEX, HR_LEFT, HR_DOWN,   HR_UP, HR_RGHT,  SE_DLR,
+       XXXXXXX,    HR_0,    HR_3,    HR_2,    HR_1,  M_SAVE,    M_CFLEX, HR_LEFT, HR_DOWN,   HR_UP, HR_RGHT,  SE_DLR,
        XXXXXXX,    KC_0,    KC_6,    KC_5,    KC_4, M_SAVQT,    M_SPLTH, M_WLEFT, M_WDOWN,   M_WUP, M_WRGHT, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC,  KC_ESC,    _______,  KC_ENT
