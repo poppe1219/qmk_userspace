@@ -183,7 +183,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ), [L_NV] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        XXXXXXX,    KC_0,    KC_9,    KC_8,    KC_7, SE_ASTR,    XXXXXXX, XXXXXXX, KC_PGDN, KC_PGUP, XXXXXXX, XXXXXXX,
-       XXXXXXX,    HR_0,    HR_3,    HR_2,    HR_1, SE_MINS,    KC_HOME, HR_LEFT, HR_DOWN,   HR_UP, HR_RGHT,  KC_END,
+        KC_APP,    HR_0,    HR_3,    HR_2,    HR_1, SE_MINS,    KC_HOME, HR_LEFT, HR_DOWN,   HR_UP, HR_RGHT,  KC_END,
        XXXXXXX,    KC_0,    KC_6,    KC_5,    KC_4, SE_PLUS,    XXXXXXX, KC_ALGR, _______, _______, _______, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC, _______,     KC_TAB,  KC_ENT
@@ -191,7 +191,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ), [L_VIM] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        XXXXXXX,    KC_0,    KC_9,    KC_8,    KC_7, M_FRCQT,    M_SPLTV,    KC_G, C(KC_D), C(KC_U), S(KC_G), XXXXXXX,
-       XXXXXXX,    HR_0,    HR_3,    HR_2,    HR_1,  M_SAVE,    M_CFLEX, HR_LEFT, HR_DOWN,   HR_UP, HR_RGHT,  SE_DLR,
+        KC_APP,    HR_0,    HR_3,    HR_2,    HR_1,  M_SAVE,    M_CFLEX, HR_LEFT, HR_DOWN,   HR_UP, HR_RGHT,  SE_DLR,
        XXXXXXX,    KC_0,    KC_6,    KC_5,    KC_4, M_SAVQT,    M_SPLTH, M_WLEFT, M_WDOWN,   M_WUP, M_WRGHT, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC,  KC_ESC,    _______,  KC_ENT
@@ -199,7 +199,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ), [L_SYM] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        XXXXXXX, SE_HASH, SE_AMPR, SE_PERC, SE_QUOT, XXXXXXX,    M_GRAVE, SE_ASTR, SE_LPRN, SE_RPRN, XXXXXXX, XXXXXXX,
-       XXXXXXX, M_TILDE, SE_SLSH, SE_BSLS, SE_DQUO, SE_PIPE,    M_CFLEX, SE_MINS, SE_LCBR, SE_RCBR,  SE_EQL,  SE_DLR,
+        KC_APP, M_TILDE, SE_SLSH, SE_BSLS, SE_DQUO, SE_PIPE,    M_CFLEX, SE_MINS, SE_LCBR, SE_RCBR,  SE_EQL,  SE_DLR,
        XXXXXXX,   SE_AT, SE_LABK, SE_RABK, SE_EXLM, XXXXXXX,    XXXXXXX, SE_PLUS, SE_LBRC, SE_RBRC, SE_QUES, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC,  KC_ESC,     KC_TAB, _______
@@ -215,8 +215,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ), [L_FN] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
         KC_NUM,   KC_F1,   KC_F2,   KC_F3,   KC_F4, QK_BOOT,    QK_BOOT,   C_CUT,  C_COPY, C_PASTE, XXXXXXX, KC_SCRL,
-        KC_APP,   KC_F5,   KC_F6,   KC_F7,   KC_F8, XXXXXXX,    XXXXXXX, KC_RSFT, KC_RCTL, KC_LALT, KC_RGUI, KC_PAUS,
-       _______,   KC_F9,  KC_F10,  KC_F11,  KC_F12,  EE_CLR,     EE_CLR, KC_ALGR, KC_PSCR,  KC_INS, XXXXXXX, _______,
+        KC_APP,   KC_F5,   KC_F6,   KC_F7,   KC_F8, XXXXXXX,    KC_HOME, KC_RSFT, KC_RCTL, KC_LALT, KC_RGUI,  KC_END,
+       _______,   KC_F9,  KC_F10,  KC_F11,  KC_F12,  EE_CLR,     EE_CLR, KC_ALGR, KC_PSCR,  KC_INS, KC_PAUS, _______,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC,  KC_ESC,     KC_TAB,  KC_ENT
   //                            ╰───────────────────────────╯ ╰──────────────────╯
