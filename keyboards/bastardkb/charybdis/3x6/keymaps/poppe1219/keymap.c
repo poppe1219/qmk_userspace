@@ -127,7 +127,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 };
 
-// Left Home Row Mods Base Layer 
+// Left Home Row Mods Base Layer
 #define HR_A LGUI_T(KC_A)
 #define HR_R LALT_T(KC_R)
 #define HR_S LCTL_T(KC_S)
@@ -182,9 +182,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ), [L_NV] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       XXXXXXX,    KC_0,    KC_9,    KC_8,    KC_7, SE_ASTR,    XXXXXXX, XXXXXXX, KC_PGDN, KC_PGUP, XXXXXXX, XXXXXXX,
-        KC_APP,    HR_0,    HR_3,    HR_2,    HR_1, SE_MINS,    KC_HOME, HR_LEFT, HR_DOWN,   HR_UP, HR_RGHT,  KC_END,
-       XXXXXXX,    KC_0,    KC_6,    KC_5,    KC_4, SE_PLUS,    XXXXXXX, KC_ALGR, _______, _______, _______, XXXXXXX,
+       XXXXXXX,    KC_0,    KC_9,    KC_8,    KC_7, KP_PAST,    XXXXXXX, XXXXXXX, KC_PGDN, KC_PGUP, XXXXXXX, XXXXXXX,
+        KC_APP,    HR_0,    HR_3,    HR_2,    HR_1, KP_PMNS,    KC_HOME, HR_LEFT, HR_DOWN,   HR_UP, HR_RGHT,  KC_END,
+       XXXXXXX,    KC_0,    KC_6,    KC_5,    KC_4, KP_PPLS,    XXXXXXX, KC_ALGR, _______, _______, _______, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC, _______,     KC_TAB,  KC_ENT
   //                            ╰───────────────────────────╯ ╰──────────────────╯
@@ -198,9 +198,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ), [L_SYM] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       XXXXXXX, SE_HASH, SE_AMPR, SE_PERC, SE_QUOT, XXXXXXX,    M_GRAVE, SE_ASTR, SE_LPRN, SE_RPRN, XXXXXXX, XXXXXXX,
-        KC_APP, M_TILDE, SE_SLSH, SE_BSLS, SE_DQUO, SE_PIPE,    M_CFLEX, SE_MINS, SE_LCBR, SE_RCBR,  SE_EQL,  SE_DLR,
-       XXXXXXX,   SE_AT, SE_LABK, SE_RABK, SE_EXLM, XXXXXXX,    XXXXXXX, SE_PLUS, SE_LBRC, SE_RBRC, SE_QUES, XXXXXXX,
+       XXXXXXX, SE_HASH, SE_AMPR, SE_PERC, SE_QUOT, XXXXXXX,    M_GRAVE, KP_PAST, SE_LPRN, SE_RPRN, XXXXXXX, XXXXXXX,
+        KC_APP, M_TILDE, SE_SLSH, SE_BSLS, SE_DQUO, SE_PIPE,    M_CFLEX, KP_PMNS, SE_LCBR, SE_RCBR,  SE_EQL,  SE_DLR,
+       XXXXXXX,   SE_AT, SE_LABK, SE_RABK, SE_EXLM, XXXXXXX,    XXXXXXX, KP_PPLS, SE_LBRC, SE_RBRC, SE_QUES, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC,  KC_ESC,     KC_TAB, _______
   //                            ╰───────────────────────────╯ ╰──────────────────╯
