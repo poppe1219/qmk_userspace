@@ -182,9 +182,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ), [L_NV] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       XXXXXXX,    KC_0,    KC_9,    KC_8,    KC_7, KP_PAST,    XXXXXXX, XXXXXXX, KC_PGDN, KC_PGUP, XXXXXXX, XXXXXXX,
-        KC_APP,    HR_0,    HR_3,    HR_2,    HR_1, KP_PMNS,    KC_HOME, HR_LEFT, HR_DOWN,   HR_UP, HR_RGHT,  KC_END,
-       XXXXXXX,    KC_0,    KC_6,    KC_5,    KC_4, KP_PPLS,    XXXXXXX, KC_ALGR, _______, _______, _______, XXXXXXX,
+       XXXXXXX,    KC_0,    KC_9,    KC_8,    KC_7, KC_PAST,    XXXXXXX, XXXXXXX, KC_PGDN, KC_PGUP, XXXXXXX, XXXXXXX,
+        KC_APP,    HR_0,    HR_3,    HR_2,    HR_1, KC_PMNS,    KC_HOME, HR_LEFT, HR_DOWN,   HR_UP, HR_RGHT,  KC_END,
+       XXXXXXX,    KC_0,    KC_6,    KC_5,    KC_4, KC_PPLS,    XXXXXXX, KC_ALGR, _______, _______, _______, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC, _______,     KC_TAB,  KC_ENT
   //                            ╰───────────────────────────╯ ╰──────────────────╯
@@ -198,9 +198,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ), [L_SYM] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       XXXXXXX, SE_HASH, SE_AMPR, SE_PERC, SE_QUOT, XXXXXXX,    M_GRAVE, KP_PAST, SE_LPRN, SE_RPRN, XXXXXXX, XXXXXXX,
-        KC_APP, M_TILDE, SE_SLSH, SE_BSLS, SE_DQUO, SE_PIPE,    M_CFLEX, KP_PMNS, SE_LCBR, SE_RCBR,  SE_EQL,  SE_DLR,
-       XXXXXXX,   SE_AT, SE_LABK, SE_RABK, SE_EXLM, XXXXXXX,    XXXXXXX, KP_PPLS, SE_LBRC, SE_RBRC, SE_QUES, XXXXXXX,
+       XXXXXXX, SE_HASH, SE_AMPR, SE_PERC, SE_QUOT, XXXXXXX,    M_GRAVE, KC_PAST, SE_LPRN, SE_RPRN, XXXXXXX, XXXXXXX,
+        KC_APP, M_TILDE, SE_SLSH, SE_BSLS, SE_DQUO, SE_PIPE,    M_CFLEX, KC_PMNS, SE_LCBR, SE_RCBR,  SE_EQL,  SE_DLR,
+       XXXXXXX,   SE_AT, SE_LABK, SE_RABK, SE_EXLM, XXXXXXX,    XXXXXXX, KC_PPLS, SE_LBRC, SE_RBRC, SE_QUES, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______,  KC_SPC,  KC_ESC,     KC_TAB, _______
   //                            ╰───────────────────────────╯ ╰──────────────────╯
